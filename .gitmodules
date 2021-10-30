@@ -1,0 +1,3 @@
+[submodule "tests/libft"]
+	path = tests/libft
+	url = https://github.com/VLN37/libft.git
