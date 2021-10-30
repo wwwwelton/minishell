@@ -3,6 +3,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+//this gives you prompt
 //the returned line is allocated with malloc by readline
 int	main(void)
 {

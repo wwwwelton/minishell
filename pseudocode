@@ -1,0 +1,14 @@
+/*
+ * show a prompt when waiting for a new command
+ * have a working history
+ * not interpret unspecified characters like \ or ;
+ * search and launch the right executable
+ * single quote inhibits all interpretations of a sequence
+ * double quotes inhibits all interpretations except $
+ * expand variables
+ *
+ *
+ * show prompt and wait for command
+ * receive line, store in history
+ * remove unspecified characters
+ */
