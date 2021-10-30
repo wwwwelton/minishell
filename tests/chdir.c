@@ -14,9 +14,11 @@ int	main(void)
 {
 	char *str;
 
-	str = ft_strdup("hello");
-	printf("%p\n", str);
-	ftex_minprintf("%p\n", str);
+	str = getcwd(str, 0);
+	ftex_minprintf("the current directory: %s\n", str);
 	ftex_null_ptr((void **)&str);
-	ftex_minprintf("%p\n", str);
+	chdir("../");
+	str = getcwd(str, 0);
+	ftex_minprintf("After chdir to parent: %s\n", str);
+	ftex_null_ptr((void **)&str);
 }
