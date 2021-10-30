@@ -1,0 +1,6 @@
+*.out
+depuration
+libft_old/
+libftTester/
+unit/
+warmachine/
