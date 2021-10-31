@@ -3,19 +3,24 @@ LINKS = -L../libft -I../libft -lft
 readline:
 		make -C ../libft all
 		clang readline.c -lreadline $(LINKS)
-		./a.out
+		valgrind ./a.out
 
 getenv:
 		make -C ../libft all
 		clang getenv.c -lreadline $(LINKS)
-		./a.out
+		valgrind ./a.out
 
 splitargs:
 		make -C ../libft all
 		clang splitargs.c -lreadline $(LINKS)
-		./a.out
+		valgrind ./a.out
 
 chdir:
 		make -C ../libft all
 		clang chdir.c -lreadline $(LINKS)
-		./a.out
+		valgrind ./a.out
+
+add_history:
+		make -C ../libft all
+		clang add_history.c -lreadline $(LINKS)
+		valgrind ./a.out

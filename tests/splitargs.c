@@ -6,12 +6,19 @@
 int	main(void)
 {
 	char	**arg;
+	char	*cmd;
 	int		pid;
 
-	arg = ft_split(readline(""), ' ');
+	cmd = NULL;
+	cmd = readline(cmd);
+	arg = ft_split(cmd, ' ');
+	free(cmd);
 	pid = fork();
 	if (pid == 0)
 		execvp("echo", arg);
 	for (int i = 0; arg[i]; i++)
 		ftex_minprintf("%s$\n", arg[i]);
+	for(int i = 0; arg[i]; i++)
+		free(arg[i]);
+	free(arg);
 }
