@@ -8,6 +8,7 @@ int	main(void)
 	char *str;
 
 	str = NULL;
+	ft_putstr_fd("$ ", 0);
 	str = readline(str);
 	add_history(str);
 	free(str);

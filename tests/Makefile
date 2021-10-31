@@ -20,6 +20,11 @@ chdir:
 		clang chdir.c -lreadline $(LINKS)
 		valgrind ./a.out
 
+opendir:
+		make -C ../libft all
+		clang opendir.c -lreadline $(LINKS)
+		./a.out
+
 add_history:
 		make -C ../libft all
 		clang add_history.c -lreadline $(LINKS)
