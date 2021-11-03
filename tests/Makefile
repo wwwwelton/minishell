@@ -29,3 +29,8 @@ add_history:
 		make -C ../libft all
 		clang add_history.c -lreadline $(LINKS)
 		valgrind ./a.out
+
+envp:
+		make -C ../libft all
+		clang envp.c -lreadline $(LINKS)
+		valgrind ./a.out

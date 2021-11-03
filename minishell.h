@@ -6,19 +6,14 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/01 01:40:28 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/02 22:37:26 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-typedef struct s_envp
-{
-	char	*name;
-	char	*value;
-}	t_envp;
-
+extern char	**__environ;
 typedef struct s_builtin
 {
 	char	*name;
