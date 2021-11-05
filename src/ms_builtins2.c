@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ms_builtins2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/05 03:00:20 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/05 00:52:08 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/05 02:58:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	alt_export(char *str)
 {
-	t_builtin *head;
-	init_builtins(&head);
-	printfunctions(head);
+	ftex_minprintf("%s", str);
+}
 
-	// while (1)
-	// 	minishell();
-	// return (0);
+void	alt_unset(char *str)
+{
+	ftex_minprintf("%s", str);
+}
+
+void	alt_env(char *str)
+{
+	ftex_minprintf("%s", str);
+}
+
+void	alt_exit(char *str)
+{
+	ftex_minprintf("%s", str);
 }

@@ -1,7 +1,9 @@
 LIBFTPATH	= ./libft
 LIBFT		= $(LIBFTPATH)/libft.a
 
-SRCFILES	= ms_launch.c \
+SRCFILES	= ms_init_list.c \
+			  ms_builtins.c \
+			  ms_builtins2.c \
 
 
 BONUSFILES	= bonus.c \
@@ -49,6 +51,7 @@ mkdir:
 re:			fclean all
 
 run:		mkdir $(OBJ) $(HEADER)
+			make -C libft
 			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
 			./$(NAME)
 
