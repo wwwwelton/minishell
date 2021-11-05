@@ -1,7 +1,8 @@
 LIBFTPATH	= ./libft
 LIBFT		= $(LIBFTPATH)/libft.a
 
-SRCFILES	= ms_init_list.c \
+SRCFILES	= minishell.c \
+			  ms_init_list.c \
 			  ms_builtins.c \
 			  ms_builtins2.c \
 
@@ -20,7 +21,7 @@ HEADER		= minishell.h
 NAME		= minishell
 #BONUSNAME	= checker
 INCLUDES	= -I./libft -I./
-LINKS		= -I $(LIBFTPATH) -L $(LIBFTPATH) -lft
+LINKS		= -I$(LIBFTPATH) -L$(LIBFTPATH) -lft -lreadline
 
 SRC			= $(addprefix $(SRCDIR)/, $(SRCFILES))
 #BONUSSRC	= $(addprefix $(BONUSDIR)/, $(BONUSFILES))

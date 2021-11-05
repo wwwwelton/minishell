@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/05 01:35:00 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/05 03:23:09 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 # define MINISHELL_H
 
 # include "libft.h"
+#include <stdio.h>
+# include <fcntl.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include <fcntl.h>
 
-extern char	**__environ;
+char		**g_environ;
 typedef struct s_builtin
 {
 	char				*name;
@@ -28,6 +29,8 @@ typedef struct s_builtin
 
 void	init_builtins(t_builtin **head);
 void	printfunctions(t_builtin *head);
+
+void	minishell(void);
 
 void	alt_echo(char *str);
 void	alt_cd(char *str);

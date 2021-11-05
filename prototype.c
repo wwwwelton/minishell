@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int	minishell()
+void	proto()
 {
 	//initialize variables
 	//initialize prompt signal handler (ctrl c, ctrl d, ctrl /)
