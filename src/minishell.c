@@ -6,10 +6,13 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/01 01:32:06 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/05 00:15:41 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void minishell()
+void	minishell(void)
+{
+	return (0);
+}
