@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/01 01:32:51 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/05 00:06:55 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	init();
-	while (1)
-		minishell();
-	return (0);
+	t_builtin *head;
+	launch(&head);
+	printfunctions(head);
+
+	// while (1)
+	// 	minishell();
+	// return (0);
 }

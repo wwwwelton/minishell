@@ -12,3 +12,5 @@
  * receive line, store in history
  * remove unspecified characters
  */
+
+if < is used as a redirect it must be a text file

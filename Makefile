@@ -1,7 +1,7 @@
 LIBFTPATH	= ./libft
 LIBFT		= $(LIBFTPATH)/libft.a
 
-SRCFILES	= file.c \
+SRCFILES	= ms_launch.c \
 
 
 BONUSFILES	= bonus.c \
@@ -14,14 +14,14 @@ SRCDIR		= src
 BONUSDIR	= srcbonus
 OBJDIR		= obj
 HEADER		= minishell.h
-#BONUSHEADER	= checker.h
+#BONUSHEADER= checker.h
 NAME		= minishell
 #BONUSNAME	= checker
 INCLUDES	= -I./libft -I./
 LINKS		= -I $(LIBFTPATH) -L $(LIBFTPATH) -lft
 
-SRC		= $(addprefix $(SRCDIR)/, $(SRCFILES))
-#BONUSSRC= $(addprefix $(BONUSDIR)/, $(BONUSFILES))
+SRC			= $(addprefix $(SRCDIR)/, $(SRCFILES))
+#BONUSSRC	= $(addprefix $(BONUSDIR)/, $(BONUSFILES))
 OBJ			= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 #BONUSOBJ	= $(BONUSSRC:$(BONUSDIR)/%.c=$(OBJDIR)/%.o)
 
@@ -47,5 +47,9 @@ mkdir:
 			mkdir -p obj
 
 re:			fclean all
+
+run:		mkdir $(OBJ) $(HEADER)
+			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
+			./$(NAME)
 
 .PHONY:		all clean fclean re
