@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:30:54 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/05 03:05:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/06 09:23:23 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,6 @@ void	init_builtins(t_builtin **head)
 	node->f = &alt_env;
 	node = node->next;
 	node->f = &alt_exit;
+	node = node->next;
+	node->f = &alt_minishell;
 }

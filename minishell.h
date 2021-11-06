@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/05 03:23:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/06 09:20:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void	alt_env(char *str);
 void	alt_unset(char *str);
 void	alt_exit(char *str);
 void	alt_export(char *str);
+void	alt_minishell(char *str);
 
 #endif
