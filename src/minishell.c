@@ -6,13 +6,13 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 11:27:27 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/07 14:13:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	cleanup()
+void	cleanup(t_data *data)
 {
 	// deinit();
 	minishell();
@@ -38,10 +38,7 @@ void	minishell(void)
 
 	//while (cmd invalid call function)
 		//prompt_user();
-	cmd = NULL;
-	ft_putstr_fd("$ ", 1);
-	cmd = readline(cmd);
-	add_history(cmd);
+	cmd = prompt_user();
 
 	//initializes the three structs and counts the pipes
 	init(&data, cmd);
@@ -62,5 +59,5 @@ void	minishell(void)
 	pid = fork();
 	if (pid == 0)
 		execve(data->accesspath[0], data->cmd[0], g_environ);
-
+	wait(NULL);
 }
