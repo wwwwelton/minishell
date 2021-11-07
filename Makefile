@@ -5,6 +5,8 @@ SRCFILES	= minishell.c \
 			  ms_init_list.c \
 			  ms_builtins.c \
 			  ms_builtins2.c \
+			  ms_parser.c \
+			  ms_init.c
 
 
 BONUSFILES	= bonus.c \
@@ -12,7 +14,7 @@ BONUSFILES	= bonus.c \
 
 CC			= clang
 RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		=
 SRCDIR		= src
 BONUSDIR	= srcbonus
 OBJDIR		= obj

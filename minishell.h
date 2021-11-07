@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 03:48:49 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/07 10:53:46 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ typedef struct s_builtin
 
 typedef struct s_data
 {
-	char		**pipedlines;
+	char		**presplit;
 	char		***cmd;
+	char		**path;
 	char		**accesspath;
-	char		*path;
 	t_flags		**flags;
 	t_builtin	*head;
 }	t_data;
