@@ -5,20 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 01:06:42 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/07 01:28:44 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/07 03:04:35 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "miniminishell.h"
 
 int	main(void)
 {
-	t_builtin	*head;
+	char	inputString[1000];
+	char	*parsedArgs[100];
+	char	*parsedArgsPiped[100];
+	int		execFlag = 0;
 
-	g_environ = __environ;
-	init_builtins(&head);
-	// printfunctions(head);
-	minishell();
+	init_shell();
+	while (1)
+	{
+		// print shell line
+		printDir();
+		// read input
+		if (takeInput(inputString))
+			continue ;
+		// process
+		execFlag = processString(inputString, parsedArgs, parsedArgsPiped);
+		// if the no cmd or cmd is built-in returns 0
+
+		// execute commands (pipex?)
+		if (execFlag == 1) // single cmd
+			execArgs(parsedArgs);
+		if (execFlag == 2) // more than 2 commands
+			execArgsPiped(parsedArgs, parsedArgsPiped);
+	}
 	return (0);
 }

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   printdir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 01:06:42 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/07 01:42:03 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/07 03:04:52 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "miniminishell.h"
 
-int	main(void)
+void	printDir(void)
 {
-	t_builtin	*head;
+	char	cwd[1024];
 
-	g_environ = __environ;
-	init_builtins(&head);
-	// printfunctions(head);
-	minishell();
-	return (0);
+	getcwd(cwd, sizeof(cwd));
+	printf("\nDir: %s", cwd);
 }

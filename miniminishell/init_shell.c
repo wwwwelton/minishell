@@ -1,3 +1,5 @@
+#include "miniminishell.h"
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -5,20 +7,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 01:06:42 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/07 01:28:44 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/07 01:52:53 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "miniminishell.h"
 
-int	main(void)
+void	init_shell(void)
 {
-	t_builtin	*head;
-
-	g_environ = __environ;
-	init_builtins(&head);
-	// printfunctions(head);
-	minishell();
-	return (0);
+	clear();
+	printf("\n\n\n\n******************"
+		"************************");
+	printf("\n\n\n\t****MY SHELL****");
+	printf("\n\n\t-USE AT YOUR OWN RISK-");
+	printf("\n\n\n\n*******************"
+		"***********************");
+	char* username = getenv("USER");
+	printf("\n\n\nUSER is: @%s", username);
+	printf("\n");
+	sleep(1);
+	clear();
 }

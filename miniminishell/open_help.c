@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   open_help.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 01:06:42 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/07 01:27:44 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/07 02:56:48 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "miniminishell.h"
 
-int	main(void)
+// Help command builtin
+void openHelp(void)
 {
-	t_builtin	*head;
+	puts("\n***WELCOME TO MY SHELL HELP***"
+		"\nCopyright @ Suprotik Dey"
+		"\n-Use the shell at your own risk..."
+		"\nList of Commands supported:"
+		"\n>cd"
+		"\n>ls"
+		"\n>exit"
+		"\n>all other general commands available in UNIX shell"
+		"\n>pipe handling"
+		"\n>improper space handling");
 
-	g_environ = __environ;
-	init_builtins(&head);
-	// printfunctions(head);
-	minishell();
-	return (0);
+	return ;
 }

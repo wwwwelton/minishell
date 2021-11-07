@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   takeinput.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 01:06:42 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/07 01:57:27 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/07 03:00:55 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "miniminishell.h"
 
-int	main(void)
+// Function to take input
+int takeInput(char* str)
 {
-	t_builtin	*head;
+	char* buf;
 
-	g_environ = __environ;
-	init_builtins(&head);
-	// printfunctions(head);
-	minishell();
-	return (0);
+	buf = readline("\n>>> ");
+	if (strlen(buf) != 0)
+	{
+		add_history(buf);
+		strcpy(str, buf);
+		return (0);
+	}
+	else
+		return (1);
 }

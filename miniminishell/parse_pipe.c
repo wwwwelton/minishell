@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 01:06:42 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/07 01:27:44 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/07 02:02:19 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "miniminishell.h"
 
-int	main(void)
+// function for finding pipe
+int	parsePipe(char* str, char** strpiped)
 {
-	t_builtin	*head;
-
-	g_environ = __environ;
-	init_builtins(&head);
-	// printfunctions(head);
-	minishell();
-	return (0);
+	int i;
+	for (i = 0; i < 2; i++)
+	{
+		strpiped[i] = strsep(&str, "|");
+		if (strpiped[i] == NULL)
+			break ;
+	}
+	if (strpiped[1] == NULL)
+		return (0); // returns zero if no pipe is found.
+	else
+	{
+		return (1);
+	}
 }

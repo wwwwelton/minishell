@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/06 09:20:14 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/07 03:48:49 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@
 # include <readline/history.h>
 
 char		**g_environ;
+
+typedef struct s_flags
+{
+	char	*file_out;
+	char	*file_in;
+	int		builtins;
+	int		system_cmd;
+}	t_flags;
+
 typedef struct s_builtin
 {
 	char				*name;
@@ -27,10 +36,23 @@ typedef struct s_builtin
 	struct s_builtin	*next;
 }	t_builtin;
 
+typedef struct s_data
+{
+	char		**pipedlines;
+	char		***cmd;
+	char		**accesspath;
+	char		*path;
+	t_flags		**flags;
+	t_builtin	*head;
+}	t_data;
+
+
 void	init_builtins(t_builtin **head);
 void	printfunctions(t_builtin *head);
 
 void	minishell(void);
+void	parser(t_data *data);
+// void	translate(t_data)
 
 void	alt_echo(char *str);
 void	alt_cd(char *str);

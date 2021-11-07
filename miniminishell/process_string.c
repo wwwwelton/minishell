@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   process_string.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 01:06:42 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/07 01:28:44 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/07 02:05:38 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "miniminishell.h"
 
-int	main(void)
+int	processString(char *str, char **parsed, char **parsedpipe)
 {
-	t_builtin	*head;
+	char	*strpiped[2];
+	int		piped = 0;
 
-	g_environ = __environ;
-	init_builtins(&head);
-	// printfunctions(head);
-	minishell();
-	return (0);
+	piped = parsePipe(str, strpiped);
+
+	if (piped)
+	{
+		parseSpace(strpiped[0], parsed);
+		parseSpace(strpiped[1], parsed);
+	}
+	else
+		parseSpace(str, parsed);
+	if (builtin(parsed))
+		return (0);
+	else
+		return (1 + piped);
 }

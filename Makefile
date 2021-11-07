@@ -56,4 +56,9 @@ run:		mkdir $(OBJ) $(HEADER)
 			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
 			./$(NAME)
 
+runv:		mkdir $(OBJ) $(HEADER)
+			make -C libft
+			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
+			valgrind ./$(NAME)
+
 .PHONY:		all clean fclean re
