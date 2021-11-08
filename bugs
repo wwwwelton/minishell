@@ -1,0 +1,1 @@
+1 - when you input an invalid command as the FIRST line of the shell it segfaults
