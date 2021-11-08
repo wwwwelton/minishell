@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 14:13:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/08 00:33:06 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char		**g_environ;
 
 typedef struct s_flags
 {
-	char	*file_out;
-	char	*file_in;
-	int		builtins;
-	int		system_cmd;
+	char				*file_out;
+	char				*file_in;
+	int					builtins;
+	int					system_cmd;
 }	t_flags;
 
 typedef struct s_builtin
@@ -39,21 +39,21 @@ typedef struct s_builtin
 
 typedef struct s_data
 {
-	char		**presplit;
-	char		***cmd;
-	char		**path;
-	char		**accesspath;
-	t_flags		**flags;
-	t_builtin	*head;
+	char				**presplit;
+	char				***cmd;
+	char				**path;
+	char				**accesspath;
+	t_flags				**flags;
+	t_builtin			*head;
 }	t_data;
 
 typedef struct s_cmd
 {
-	char **cmd;
-	char *path;
-	char *accesspath;
-	t_flags **flags;
-	t_builtin *head;
+	char				**cmd;
+	char				*path;
+	char				*accesspath;
+	t_flags				**flags;
+	t_builtin			*head;
 }	t_cmd;
 
 void	init_builtins(t_builtin **head);

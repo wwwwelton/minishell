@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 14:14:39 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/08 00:33:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*prompt(void)
 	free(tmp);
 	add_history(line);
 	free(line);
-	return(line);
+	return (line);
 }
 
 int	main(void)
