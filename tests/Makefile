@@ -34,3 +34,8 @@ envp:
 		make -C ../libft all
 		clang envp.c -lreadline $(LINKS)
 		valgrind ./a.out
+
+environ:
+		make -C ../libft all
+		clang environ.c -lreadline $(LINKS)
+		./a.out
