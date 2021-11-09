@@ -8,6 +8,7 @@ SRCFILES	= minishell.c \
 			  ms_parser.c \
 			  ms_init.c \
 			  ms_prompt.c \
+			  ms_utils.c \
 
 
 BONUSFILES	= bonus.c \

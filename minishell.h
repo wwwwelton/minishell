@@ -6,12 +6,17 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/08 00:33:06 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:01:04 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+# ifndef DEBUG
+#  define DEBUG 1
+# endif
+
 
 # include "libft.h"
 # include <stdio.h>
@@ -62,6 +67,8 @@ void	printfunctions(t_builtin *head);
 void	minishell(void);
 void	parser(t_data *data);
 char	*prompt_user(void);
+void	translate(t_data *data);
+void	debug(t_data *data);
 
 // void	translate(t_data)
 

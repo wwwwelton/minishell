@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/08 00:34:34 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/09 10:50:01 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ void	minishell(void)
 	if (pid == 0)
 		execve(data->accesspath[0], data->cmd[0], g_environ);
 	wait(NULL);
+	if (DEBUG)
+		debug(data);
 }
