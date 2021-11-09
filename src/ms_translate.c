@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_utils.c                                         :+:      :+:    :+:   */
+/*   ms_translate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/09 11:46:45 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/09 10:07:15 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void print_matrix(char ***cmd)
+char	**replace_env()
+{
+
+}
+
+char	*find_quotes(char *str)
+{
+	char *tmp;
+
+	if (!str)
+		return (str);
+	tmp = str;
+	while (*tmp)
+	{
+		if (*tmp == 39)
+			tmp += ft_strchr(tmp + 1, 39) - tmp + 1;
+		if (*tmp == 34)
+			handle_double_quotes();
+	}
+}
+
+void	translate(char ***cmd)
 {
 	int	i;
 	int	j;
 
-	i = -1;
-	j = -1;
-	while (cmd[++i])
+	i = 0;
+	while (cmd[i][j])
 	{
-		ftex_minprintf("===== COMMAND %d ======\n\n", i + 1);
-		while (cmd[++j])
-			ftex_minprintf("%s\n", cmd[i][j]);
+		cmd[i][j] = find_quotes(cmd[i][j])
 	}
-	j = -1;
-}
 
-void	debug(t_data *data)
-{
-	print_matrix(data->cmd);
-void	free_splited_mat(char **mat)
-{
-	int	i;
-
-	i = -1;
-	if (mat)
-	{
-		while (mat[++i])
-			ftex_null_ptr((void *)&mat[i]);
-		ftex_null_ptr((void *)&mat);
-	}
 }
