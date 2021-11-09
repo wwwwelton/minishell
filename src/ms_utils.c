@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/09 11:46:45 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:53:02 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void print_matrix(char ***cmd)
 void	debug(t_data *data)
 {
 	print_matrix(data->cmd);
+}
+
 void	free_splited_mat(char **mat)
 {
 	int	i;
