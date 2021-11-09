@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/09 11:01:04 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/09 15:03:50 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_flags
 typedef struct s_builtin
 {
 	char				*name;
-	void				(*f)(char *);
+	void				(*f)(char **);
 	struct s_builtin	*next;
 }	t_builtin;
 
