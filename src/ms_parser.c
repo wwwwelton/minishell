@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 11:25:01 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/10 11:57:39 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,34 @@ static char
 	accesspath[i] = NULL;
 	return (accesspath);
 }
+
+char	*single_quote_pattern(char *str)
+{
+	char	*pattern;
+	int		i;
+
+	pattern = ft_substr(str, 0, ft_strchr(str + 1, SQUOTES) - str + 1);
+}
+
+char	*replace_quotes(char *str)
+{
+	int		i;
+	int		patsize;
+	char	*pattern;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == SQUOTES)
+		{
+			pattern = ft_substr(str, 0, ft_strchr(str + 1, SQUOTES) - str + 1);
+			str = ftex_str_replace(str, pattern, NEWPAT);
+		}
+
+	}
+}
+
+
 
 void	parser(t_data *data)
 {

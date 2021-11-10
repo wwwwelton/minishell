@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/09 10:50:01 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/10 12:01:53 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,17 @@
 void	cleanup(t_data *data)
 {
 	// deinit();
-	minishell();
 }
 
 //initializes the three structs
-void init(t_data **data, char *str)
+void init(t_data *data, char *str)
 {
-	t_data	*node;
-
-	node = (t_data *)malloc(sizeof(t_data));
-	*data = node;
-	node->presplit = ft_split(str, ' ');
+	data->presplit = ft_split(str, ' ');
 }
 
-void	minishell(void)
+void	minishell(t_data *data)
 {
 	char	*cmd;
-	t_data	*data;
 	int		pid;
 
 	// printdir();
@@ -41,7 +35,7 @@ void	minishell(void)
 	cmd = prompt_user();
 
 	//initializes the three structs and counts the pipes
-	init(&data, cmd);
+	init(data, cmd);
 
 	//translate
 
