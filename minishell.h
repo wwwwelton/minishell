@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/10 11:58:30 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/10 17:50:35 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # ifndef DEBUG
 #  define DEBUG 1
 # endif
-# define SQUOTES 27
-# define DQUOTES 22
+# define SQUOTES 39
+# define DQUOTES 34
 # define NEWPAT "___0x4242___"
 
 # include "libft.h"
@@ -62,23 +62,14 @@ typedef struct s_data
 	t_builtin			*head;
 }	t_data;
 
-typedef struct s_cmd
-{
-	char				**cmd;
-	char				*path;
-	char				*accesspath;
-	t_patterns			*patterns;
-	t_flags				**flags;
-	t_builtin			*head;
-}	t_cmd;
-
 void	init_builtins(t_builtin **head);
 void	init_patterns(t_patterns **patterns);
 void	init_data(t_data **data);
 
+char	*replace_quoted(t_patterns *patterns, char *line);
 void	printfunctions(t_builtin *head);
 void	minishell(t_data *data);
-void	parser(t_data *data);
+void	parser(t_data *data, char *line);
 char	*prompt_user(void);
 void	translate(t_data *data);
 void	debug(t_data *data);

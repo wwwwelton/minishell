@@ -12,48 +12,34 @@
 
 #include "minishell.h"
 
-char	*replace_quotes(char *str)
+char	*single_quotes(t_patterns *patterns, char *line, int i)
 {
-	int		i;
-	int		patsize;
-	char	*pattern;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == SQUOTES)
-		{
-			pattern = ft_substr(str, 0, ft_strchr(str + 1, SQUOTES) - str + 1);
-			str = ftex_str_replace(str, pattern, NEWPAT)
-		}
-
-	}
+	// ftex_minprintf("%s\n", patterns->backup[patterns->i]);
+	patterns->backup[patterns->i] = \
+	ft_substr(line, i, ft_strchr(&line[i] + 1, SQUOTES) - &line[i] + 1);
+	ftex_minprintf("%s\n", patterns->backup[patterns->i]);
+	patterns->holder[patterns->i] = \
+	ftex_strmerge(ft_strdup((char *)NEWPAT), ft_itoa(patterns->i));
+	line = ftex_str_replace(line, patterns->backup[patterns->i], patterns->holder[patterns->i]);
+	patterns->i++;
+	return (line);
 }
 
-char	*replace_on_line(char **line, char **backup, char **pat, int *index)
+char	*replace_quoted(t_patterns *patterns, char *line)
 {
 	int	i;
 
 	i = 0;
-	while ((*line)[i])
+	patterns->i = 0;
+	while (line[i])
 	{
-		if ((*line)[i] == SQUOTES)
-			*line =
+		if (line[i] == SQUOTES)
+		{
+			line = single_quotes(patterns, line, i);
+		}
+		// if (line[i] == DQUOTES)
+		// 	line = calldouble
+		++i;
 	}
-}
-
-void	pattern_machine(char **line, char ***cmd)
-{
-	static char	*backup[50];
-	static char	*pat[50];
-	static int	index;
-
-	if (!cmd)
-		replace_on_line(line, &backup, &pat, &index);
-	if (!line)
-	{
-		restore_line(cmd, &backup, &pat, &index);
-		reset_machine(&backup, &pat, &index);
-		index = 0;
-	}
+	return (line);
 }

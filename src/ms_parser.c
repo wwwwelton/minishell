@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/10 11:57:39 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/10 18:12:57 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,35 +74,7 @@ static char
 	return (accesspath);
 }
 
-char	*single_quote_pattern(char *str)
-{
-	char	*pattern;
-	int		i;
-
-	pattern = ft_substr(str, 0, ft_strchr(str + 1, SQUOTES) - str + 1);
-}
-
-char	*replace_quotes(char *str)
-{
-	int		i;
-	int		patsize;
-	char	*pattern;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == SQUOTES)
-		{
-			pattern = ft_substr(str, 0, ft_strchr(str + 1, SQUOTES) - str + 1);
-			str = ftex_str_replace(str, pattern, NEWPAT);
-		}
-
-	}
-}
-
-
-
-void	parser(t_data *data)
+void	parser(t_data *data, char *line)
 {
 	int		cmd_count;
 
@@ -110,7 +82,9 @@ void	parser(t_data *data)
 	data->cmd = malloc(sizeof(char *) * 2);
 	data->path = parse_path(g_environ);
 
-	data->cmd[0] = data->presplit; //develop parser later
+	line = replace_quoted(data->patterns, line);
+	// ftex_minprintf("%s\n", line);
+	data->cmd[0] = ft_split(line, ' '); //develop parser later
 	data->cmd[1] = NULL;
 	data->accesspath = parse_access(data, data->path, data->cmd, cmd_count);
 	// ftex_minprintf("%s\n", data->path[1]);

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/09 11:53:02 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/10 14:43:58 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void print_matrix(char ***cmd)
 	while (cmd[++i])
 	{
 		ftex_minprintf("===== COMMAND %d ======\n\n", i + 1);
-		while (cmd[++j])
+		while (cmd[i][++j])
 			ftex_minprintf("%s\n", cmd[i][j]);
 	}
 	j = -1;
