@@ -6,11 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/11/11 14:25:38 by jofelipe         ###   ########.fr       */
-=======
-/*   Updated: 2021/11/11 15:32:45 by jofelipe         ###   ########.fr       */
->>>>>>> 72664b9485284c0bb172762137c8d04d329e7406
+/*   Updated: 2021/11/11 17:18:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +14,7 @@
 # define MINISHELL_H
 
 # ifndef DEBUG
-#  define DEBUG 1
+#  define DEBUG 0
 # endif
 # define SQUOTES 39
 # define DQUOTES 34
@@ -77,9 +73,11 @@ void	printfunctions(t_builtin *head);
 void	minishell(t_data *data);
 void	parser(t_data *data, char *line);
 char	*prompt_user(void);
-void	translate(t_data *data);
 void	debug(t_data *data);
-// void	translate(t_data)
+char	*single_quotes(t_pat *pat, char *line, int i);
+char	***translate(t_pat *pat, char ***cmd, char **envp);
+int		envlen(char *str);
+
 
 void	alt_echo(char *str);
 void	alt_cd(char *str);

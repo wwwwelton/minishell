@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static char	*single_quotes(t_pat *pat, char *line, int i)
+char	*single_quotes(t_pat *pat, char *line, int i)
 {
 	pat->backup[pat->i] = \
 	ft_substr(line, i, ft_strchr(&line[i] + 1, SQUOTES) - &line[i] + 1);
@@ -23,7 +23,7 @@ static char	*single_quotes(t_pat *pat, char *line, int i)
 	return (line);
 }
 
-static char	*double_quotes(t_pat *pat, char *line, int i)
+char	*double_quotes(t_pat *pat, char *line, int i)
 {
 	pat->backup[pat->i] = \
 	ft_substr(line, i, ft_strchr(&line[i] + 1, DQUOTES) - &line[i] + 1);

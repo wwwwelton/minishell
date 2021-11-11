@@ -6,11 +6,24 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 14:25:39 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 16:45:10 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	envlen(char *str)
+{
+	int	i;
+
+	i = 1;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]) || (str[i] >= 'A' && str[i] <= 'Z'))
+			i++;
+	}
+	return (i);
+}
 
 void print_matrix(char ***cmd)
 {
@@ -24,12 +37,7 @@ void print_matrix(char ***cmd)
 	{
 		ftex_minprintf("===== COMMAND %d ======\n\n", i + 1);
 		while (cmd[i][++j])
-<<<<<<< HEAD
-		{
-=======
->>>>>>> 7d1bd3ba83a55cdb10c202a3b5b9e5657d872448
 			ftex_minprintf("%s\n", cmd[i][j]);
-		}
 		j = -1;
 	}
 }
