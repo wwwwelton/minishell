@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 00:45:49 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 17:01:33 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/11 18:08:44 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ void	alt_minishell(char *str)
 }
 
 void	alt_cd(char *str)
-{
-	ftex_minprintf("%s", str);
-}
-
-void	alt_pwd(char *str)
 {
 	ftex_minprintf("%s", str);
 }

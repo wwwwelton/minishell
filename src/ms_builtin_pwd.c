@@ -6,18 +6,29 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/09 01:19:01 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/11 18:07:24 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	alt_pwd(char *str)
+static int	too_many_arguments(char **str)
+{
+	if (str[1])
+	{
+		ft_putendl_fd("pwd: too many arguments", 2);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
+
+void	alt_pwd(char **str)
 {
 	int		buff_size;
 	char	*cwd;
 
-	(void)str;
+	if (too_many_arguments(str))
+		return ;
 	buff_size = 128;
 	cwd = NULL;
 	while (cwd == NULL)
@@ -29,10 +40,9 @@ void	alt_pwd(char *str)
 			buff_size += 128;
 		}
 	}
-	buff_size += 1;
 	ftex_null_ptr((void *)&cwd);
-	cwd = (char *)malloc(sizeof(char) * buff_size);
-	cwd[buff_size] = '\0';
+	cwd = (char *)malloc(sizeof(char) * ++buff_size);
+	cwd[buff_size - 1] = '\0';
 	if (getcwd(cwd, buff_size))
 	{
 		ft_putstr_fd(cwd, 1);
