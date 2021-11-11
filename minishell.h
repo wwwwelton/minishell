@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 13:04:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:32:45 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_flags
 typedef struct s_builtin
 {
 	char				*name;
-	void				(*f)(char **);
+	void				(*f)(char **, char **);
 	struct s_builtin	*next;
 }	t_builtin;
 
@@ -57,6 +57,7 @@ typedef struct s_data
 	char				***cmd;
 	char				**path;
 	char				**accesspath;
+	char				*alt_env[200];
 	t_pat				*pat;
 	t_flags				**flags;
 	t_builtin			*head;

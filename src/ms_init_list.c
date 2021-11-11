@@ -6,21 +6,21 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:30:54 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/06 09:23:23 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:34:16 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	printfunctions(t_builtin *head)
-{
-	while (head)
-	{
-		ftex_minprintf("%s", head->name);
-		head->f(head->name);
-		head = head->next;
-	}
-}
+// void	printfunctions(t_builtin *head)
+// {
+// 	while (head)
+// 	{
+// 		ftex_minprintf("%s", head->name);
+// 		head->f(head->name, head->alt_env);
+// 		head = head->next;
+// 	}
+// }
 
 void	fetch_list(t_builtin *node)
 {
