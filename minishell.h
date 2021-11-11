@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 15:32:45 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:02:47 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	translate(t_data *data);
 void	debug(t_data *data);
 // void	translate(t_data)
 
-void	alt_echo(char *str);
+void	alt_echo(char **str);
 void	alt_cd(char *str);
 void	alt_pwd(char *str);
 void	alt_env(char *str);

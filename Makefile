@@ -12,6 +12,7 @@ SRCFILES	= minishell.c \
 			  ms_init_data.c \
 			  ms_init_patterns.c \
 			  ms_parser_patterns.c \
+			  ms_builtin_echo.c \
 
 BONUSFILES	= bonus.c \
 
