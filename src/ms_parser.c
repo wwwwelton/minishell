@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/10 18:12:57 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:01:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ void	parser(t_data *data, char *line)
 	cmd_count = 1; //sep by pipes later
 	data->cmd = malloc(sizeof(char *) * 2);
 	data->path = parse_path(g_environ);
-
-	line = replace_quoted(data->patterns, line);
-	// ftex_minprintf("%s\n", line);
+	line = replace_quoted(data->pat, line);
+	ftex_minprintf("line after replace: %s\n", line);
 	data->cmd[0] = ft_split(line, ' '); //develop parser later
 	data->cmd[1] = NULL;
+	data->cmd = restore_quoted(data->pat, data->cmd);
 	data->accesspath = parse_access(data, data->path, data->cmd, cmd_count);
 	// ftex_minprintf("%s\n", data->path[1]);
 	// ftex_minprintf("%s\n", data->cmd[0][0]);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init_patterns.c                                 :+:      :+:    :+:   */
+/*   ms_init_pat.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,21 +12,22 @@
 
 #include "minishell.h"
 
-void	null_patterns(t_patterns *patterns)
+void	null_pat(t_pat *pat)
 {
 	int	i;
 
 	i = 0;
 	while (i < 50)
 	{
-		patterns->backup[i] = NULL;
-		patterns->holder[i] = NULL;
+		pat->backup[i] = NULL;
+		pat->holder[i] = NULL;
 	}
 }
 
-void	init_patterns(t_patterns **patterns)
+void	init_pat(t_pat **pat)
 {
-	t_patterns *node;
-	node = (t_patterns *)malloc(sizeof(t_patterns));
-	*patterns = node;
+	t_pat	*node;
+
+	node = (t_pat *)malloc(sizeof(t_pat));
+	*pat = node;
 }

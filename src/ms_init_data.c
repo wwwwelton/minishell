@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/10 11:52:13 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:01:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	init_data(t_data **data)
 {
 	t_data		*node;
-	t_patterns	*patterns;
+	t_pat		*pat;
 	t_builtin	*head;
 
 	node = (t_data *)malloc(sizeof(t_data));
-	init_patterns(&patterns);
-	node->patterns = patterns;
+	init_pat(&pat);
+	node->pat = pat;
 	init_builtins(&head);
 	node->head = head;
 	*data = node;

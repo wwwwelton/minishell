@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/10 17:50:35 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 13:04:10 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ typedef struct s_builtin
 	struct s_builtin	*next;
 }	t_builtin;
 
-typedef struct s_patterns
+typedef struct s_pat
 {
 	char	*backup[50];
 	char	*holder[50];
 	int		i;
-}	t_patterns;
+}	t_pat;
 
 typedef struct s_data
 {
@@ -57,23 +57,23 @@ typedef struct s_data
 	char				***cmd;
 	char				**path;
 	char				**accesspath;
-	t_patterns			*patterns;
+	t_pat				*pat;
 	t_flags				**flags;
 	t_builtin			*head;
 }	t_data;
 
 void	init_builtins(t_builtin **head);
-void	init_patterns(t_patterns **patterns);
+void	init_pat(t_pat **pat);
 void	init_data(t_data **data);
 
-char	*replace_quoted(t_patterns *patterns, char *line);
+char	*replace_quoted(t_pat *pat, char *line);
+char	***restore_quoted(t_pat *pat, char ***cmd);
 void	printfunctions(t_builtin *head);
 void	minishell(t_data *data);
 void	parser(t_data *data, char *line);
 char	*prompt_user(void);
 void	translate(t_data *data);
 void	debug(t_data *data);
-
 // void	translate(t_data)
 
 void	alt_echo(char *str);
