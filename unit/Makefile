@@ -10,11 +10,16 @@ SRC_ECHO		=	builtin/test_echo.c ../src/ms_builtin_echo.c
 
 SRC_PWD			=	builtin/test_pwd.c ../src/ms_builtin_pwd.c
 
+SRC_ENV			=	builtin/test_env.c ../src/ms_builtin_env.c
+
 ms_echo:
 	$(CC) $(CFLAGS) $(SRC_ECHO) $(LIBFT) $(LINKS) -lreadline -o test_echo
 
 ms_pwd:
 	$(CC) $(CFLAGS) $(SRC_PWD) $(LIBFT) $(LINKS) -lreadline -o test_pwd
 
+ms_env:
+	$(CC) $(CFLAGS) $(SRC_ENV) $(LIBFT) $(LINKS) -lreadline -o test_env
+
 fclean:
-	$(RM) test_echo test_pwd
+	$(RM) test_echo test_pwd test_env
