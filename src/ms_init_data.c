@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ms_init_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/10 11:59:09 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/11 13:01:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+void	init_data(t_data **data)
 {
-	t_data		*data;
+	t_data		*node;
+	t_pat		*pat;
+	t_builtin	*head;
 
-	g_environ = __environ;
-	init_data(&data);
-	// printfunctions(head);
-	while (1)
-		minishell(data);
-	return (0);
+	node = (t_data *)malloc(sizeof(t_data));
+	init_pat(&pat);
+	node->pat = pat;
+	init_builtins(&head);
+	node->head = head;
+	*data = node;
 }

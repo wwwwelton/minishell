@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/10 08:13:24 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:25:38 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # ifndef DEBUG
 #  define DEBUG 1
 # endif
-
+# define SQUOTES 39
+# define DQUOTES 34
+# define NEWPAT "___0x4242___"
 
 # include "libft.h"
 # include <stdio.h>
@@ -42,34 +44,36 @@ typedef struct s_builtin
 	struct s_builtin	*next;
 }	t_builtin;
 
+typedef struct s_pat
+{
+	char	*backup[50];
+	char	*holder[50];
+	int		i;
+}	t_pat;
+
 typedef struct s_data
 {
 	char				**presplit;
 	char				***cmd;
 	char				**path;
 	char				**accesspath;
+	t_pat				*pat;
 	t_flags				**flags;
 	t_builtin			*head;
 }	t_data;
 
-typedef struct s_cmd
-{
-	char				**cmd;
-	char				*path;
-	char				*accesspath;
-	t_flags				**flags;
-	t_builtin			*head;
-}	t_cmd;
-
 void	init_builtins(t_builtin **head);
-void	printfunctions(t_builtin *head);
+void	init_pat(t_pat **pat);
+void	init_data(t_data **data);
 
-void	minishell(void);
-void	parser(t_data *data);
+char	*replace_quoted(t_pat *pat, char *line);
+char	***restore_quoted(t_pat *pat, char ***cmd);
+void	printfunctions(t_builtin *head);
+void	minishell(t_data *data);
+void	parser(t_data *data, char *line);
 char	*prompt_user(void);
 void	translate(t_data *data);
 void	debug(t_data *data);
-
 // void	translate(t_data)
 
 void	alt_echo(char *str);
