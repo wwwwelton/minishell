@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_builtins2.c                                     :+:      :+:    :+:   */
+/*   ms_builtin_env.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 00:52:08 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 18:41:10 by wleite           ###   ########.fr       */
+/*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
+/*   Updated: 2021/11/11 18:44:23 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	alt_export(char *str)
+static int	too_many_arguments(char **str)
 {
-	ftex_minprintf("%s", str);
+	if (str[1])
+	{
+		ft_putstr_fd("env: ‘", 2);
+		ft_putstr_fd(str[1], 2);
+		ft_putendl_fd("’: No such file or directory", 2);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }
 
-void	alt_unset(char *str)
+void	alt_env(char **str, char **envp)
 {
-	ftex_minprintf("%s", str);
-}
+	int	i;
 
-void	alt_exit(char *str)
-{
-	ftex_minprintf("%s", str);
+	(void)envp;
+	if (too_many_arguments(str))
+		return ;
+	i = -1;
+	while (envp[++i])
+		ft_putendl_fd(envp[i], 1);
 }
