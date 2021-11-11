@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/10 17:45:29 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 14:47:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	cleanup(t_data *data)
 {
-	// deinit();
+	//cleans everything before exiting the program
 }
 
-//initializes the three structs
-void init(t_data *data, char *str)
+void reinit(t_data *data, char *str)
 {
-	data->presplit = ft_split(str, ' ');
+	//prepares to read the next line
+	//frees whatever was used by the previous line
+	//reinitializes these used parameters as NULL
 }
 
 void	minishell(t_data *data)
@@ -35,7 +36,6 @@ void	minishell(t_data *data)
 	line = prompt_user();
 
 	//initializes the three structs and counts the pipes
-	init(data, line);
 
 	//translate
 
@@ -47,13 +47,11 @@ void	minishell(t_data *data)
 	//execute parsed commands
 	//executecommands(data);
 
-	// ftex_minprintf("%s\n", data->cmd[0][0]);
-	// ftex_minprintf("%s\n", data->cmd[0][1]);
-	// ftex_minprintf("%s\n", data->accesspath[0]);
 	pid = fork();
 	if (pid == 0)
 		execve(data->accesspath[0], data->cmd[0], g_environ);
 	wait(NULL);
 	if (DEBUG)
 		debug(data);
+	// reinit(data, line);
 }
