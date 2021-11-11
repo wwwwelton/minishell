@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 16:45:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 20:40:25 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	envlen(char *str)
 	{
 		if (ft_isdigit(str[i]) || (str[i] >= 'A' && str[i] <= 'Z'))
 			i++;
+		else
+			break ;
 	}
 	return (i);
 }
@@ -37,7 +39,7 @@ void print_matrix(char ***cmd)
 	{
 		ftex_minprintf("===== COMMAND %d ======\n\n", i + 1);
 		while (cmd[i][++j])
-			ftex_minprintf("%s\n", cmd[i][j]);
+			ftex_minprintf("%s|\n", cmd[i][j]);
 		j = -1;
 	}
 }

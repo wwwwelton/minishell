@@ -51,7 +51,10 @@ static char	**restore_split(t_pat *pat, char **cmd)
 			pat->holder[pat->i] = NULL;
 			pat->i++;
 			if (!pat->backup[pat->i])
+			{
+				pat->i = 0;
 				return (cmd);
+			}
 		}
 		else
 			i++;
