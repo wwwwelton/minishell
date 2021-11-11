@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:12:50 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/09 00:26:48 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/11 18:01:22 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	main(int argc, char **argv)
 {
 	(void)argc;
-	alt_pwd(argv[0]);
+	alt_pwd(argv);
 	return (0);
 }
