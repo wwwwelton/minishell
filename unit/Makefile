@@ -15,6 +15,9 @@ SRC_ENV			=	builtin/test_env.c ../src/ms_builtin_env.c
 SRC_EXPORT		=	builtin/test_export.c ../src/ms_builtin_export.c
 SRC_EXPORT		+=	../src/ms_builtin_env.c ../src/ms_utils.c
 
+SRC_UNSET		=	builtin/test_unset.c ../src/ms_builtin_unset.c
+SRC_UNSET		+=	../src/ms_builtin_env.c ../src/ms_utils.c
+
 ms_echo:
 	$(CC) $(CFLAGS) $(SRC_ECHO) $(LIBFT) $(LINKS) -lreadline -o test_echo
 
@@ -27,5 +30,8 @@ ms_env:
 ms_export:
 	$(CC) $(CFLAGS) $(SRC_EXPORT) $(LIBFT) $(LINKS) -lreadline -o test_export
 
+ms_unset:
+	$(CC) $(CFLAGS) $(SRC_UNSET) $(LIBFT) $(LINKS) -lreadline -o test_unset
+
 fclean:
-	$(RM) test_echo test_pwd test_env test_export
+	$(RM) test_echo test_pwd test_env test_export test_unset
