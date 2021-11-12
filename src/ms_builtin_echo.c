@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ms_builtin_echo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/11 17:03:43 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/12 18:11:05 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	alt_echo(char **str)
+int	alt_echo(char **str, char **envp)
 {
 	int	i;
 	int	new_line;
 	int	printed_a_line;
 
+	(void)envp;
 	i = 0;
 	new_line = 1;
 	printed_a_line = 0;
@@ -38,4 +39,5 @@ void	alt_echo(char **str)
 	}
 	if (new_line)
 		ft_putstr_fd("\n", 1);
+	return (0);
 }
