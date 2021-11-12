@@ -21,6 +21,8 @@ SRC_UNSET		+=	../src/ms_builtin_env.c ../src/ms_utils.c
 SRC_CD			=	builtin/test_cd.c ../src/ms_builtin_cd.c ../src/ms_utils.c
 SRC_CD			+=	../src/ms_builtin_export.c ../src/ms_builtin_env.c
 
+SRC_EXIT		=	builtin/test_exit.c ../src/ms_builtin_exit.c
+
 ms_echo:
 	$(CC) $(CFLAGS) $(SRC_ECHO) $(LIBFT) $(LINKS) -lreadline -o test_echo
 
@@ -39,5 +41,8 @@ ms_unset:
 ms_cd:
 	$(CC) $(CFLAGS) $(SRC_CD) $(LIBFT) $(LINKS) -lreadline -o test_cd
 
+ms_exit:
+	$(CC) $(CFLAGS) $(SRC_EXIT) $(LIBFT) $(LINKS) -lreadline -o test_exit
+
 fclean:
-	$(RM) test_echo test_pwd test_env test_export test_unset test_cd
+	$(RM) test_echo test_pwd test_env test_export test_unset test_cd test_exit
