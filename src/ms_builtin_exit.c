@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/12 04:23:48 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/12 17:14:27 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ int	alt_exit(char **str, char **envp)
 		exit(ft_atoi(str[1]));
 	else
 		exit(EXIT_SUCCESS);
-	return (0);
+	return (EXIT_SUCCESS);
 }
