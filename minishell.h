@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 20:40:01 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/12 09:41:20 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	debug(t_data *data);
 char	*single_quotes(t_pat *pat, char *line, int i);
 char	***translate(t_pat *pat, char ***cmd, char **envp);
 int		envlen(char *str);
-
+char	***trim_quotes(char ***cmd);
 
 void	alt_echo(char *str);
 void	alt_cd(char *str);

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 20:16:58 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/12 17:32:10 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,21 @@ void	replace_single_quotes(t_pat *pat, char **cmd)
 	j = 0;
 	while (cmd[i])
 	{
-			while (cmd[i][j])
+		while (cmd[i][j])
+		{
+			if (cmd[i][j] == DQUOTES)
 			{
-				if (cmd[i][j] == SQUOTES)
-				{
-					cmd[i] = single_quotes(pat, cmd[i], j);
-					j = 0;
-				}
 				++j;
+				while (cmd[i][j] != DQUOTES && cmd[i][j])
+					++j;
 			}
+			if (cmd[i][j] == SQUOTES)
+			{
+				cmd[i] = single_quotes(pat, cmd[i], j);
+				j = 0;
+			}
+			++j;
+		}
 		j = 0;
 		++i;
 	}
@@ -42,7 +48,6 @@ void	printcmd(char ***cmd)
 
 	i = -1;
 	j = -1;
-
 	while (cmd[++i])
 	{
 		while (cmd[i][++j])
@@ -58,7 +63,7 @@ char	*replace_env(char *cmd)
 	char	*envvalue;
 
 	i = 0;
-	while(cmd[i])
+	while (cmd[i])
 	{
 		if (cmd[i] == '$')
 		{
@@ -66,11 +71,15 @@ char	*replace_env(char *cmd)
 			envvalue = getenv(&env[1]);
 			if (!envvalue)
 				envvalue = ft_strdup("");
-			ftex_minprintf("env: %s\n", env);
-			ftex_minprintf("evnvalue: %s\n", envvalue);
+			if (DEBUG)
+			{
+				ftex_minprintf("env: %s\n", env);
+				ftex_minprintf("evnvalue: %s\n", envvalue);
+			}
 			cmd = ftex_str_replace(cmd, env, envvalue);
-			ftex_minprintf("cmd after env: %s\n", cmd);
-			// free(env);
+			if (DEBUG)
+				ftex_minprintf("cmd after env: %s\n", cmd);
+			free(env);
 			// free(envvalue);
 		}
 		i++;
@@ -85,16 +94,12 @@ char	***find_env(char ***cmd)
 
 	i = -1;
 	j = -1;
-	ftex_minprintf("\n======= FIND ENV ======\n\n");
-	printcmd(cmd);
-	ftex_minprintf("\n\n\n=============\n");
 	while (cmd[++i])
 	{
 		while (cmd[i][++j])
 		{
 			if (ft_strchr(cmd[i][j], '$'))
 			{
-				ftex_minprintf("|%s|\n", cmd[i][j]);
 				cmd[i][j] = replace_env(cmd[i][j]);
 				j = -1;
 			}
@@ -110,12 +115,9 @@ char	***translate(t_pat *pat, char ***cmd, char **envp)
 
 	i = -1;
 	pat->i = 0;
-	printf("%d\n", pat->i);
 	while (cmd[++i])
 		replace_single_quotes(pat, cmd[i]);
-	printcmd(cmd);
 	cmd = find_env(cmd);
-	ft_putstr_fd("here\n", 1);
 	if (DEBUG)
 	{
 		ftex_minprintf("here\n");
@@ -124,5 +126,6 @@ char	***translate(t_pat *pat, char ***cmd, char **envp)
 		ftex_minprintf("\n");
 	}
 	cmd = restore_quoted(pat, cmd);
+	cmd = trim_quotes(cmd);
 	return (cmd);
 }
