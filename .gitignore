@@ -1,2 +1,5 @@
 *a.out
 obj
+minishell
+.vscode
+*.o

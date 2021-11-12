@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 09:41:20 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/12 17:54:11 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,16 @@ char	***translate(t_pat *pat, char ***cmd, char **envp);
 int		envlen(char *str);
 char	***trim_quotes(char ***cmd);
 
-void	alt_echo(char *str);
-void	alt_cd(char *str);
-void	alt_pwd(char *str);
-void	alt_env(char *str);
-void	alt_unset(char *str);
-void	alt_exit(char *str);
-void	alt_export(char *str);
+void	alt_echo(char **str);
+int		alt_cd(char **str, char **envp);
+int		alt_pwd(char **str, char **envp);
+void	alt_env(char **str, char **envp);
+int		alt_unset(char **str, char **envp);
+int		alt_exit(char **str, char **envp);
+void	alt_export(char **str, char **envp);
 void	alt_minishell(char *str);
+void	free_splited_mat(char **mat);
+void	set_env(char *var, char *value, char **envp);
+char	*get_env(char *value, char **envp);
 
 #endif
