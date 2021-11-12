@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/11 19:29:28 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/12 17:09:11 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@ static int	too_many_arguments(char **str)
 	return (EXIT_SUCCESS);
 }
 
-void	alt_env(char **str, char **envp)
+int	alt_env(char **str, char **envp)
 {
 	int	i;
 
 	(void)envp;
 	if (too_many_arguments(str))
-		return ;
+		return (EXIT_FAILURE);
 	i = -1;
 	while (envp[++i])
 		ft_putendl_fd(envp[i], 1);
+	return (EXIT_SUCCESS);
 }
