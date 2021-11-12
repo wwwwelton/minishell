@@ -8,7 +8,7 @@ RM				=	rm -rf
 
 SRC_ECHO		=	builtin/test_echo.c ../src/ms_builtin_echo.c
 
-SRC_PWD			=	builtin/test_pwd.c ../src/ms_builtin_pwd.c
+SRC_PWD			=	builtin/test_pwd.c ../src/ms_builtin_pwd.c ../src/ms_utils.c
 
 SRC_ENV			=	builtin/test_env.c ../src/ms_builtin_env.c
 
