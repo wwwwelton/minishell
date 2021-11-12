@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_echo_main.c                                   :+:      :+:    :+:   */
+/*   test_echo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:12:50 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/08 21:41:44 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/12 17:10:58 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	(void)argc;
-	alt_echo(argv);
-	return (0);
+	return (alt_echo(argv, envp));
 }
