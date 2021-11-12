@@ -6,13 +6,13 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/11 22:57:07 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/12 17:18:25 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	alt_export(char **str, char **envp)
+int	alt_export(char **str, char **envp)
 {
 	int		i;
 	char	**tmp;
@@ -28,5 +28,5 @@ void	alt_export(char **str, char **envp)
 		set_env(tmp[0], str[i], envp);
 		free_splited_mat(tmp);
 	}
-	alt_env(NULL, envp);
+	return (EXIT_SUCCESS);
 }
