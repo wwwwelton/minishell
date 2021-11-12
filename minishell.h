@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 18:37:25 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/11 22:54:38 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,10 @@ void	alt_pwd(char **str);
 void	alt_env(char **str, char **envp);
 void	alt_unset(char *str);
 void	alt_exit(char *str);
-void	alt_export(char *str);
+void	alt_export(char **str, char **envp);
 void	alt_minishell(char *str);
+void	free_splited_mat(char **mat);
+void	set_env(char *var, char *value, char **envp);
+char	*get_env(char *value, char **envp);
 
 #endif

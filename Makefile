@@ -14,6 +14,7 @@ SRCFILES	= minishell.c \
 			  ms_parser_patterns.c \
 			  ms_builtin_echo.c \
 			  ms_builtin_pwd.c \
+			  ms_builtin_export.c \
 
 BONUSFILES	= bonus.c \
 
