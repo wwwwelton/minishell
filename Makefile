@@ -4,7 +4,6 @@ LIBFT		= $(LIBFTPATH)/libft.a
 SRCFILES	= minishell.c \
 			  ms_init_list.c \
 			  ms_builtins.c \
-			  ms_builtins2.c \
 			  ms_parser.c \
 			  ms_init.c \
 			  ms_prompt.c \
@@ -18,6 +17,7 @@ SRCFILES	= minishell.c \
 			  ms_builtin_unset.c \
 			  ms_builtin_env.c \
 			  ms_builtin_cd.c \
+			  ms_builtin_exit.c \
 
 BONUSFILES	= bonus.c \
 
