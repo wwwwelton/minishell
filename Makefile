@@ -17,6 +17,7 @@ SRCFILES	= minishell.c \
 			  ms_builtin_export.c \
 			  ms_builtin_unset.c \
 			  ms_builtin_env.c \
+			  ms_builtin_cd.c \
 
 BONUSFILES	= bonus.c \
 
