@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 18:59:37 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/12 20:28:56 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_flags
 typedef struct s_builtin
 {
 	char				*name;
-	void				(*f)(char **, char **);
+	int				(*f)(char **, char **);
 	struct s_builtin	*next;
 }	t_builtin;
 
@@ -86,7 +86,7 @@ int		alt_env(char **str, char **envp);
 int		alt_unset(char **str, char **envp);
 int		alt_exit(char **str, char **envp);
 int		alt_export(char **str, char **envp);
-void	alt_minishell(char *str);
+int		alt_minishell(char **str, char **envp);
 void	free_splited_mat(char **mat);
 void	set_env(char *var, char *value, char **envp);
 char	*get_env(char *value, char **envp);
