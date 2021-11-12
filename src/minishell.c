@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 14:47:14 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/11 16:14:08 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ void	minishell(t_data *data)
 
 	//initializes the three structs and counts the pipes
 
-	//translate
 
 	//parsing and checkargs
 	parser(data, line);
+
+	//translate
+	data->cmd = translate(data->pat, data->cmd, data->alt_env);
 
 	//checkargs
 

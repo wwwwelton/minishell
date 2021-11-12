@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 17:17:22 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/12 17:37:42 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 # ifndef DEBUG
-#  define DEBUG 1
+#  define DEBUG 0
 # endif
 # define SQUOTES 39
 # define DQUOTES 34
@@ -73,9 +73,11 @@ void	printfunctions(t_builtin *head);
 void	minishell(t_data *data);
 void	parser(t_data *data, char *line);
 char	*prompt_user(void);
-void	translate(t_data *data);
 void	debug(t_data *data);
-// void	translate(t_data)
+char	*single_quotes(t_pat *pat, char *line, int i);
+char	***translate(t_pat *pat, char ***cmd, char **envp);
+int		envlen(char *str);
+char	***trim_quotes(char ***cmd);
 
 int		alt_echo(char **str, char **envp);
 int		alt_cd(char **str, char **envp);
