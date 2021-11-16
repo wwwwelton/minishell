@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 12:53:54 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:57:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ void	parser(t_data *data, char *line)
 	data->path = parse_path(g_environ);
 	line = replace_quoted(data->pat, line);
 	cmd_count = count_pipes(line);
-	data->flags = (t_flags **)malloc(sizeof(t_flags *) * cmd_count + 1);
+	data->flags = (t_flags **)malloc(sizeof(t_flags *) * (cmd_count + 1));
 	while (i < cmd_count)
-		data->flags[i++] = (t_flags *)malloc(sizeof(t_flags));
+		data->flags[i++] = (t_flags *)malloc(sizeof(t_flags) * 1);
 	data->flags[i] = NULL;
 	init_flags(data->flags, cmd_count);
 	pre_split(data, line);
-	data->cmd = (char ***)malloc(sizeof(char *) * cmd_count + 1);
+	data->cmd = (char ***)malloc(sizeof(char *) * (cmd_count + 1));
 	// ftex_minprintf("line after replace: %s\n", line);
 	i = -1;
 	while (data->presplit[++i])

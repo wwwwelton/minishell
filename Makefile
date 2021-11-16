@@ -26,7 +26,7 @@ SRCFILES	= minishell.c \
 BONUSFILES	= bonus.c \
 
 
-CC			= clang
+CC			= clang -g3
 RM			= rm -f
 CFLAGS		=
 SRCDIR		= src
