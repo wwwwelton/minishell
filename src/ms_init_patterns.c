@@ -16,8 +16,8 @@ void	null_pat(t_pat *pat)
 {
 	int	i;
 
-	i = 0;
-	while (i < 50)
+	i = -1;
+	while (++i < 50)
 	{
 		pat->backup[i] = NULL;
 		pat->holder[i] = NULL;
@@ -29,5 +29,6 @@ void	init_pat(t_pat **pat)
 	t_pat	*node;
 
 	node = (t_pat *)malloc(sizeof(t_pat));
+	null_pat(node);
 	*pat = node;
 }

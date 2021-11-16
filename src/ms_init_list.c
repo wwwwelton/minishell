@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:30:54 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 00:21:16 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/16 19:09:20 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	fetch_list(t_builtin *node)
 {
 	int			fd;
 	char		*line;
-
 
 	fd = open("./builtins", O_RDONLY);
 	line = get_next_line(fd);

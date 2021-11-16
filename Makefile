@@ -27,7 +27,7 @@ SRCFILES	= minishell.c \
 BONUSFILES	= bonus.c \
 
 
-CC			= clang
+CC			= clang -g3
 RM			= rm -f
 CFLAGS		=
 SRCDIR		= src
@@ -76,6 +76,6 @@ run:		mkdir $(OBJ) $(HEADER)
 runv:		mkdir $(OBJ) $(HEADER)
 			make -C libft
 			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
-			valgrind ./$(NAME)
+			valgrind --leak-check=full ./$(NAME)
 
 .PHONY:		all clean fclean re

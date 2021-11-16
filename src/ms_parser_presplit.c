@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:18:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/15 23:12:43 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 12:53:48 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	is_builtin(t_builtin *builtins, char *cmd)
 {
 	while (builtins)
 	{
-		if (!ft_strncmp(builtins->name, cmd, 64))
+		if (!strcmp(builtins->name, cmd))
 			return (1);
 		builtins = builtins->next;
 	}
@@ -117,4 +117,5 @@ void	pre_split(t_data *data, char *line)
 	// while (data->presplit[++i])
 	// 	ftex_minprintf("%s\n", data->presplit[i]);
 	clean_command(data->flags, data->presplit);
+	// debug(data);
 }

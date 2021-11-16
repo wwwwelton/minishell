@@ -69,6 +69,8 @@ char	***restore_quoted(t_pat *pat, char ***cmd)
 
 	i = 0;
 	pat->i = 0;
+	if (!pat->backup[0])
+		return (cmd);
 	while (pat->backup[pat->i])
 	{
 		cmd[i] = restore_split(pat, cmd[i]);

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 09:10:33 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 09:46:44 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 12:52:26 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char	***trim_quotes(char ***cmd)
 	{
 		while (cmd[i][++j])
 			cmd[i][j] = find_quotes(cmd[i][j]);
+		j = -1;
 	}
 	return (cmd);
 }
