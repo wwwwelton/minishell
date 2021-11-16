@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:30:54 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 18:05:00 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 00:21:16 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	fetch_list(t_builtin *node)
 	line = get_next_line(fd);
 	while(line)
 	{
+		line[ft_strlen(line) - 1] = '\0';
 		node->name = line;
 		line = get_next_line(fd);
 		if (line)
