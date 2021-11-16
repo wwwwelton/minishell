@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 19:03:19 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/15 22:56:50 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,24 @@ static char
 void	parser(t_data *data, char *line)
 {
 	int		cmd_count;
+	int		i;
 
-	cmd_count = 1; //sep by pipes later
-	data->cmd = malloc(sizeof(char *) * 2);
+	i = 0;
 	data->path = parse_path(g_environ);
 	line = replace_quoted(data->pat, line);
+	cmd_count = count_pipes(line);
+	data->flags = (t_flags **)malloc(sizeof(t_flags *) * cmd_count + 1);
+	while (i < cmd_count)
+		data->flags[i++] = (t_flags *)malloc(sizeof(t_flags));
+	data->flags[i] = NULL;
+	init_flags(data->flags, cmd_count);
+	pre_split(data, line);
+	data->cmd = (char ***)malloc(sizeof(char *) * cmd_count + 1);
 	ftex_minprintf("line after replace: %s\n", line);
-	data->cmd[0] = ft_split(line, ' '); //develop parser later
-	data->cmd[1] = NULL;
+	i = -1;
+	while (data->presplit[++i])
+		data->cmd[i] = ft_split(data->presplit[i], ' ');
+	data->cmd[i] = NULL;
 	data->cmd = restore_quoted(data->pat, data->cmd);
 	data->accesspath = parse_access(data, data->path, data->cmd, cmd_count);
-	// ftex_minprintf("%s\n", data->path[1]);
-	// ftex_minprintf("%s\n", data->cmd[0][0]);
-	// ftex_minprintf("%s\n", data->cmd[0][1]);
 }

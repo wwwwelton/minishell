@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 20:28:56 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/15 17:59:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,13 @@ char		**g_environ;
 
 typedef struct s_flags
 {
-	char				*file_out;
-	char				*file_in;
-	int					builtins;
-	int					system_cmd;
+	char		*file_in;
+	int			in_append;
+	char		*file_out;
+	int			out_append;
+	int			heredoc;
+	int			builtins;
+	int			system_cmd;
 }	t_flags;
 
 typedef struct s_builtin
@@ -66,6 +69,7 @@ typedef struct s_data
 void	init_builtins(t_builtin **head);
 void	init_pat(t_pat **pat);
 void	init_data(t_data **data);
+void	init_flags(t_flags** flags, int cmds);
 
 char	*replace_quoted(t_pat *pat, char *line);
 char	***restore_quoted(t_pat *pat, char ***cmd);
@@ -78,6 +82,12 @@ char	*single_quotes(t_pat *pat, char *line, int i);
 char	***translate(t_pat *pat, char ***cmd, char **envp);
 int		envlen(char *str);
 char	***trim_quotes(char ***cmd);
+int		count_pipes(char *line);
+int		len_to_space(char *str);
+void	pre_split(t_data *data, char *line);
+void	print_matrix(char ***cmd);
+
+
 
 int		alt_echo(char **str, char **envp);
 int		alt_cd(char **str, char **envp);

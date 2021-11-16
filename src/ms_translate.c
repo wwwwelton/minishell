@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 17:32:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/15 22:35:59 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,16 +115,19 @@ char	***translate(t_pat *pat, char ***cmd, char **envp)
 
 	i = -1;
 	pat->i = 0;
+	if (!pat->backup[0])
+		return (cmd);
 	while (cmd[++i])
-		replace_single_quotes(pat, cmd[i]);
-	cmd = find_env(cmd);
-	if (DEBUG)
 	{
-		ftex_minprintf("here\n");
-		ftex_minprintf("\n===== TRANSLATE ======\n");
-		printcmd(cmd);
-		ftex_minprintf("\n");
+		replace_single_quotes(pat, cmd[i]);
 	}
+	cmd = find_env(cmd);
+	// if (DEBUG)
+	// {
+	// 	ftex_minprintf("\n===== TRANSLATE ======\n");
+	// 	printcmd(cmd);
+	// 	ftex_minprintf("\n");
+	// }
 	cmd = restore_quoted(pat, cmd);
 	cmd = trim_quotes(cmd);
 	return (cmd);

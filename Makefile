@@ -20,6 +20,8 @@ SRCFILES	= minishell.c \
 			  ms_builtin_exit.c \
 			  ms_translate.c \
 			  ms_translate_trim.c \
+			  ms_init_flags.c \
+			  ms_parser_presplit.c \
 
 BONUSFILES	= bonus.c \
 

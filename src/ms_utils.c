@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 18:59:53 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/15 22:57:44 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,19 @@ int	envlen(char *str)
 	return (i);
 }
 
-void print_matrix(char ***cmd)
+int	len_to_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ')
+		++i;
+	while (str[i] != ' ')
+		++i;
+	return (i);
+}
+
+void	print_matrix(char ***cmd)
 {
 	int	i;
 	int	j;
