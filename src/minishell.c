@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 12:53:41 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 20:09:42 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 void	cleanup(t_data *data)
 {
 	//cleans everything before exiting the program
-}
-
-void reinit(t_data *data, char *str)
-{
-	//prepares to read the next line
-	//frees whatever was used by the previous line
-	//reinitializes these used parameters as NULL
 }
 
 void	minishell(t_data *data)
@@ -60,5 +53,5 @@ void	minishell(t_data *data)
 
 	if (DEBUG)
 		debug(data);
-	// reinit(data, line);
+	reinit(data);
 }

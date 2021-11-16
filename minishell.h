@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 17:33:01 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 20:10:49 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int		count_pipes(char *line);
 int		len_to_space(char *str);
 void	pre_split(t_data *data, char *line);
 void	print_matrix(char ***cmd);
+void	reinit(t_data *data);
 
 
 

@@ -22,6 +22,7 @@ SRCFILES	= minishell.c \
 			  ms_translate_trim.c \
 			  ms_init_flags.c \
 			  ms_parser_presplit.c \
+			  ms_reinit.c \
 
 BONUSFILES	= bonus.c \
 

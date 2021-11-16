@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 18:13:55 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 20:02:57 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	**parse_path(char **envp)
 		}
 		i++;
 	}
-	return (NULL);
+	return (ret);
 }
 
 static char	*test_access(char **path, char *cmd)
