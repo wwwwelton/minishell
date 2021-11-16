@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/08 00:33:32 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 12:55:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,9 @@ char	*prompt(void)
 	cwd = ftex_strmerge(cwd, ft_strdup("$"));
 	while (!line)
 	{
-		ftex_minprintf("%s", cwd);
-		line = readline(line);
+		line = readline(cwd);
 		if (!*line)
-		{
-			ftex_minprintf("%s", cwd);
 			ftex_null_ptr((void **)&line);
-		}
 	}
 	free(cwd);
 	tmp = line;

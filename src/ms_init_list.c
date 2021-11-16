@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:30:54 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 18:05:00 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 12:58:57 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	fetch_list(t_builtin *node)
 	int			fd;
 	char		*line;
 
-
 	fd = open("./builtins", O_RDONLY);
 	line = get_next_line(fd);
 	while(line)
 	{
+		line[ft_strlen(line) - 1] = '\0';
 		node->name = line;
 		line = get_next_line(fd);
 		if (line)
