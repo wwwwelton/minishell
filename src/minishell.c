@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/15 23:00:46 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/15 23:27:58 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,7 @@ void	minishell(t_data *data)
 
 	//execute parsed commands
 	//executecommands(data);
-	int i = 0;
-	while (data->cmd[i])
-	{
-		pid = fork();
-		if (pid == 0)
-			execve(data->accesspath[i], data->cmd[i], g_environ);
-		wait(NULL);
-		i++;
-	}
+	executer(data);
 
 	if (DEBUG)
 		debug(data);
