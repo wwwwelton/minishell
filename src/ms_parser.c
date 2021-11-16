@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/15 22:56:50 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/15 23:18:51 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	parser(t_data *data, char *line)
 	init_flags(data->flags, cmd_count);
 	pre_split(data, line);
 	data->cmd = (char ***)malloc(sizeof(char *) * cmd_count + 1);
-	ftex_minprintf("line after replace: %s\n", line);
+	if (DEBUG)
+		ftex_minprintf("line after replace: %s\n", line);
 	i = -1;
 	while (data->presplit[++i])
 		data->cmd[i] = ft_split(data->presplit[i], ' ');
