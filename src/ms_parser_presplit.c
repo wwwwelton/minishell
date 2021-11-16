@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:18:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 12:53:48 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 20:41:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,18 @@ int	count_pipes(char *line)
 	return (i);
 }
 
-int	is_builtin(t_builtin *builtins, char *cmd)
+void	set_exec_mode(t_builtin *builtins, t_flags *flags, char *cmd)
 {
 	while (builtins)
 	{
 		if (!strcmp(builtins->name, cmd))
-			return (1);
+		{
+			flags->builtins = 1;
+			return ;
+		}
 		builtins = builtins->next;
 	}
-	return (0);
+	flags->system_cmd = 1;
 }
 
 void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd)
@@ -46,10 +49,7 @@ void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd)
 
 	i = -1;
 	tmp = ft_split(cmd, ' ');
-	if (is_builtin(builtins, tmp[0]))
-		flags->builtins = 1;
-	else
-		flags->system_cmd = 1;
+	set_exec_mode(builtins, flags, tmp[0]);
 	while (tmp[++i])
 	{
 		if (tmp[i][0] == '<')
@@ -113,9 +113,5 @@ void	pre_split(t_data *data, char *line)
 	}
 	while (data->presplit[++i])
 		identify_flags(data->flags[i], data->head, data->presplit[i]);
-	i = -1;
-	// while (data->presplit[++i])
-	// 	ftex_minprintf("%s\n", data->presplit[i]);
 	clean_command(data->flags, data->presplit);
-	// debug(data);
 }

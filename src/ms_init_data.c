@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/11 19:15:40 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/16 20:16:52 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_env(t_data *node)
 	while (++i < 200)
 		node->alt_env[i] = NULL;
 	i = -1;
-	while(__environ[++i])
+	while (__environ[++i])
 		node->alt_env[i] = ft_strdup(__environ[i]);
 }
 

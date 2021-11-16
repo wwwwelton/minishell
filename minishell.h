@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 20:10:49 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 20:16:06 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,23 @@ void	init_pat(t_pat **pat);
 void	init_data(t_data **data);
 void	init_flags(t_flags** flags, int cmds);
 
-char	*replace_quoted(t_pat *pat, char *line);
-char	***restore_quoted(t_pat *pat, char ***cmd);
-void	printfunctions(t_builtin *head);
-void	minishell(t_data *data);
-void	parser(t_data *data, char *line);
-char	*prompt_user(void);
-void	debug(t_data *data);
-char	*single_quotes(t_pat *pat, char *line, int i);
-char	***translate(t_pat *pat, char ***cmd, char **envp);
 int		envlen(char *str);
-char	***trim_quotes(char ***cmd);
+void	debug(t_data *data);
+void	printfunctions(t_builtin *head);
 int		count_pipes(char *line);
 int		len_to_space(char *str);
-void	pre_split(t_data *data, char *line);
 void	print_matrix(char ***cmd);
+
+void	minishell(t_data *data);
+char	*prompt_user(void);
+void	pre_split(t_data *data, char *line);
+void	parser(t_data *data, char *line);
+char	*replace_quoted(t_pat *pat, char *line);
+char	*single_quotes(t_pat *pat, char *line, int i);
+char	***translate(t_pat *pat, char ***cmd, char **envp);
+char	***restore_quoted(t_pat *pat, char ***cmd);
+char	***trim_quotes(char ***cmd);
 void	reinit(t_data *data);
-
-
 
 int		alt_echo(char **str, char **envp);
 int		alt_cd(char **str, char **envp);
