@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 23:18:33 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/17 01:19:31 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*test_access(char **path, char *cmd)
 		else
 			free(bin);
 	}
-	return (ft_strdup(""));
+	return (NULL);
 }
 
 static char
@@ -61,7 +61,7 @@ static char
 	while (cmd[i])
 	{
 		accesspath[i] = test_access(path, cmd[i][0]);
-		if (!accesspath[i][0])
+		if (!accesspath[i])
 		{
 			accesspath[i] = ft_strdup(cmd[i][0]);
 			// cleanup(data, errno);
