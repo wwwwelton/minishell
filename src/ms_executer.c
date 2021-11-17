@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/16 01:13:37 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/16 21:12:35 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,7 @@ static void	execute_system(int *fd_tmp, char **cmd, char *path, char **envp, int
 
 static void	execute_builtin(int *fd_tmp, char **cmd, char *path, char **envp, int last, t_builtin *head)
 {
-	int		fd[2];
-	pid_t	pid;
-
-	pipe(fd);
-	pid = fork();
-	if (pid == -1)
-		perror("execute_command");
-	else if (pid == 0)
-	{
-		dup2(fd_tmp[0], STDIN_FILENO);
-		if (!last)
-			dup2(fd[1], STDOUT_FILENO);
-		close(fd[0]);
-		call_builtin(head, cmd, envp);
-		exit (0);
-	}
-	wait(NULL);
-	fd_tmp[0] = fd[0];
-	close(fd[1]);
+	call_builtin(head, cmd, envp);
 }
 
 int	executer(t_data *data)
@@ -99,7 +81,6 @@ int	executer(t_data *data)
 			execute_builtin(&fd_tmp, cmd[i], path[i], envp, last, data->head);
 		else if (flags[i]->system_cmd)
 			execute_system(&fd_tmp, cmd[i], path[i], envp, last);
-		printf("%s", get_env("TESTE1", data->alt_env));
 	}
 	// while (cmd[++i])
 	// {
