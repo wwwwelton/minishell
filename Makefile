@@ -5,9 +5,9 @@ SRCFILES	= minishell.c \
 			  ms_init_list.c \
 			  ms_builtins.c \
 			  ms_parser.c \
-			  ms_init.c \
 			  ms_prompt.c \
 			  ms_utils.c \
+			  ms_utils2.c \
 			  ms_init_data.c \
 			  ms_init_patterns.c \
 			  ms_parser_patterns.c \
@@ -23,6 +23,7 @@ SRCFILES	= minishell.c \
 			  ms_init_flags.c \
 			  ms_parser_presplit.c \
 			  ms_executer.c \
+			  ms_reinit.c \
 
 BONUSFILES	= bonus.c \
 

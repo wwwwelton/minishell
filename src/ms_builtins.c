@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 00:45:49 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/12 18:10:22 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 20:33:03 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,5 @@ int	alt_minishell(char **str, char **envp)
 {
 	str = envp;
 	ftex_minprintf("%s", str[0]);
-	// int	pid;
-
-	// pid = fork();
-	//if (pid == 0)
-	//	execve(minishell)
-	// wait(NULL);
 	return (0);
 }
