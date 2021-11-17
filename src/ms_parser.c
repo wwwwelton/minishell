@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 21:37:13 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/16 23:18:33 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ static char
 		accesspath[i] = test_access(path, cmd[i][0]);
 		if (!accesspath[i][0])
 		{
-			accesspath[++i] = NULL;
-			data->accesspath = accesspath;
+			accesspath[i] = ft_strdup(cmd[i][0]);
 			// cleanup(data, errno);
 		}
 		++i;
@@ -79,7 +78,7 @@ void	parser(t_data *data, char *line)
 	int		i;
 
 	i = 0;
-	data->path = parse_path(g_environ);
+	data->path = parse_path(data->alt_env);
 	line = replace_quoted(data->pat, line);
 	cmd_count = count_pipes(line);
 	data->flags = (t_flags **)malloc(sizeof(t_flags *) * (cmd_count + 1));
