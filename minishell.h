@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 20:16:06 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/16 21:32:01 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ int		alt_minishell(char **str, char **envp);
 void	free_splited_mat(char **mat);
 void	set_env(char *var, char *value, char **envp);
 char	*get_env(char *value, char **envp);
+int		executer(t_data *data);
 
 #endif
