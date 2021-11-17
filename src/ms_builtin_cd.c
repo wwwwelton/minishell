@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/12 03:43:30 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/17 00:08:50 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,39 @@ static void	update_env_dir(char *key, char *path, char **envp)
 	ftex_null_ptr((void *)&tmp);
 }
 
+static char	*get_dir(char **str, char **envp)
+{
+	char	**tmp;
+	char	*env;
+	char	*home;
+
+	if (str && !str[1])
+	{
+		env = get_env("HOME", envp);
+		tmp = ft_split(env, '=');
+		home = ft_strdup(tmp[1]);
+		ftex_null_ptr((void *)&env);
+		free_splited_mat(tmp);
+	}
+	else
+		home = ft_strdup(str[1]);
+	return (home);
+}
+
 int	alt_cd(char **str, char **envp)
 {
 	char	*old_dir;
 	char	*cur_dir;
+	char	*new_dir;
 
 	if (too_many_arguments(str))
 		return (EXIT_FAILURE);
-	if (str && !str[1])
-		return (EXIT_SUCCESS);
+	new_dir = get_dir(str, envp);
 	old_dir = get_current_dir();
-	if (chdir(str[1]))
+	if (chdir(new_dir))
 	{
 		ft_putstr_fd("cd: ", 1);
-		perror(str[1]);
+		perror(new_dir);
 		ftex_null_ptr((void *)&old_dir);
 		return (EXIT_FAILURE);
 	}
@@ -81,5 +100,6 @@ int	alt_cd(char **str, char **envp)
 	}
 	ftex_null_ptr((void *)&old_dir);
 	ftex_null_ptr((void *)&cur_dir);
+	ftex_null_ptr((void *)&new_dir);
 	return (EXIT_SUCCESS);
 }
