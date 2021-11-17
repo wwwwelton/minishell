@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:18:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 20:41:36 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/17 03:40:24 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd)
 		{
 			if (tmp[i][1] == '<')
 				flags->heredoc = 1;
-			else
-				flags->file_in = ft_strdup(tmp[i + 1]);
+			flags->file_in = ft_strdup(tmp[i + 1]);
 		}
 		if (tmp[i][0] == '>')
 		{
