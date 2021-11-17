@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 09:10:33 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 12:52:26 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/17 01:51:07 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,21 @@ static char	*find_quotes(char *str)
 	char	*pat;
 
 	i = -1;
+	if (!str)
+		return (str);
 	while (str[++i])
 	{
 		if (str[i] == DQUOTES)
 		{
 			size = quote_size(str, DQUOTES);
 			str = remove_quotes(str, DQUOTES);
-			i += size;
+			i += size - 1;
 		}
 		if (str[i] == SQUOTES)
 		{
 			size = quote_size(str, SQUOTES);
 			str = remove_quotes(str, SQUOTES);
-			i += size;
+			i += size - 1;
 		}
 	}
 	return (str);
