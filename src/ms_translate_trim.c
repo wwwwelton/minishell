@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 09:10:33 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/18 00:43:45 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/18 03:42:01 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ static char	*find_quotes(char *str)
 	char	*pat;
 
 	i = -1;
-	if (!str)
-		return (str);
 	while (str[++i])
 	{
 		if (str[i] == DQUOTES)
