@@ -24,6 +24,8 @@ SRCFILES	= minishell.c \
 			  ms_parser_presplit.c \
 			  ms_executer.c \
 			  ms_reinit.c \
+			  ms_executer_system.c \
+			  ms_executer_utils.c \
 
 BONUSFILES	= bonus.c \
 

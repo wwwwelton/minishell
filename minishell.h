@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/18 01:34:41 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/18 02:26:57 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,8 @@ void	free_splited_mat(char **mat);
 void	set_env(char *var, char *value, char **envp);
 char	*get_env(char *value, char **envp);
 int		executer(t_data *data);
+void	read_std_input(char *limiter, int file);
+void	read_previous_pipe(int fd_tmp, int file);
+void	execute_system(int *fd_tmp, t_data *data, int i);
 
 #endif
