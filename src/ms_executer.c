@@ -6,42 +6,94 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/16 21:12:35 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/18 01:53:19 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	call_builtin(t_builtin *head, char **cmd, char **envp)
+static void	read_std_input(char *limiter, int file)
 {
-	while (head)
+	int		backup;
+	int		fd[2];
+	char	*tmp;
+
+	pipe(fd);
+	backup = dup(fd[0]);
+	dup2(STDIN_FILENO, fd[0]);
+	while (1)
 	{
-		if (!ft_strncmp(head->name, cmd[0], ft_strlen(head->name)))
+		ft_putstr_fd("here_doc> ", 1);
+		tmp = get_next_line(fd[0]);
+		if (ft_strncmp(tmp, limiter, ft_strlen(limiter)) == 0
+			&& tmp[ft_strlen(limiter)] == '\n')
 		{
-			head->f(cmd, envp);
+			ftex_null_ptr((void *)&tmp);
+			close(fd[0]);
+			tmp = get_next_line(fd[0]);
 			break ;
 		}
-		else
-			head = head->next;
+		ft_putstr_fd(tmp, file);
+		ftex_null_ptr((void *)&tmp);
 	}
+	ftex_null_ptr((void *)&tmp);
 }
 
-static void	execute_system(int *fd_tmp, char **cmd, char *path, char **envp, int last)
+static void	read_previous_pipe(int fd_tmp, int file)
 {
+	char	*tmp;
+
+	while (1)
+	{
+		tmp = get_next_line(fd_tmp);
+		if (!tmp)
+		{
+			ftex_null_ptr((void *)&tmp);
+			close(fd_tmp);
+			tmp = get_next_line(fd_tmp);
+			break ;
+		}
+		ft_putstr_fd(tmp, file);
+		ftex_null_ptr((void *)&tmp);
+	}
+	ftex_null_ptr((void *)&tmp);
+}
+
+static void	execute_system(int *fd_tmp, t_data *data, int i)
+{
+	int		file;
 	int		fd[2];
 	pid_t	pid;
+	char	**cmd;
+	char	*path;
 
+	cmd = data->cmd[i];
+	path = data->accesspath[i];
 	pipe(fd);
 	pid = fork();
 	if (pid == -1)
 		perror("execute_command");
 	else if (pid == 0)
 	{
-		dup2(fd_tmp[0], STDIN_FILENO);
-		if (!last)
+		if (data->flags[i]->heredoc)
+		{
+			file = open(TMP_FILE, O_CREAT | O_WRONLY | O_APPEND, 0777);
+			if (i > 0)
+				read_previous_pipe(fd_tmp[0], file);
+			read_std_input(data->flags[i]->file_in, file);
+			free(data->flags[i]->file_in);
+			data->flags[i]->file_in = ft_strdup(TMP_FILE);
+		}
+		if (data->flags[i]->file_in)
+			dup2(open(data->flags[i]->file_in, O_RDONLY), STDIN_FILENO);
+		else
+			dup2(fd_tmp[0], STDIN_FILENO);
+		if (data->cmd[i + 1])
 			dup2(fd[1], STDOUT_FILENO);
+		if (data->cmd[i + 1] == NULL && data->flags[i]->file_out)
+			dup2(open(data->flags[i]->file_out, O_CREAT | O_WRONLY | O_TRUNC, 0777), STDOUT_FILENO);
 		close(fd[0]);
-		if (execve(path, cmd, envp) == -1)
+		if (execve(path, cmd, data->alt_env) == -1)
 			perror(cmd[0]);
 	}
 	wait(NULL);
@@ -49,56 +101,18 @@ static void	execute_system(int *fd_tmp, char **cmd, char *path, char **envp, int
 	close(fd[1]);
 }
 
-static void	execute_builtin(int *fd_tmp, char **cmd, char *path, char **envp, int last, t_builtin *head)
-{
-	call_builtin(head, cmd, envp);
-}
-
 int	executer(t_data *data)
 {
 	int		i;
-	int		j;
-	int		last;
 	int		fd_tmp;
-	char	***cmd;
-	char	**path;
-	char	**envp;
-	t_flags	**flags;
 
-	cmd = data->cmd;
-	path = data->accesspath;
-	envp = data->alt_env;
-	flags = data->flags;
 	i = -1;
-	j = -1;
-	fd_tmp = 0;
-	last = 0;
-	while (cmd[++i])
+	fd_tmp = STDIN_FILENO;
+	while (data->cmd[++i])
 	{
-		if (cmd[i + 1] == NULL)
-			last = 1;
-		if (flags[i]->builtins)
-			execute_builtin(&fd_tmp, cmd[i], path[i], envp, last, data->head);
-		else if (flags[i]->system_cmd)
-			execute_system(&fd_tmp, cmd[i], path[i], envp, last);
+		if (data->flags[i]->system_cmd)
+			execute_system(&fd_tmp, data, i);
+		unlink(TMP_FILE);
 	}
-	// while (cmd[++i])
-	// {
-	// 	if (flags[i]->builtins)
-	// 		printf("builtin: %s\n", cmd[i][0]);
-	// 	if (flags[i]->system_cmd)
-	// 		printf("system: %s\n", cmd[i][0]);
-	// 	if (flags[i]->file_in)
-	// 		printf("file_in: %s\n", flags[i]->file_in);
-	// 	if (flags[i]->file_out)
-	// 		printf("file_out: %s\n", flags[i]->file_out);
-	// 	if (flags[i]->in_append)
-	// 		printf("in_append: %d\n", flags[i]->in_append);
-	// 	if (flags[i]->out_append)
-	// 		printf("out_append: %d\n", flags[i]->out_append);
-	// 	if (flags[i]->heredoc)
-	// 		printf("heredoc: %d\n", flags[i]->heredoc);
-	// }
-	// print_matrix(cmd);
 	return (0);
 }
