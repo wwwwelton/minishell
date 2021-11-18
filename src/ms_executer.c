@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/18 02:27:25 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/18 02:39:53 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	executer(t_data *data)
 	{
 		if (data->flags[i]->system_cmd)
 			execute_system(&fd_tmp, data, i);
+		if (data->flags[i]->builtins)
+			execute_builtin(&fd_tmp, data, i);
 		unlink(TMP_FILE);
 	}
 	return (0);
