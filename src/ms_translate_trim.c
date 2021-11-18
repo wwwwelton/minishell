@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 09:10:33 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/17 01:51:07 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/18 00:43:45 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,18 @@ static char	*remove_quotes(char *str, char quotes)
 	if (!str)
 		return (str);
 	size = ft_strlen(str) - 2 + 1;
-	ret = (char *)malloc(sizeof(char) * size);
-	while (*str != quotes)
+	ret = (char *)calloc(sizeof(char), size + 1);
+	while (*str != quotes && *str)
 		ret[i++] = *str++;
-	++str;
-	while (*str != quotes)
+	if (*str == quotes)
+		++str;
+	while (*str != quotes && *str)
 		ret[i++] = *str++;
-	++str;
+	if (*str == quotes)
+		++str;
 	while (*str)
-		ret[i++] = *str;
-	ret[i] = '\0';
+		ret[i++] = *str++;
+	ret[i++] = '\0';
 	return (ret);
 }
 
@@ -62,13 +64,17 @@ static char	*find_quotes(char *str)
 		{
 			size = quote_size(str, DQUOTES);
 			str = remove_quotes(str, DQUOTES);
-			i += size - 1;
+			i += size;
+			if (i > ft_strlen(str))
+				break ;
 		}
 		if (str[i] == SQUOTES)
 		{
 			size = quote_size(str, SQUOTES);
 			str = remove_quotes(str, SQUOTES);
-			i += size - 1;
+			i += size;
+			if (i > ft_strlen(str))
+				break ;
 		}
 	}
 	return (str);
