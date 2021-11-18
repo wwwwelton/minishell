@@ -23,6 +23,8 @@ SRC_CD			+=	../src/ms_builtin_export.c ../src/ms_builtin_env.c
 
 SRC_EXIT		=	builtin/test_exit.c ../src/ms_builtin_exit.c
 
+SRC_EXIT		=	builtin/test_here.c
+
 ms_echo:
 	$(CC) $(CFLAGS) $(SRC_ECHO) $(LIBFT) $(LINKS) -lreadline -o test_echo
 
@@ -44,5 +46,8 @@ ms_cd:
 ms_exit:
 	$(CC) $(CFLAGS) $(SRC_EXIT) $(LIBFT) $(LINKS) -lreadline -o test_exit
 
+ms_heredoc:
+	$(CC) $(CFLAGS) $(SRC_EXIT) $(LIBFT) $(LINKS) -lreadline -o test_heredoc
+
 fclean:
-	$(RM) test_echo test_pwd test_env test_export test_unset test_cd test_exit
+	$(RM) test_echo test_pwd test_env test_export test_unset test_cd test_exit test_heredoc
