@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/17 01:49:40 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:57:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	printcmd(char ***cmd)
 	}
 }
 
-char	*replace_env(char *cmd)
+char	*replace_env(char *cmd, char **envp)
 {
 	int		i;
 	char	*env;
@@ -68,20 +68,20 @@ char	*replace_env(char *cmd)
 		if (cmd[i] == '$')
 		{
 			env = ft_substr(cmd, i, envlen(&cmd[i]));
-			envvalue = getenv(&env[1]);
+			envvalue = get_env_val(&env[1], envp);
 			if (!envvalue)
-				envvalue = "";
+				envvalue = ft_strdup("");
 			cmd = ftex_str_replace(cmd, env, envvalue);
 			if (DEBUG)
 				ftex_minprintf("cmd after env: %s\n", cmd);
 			free(env);
-			// free(envvalue);
+			free(envvalue);
 		}
 	}
 	return (cmd);
 }
 
-char	***find_env(char ***cmd)
+char	***find_env(char ***cmd, char **envp)
 {
 	int		i;
 	int		j;
@@ -94,7 +94,7 @@ char	***find_env(char ***cmd)
 		{
 			if (ft_strchr(cmd[i][j], '$'))
 			{
-				cmd[i][j] = replace_env(cmd[i][j]);
+				cmd[i][j] = replace_env(cmd[i][j], envp);
 				j = -1;
 			}
 		}
@@ -115,7 +115,7 @@ char	***translate(t_pat *pat, char ***cmd, char **envp)
 	{
 		replace_single_quotes(pat, cmd[i]);
 	}
-	cmd = find_env(cmd);
+	cmd = find_env(cmd, envp);
 	if (DEBUG)
 	{
 		ftex_minprintf("\n===== TRANSLATE ======\n");

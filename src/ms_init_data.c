@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/18 01:51:04 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/19 14:55:16 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 void	init_env(t_data *node)
 {
-	int	i;
+	int		i;
+	char	*env;
 
 	i = -1;
 	while (++i < 200)
 		node->alt_env[i] = NULL;
 	i = -1;
+	node->alt_env[++i] = ft_strdup("?=0");
 	while (__environ[++i])
 		node->alt_env[i] = ft_strdup(__environ[i]);
+	set_env_val("SHELL",
+			"/home/vln37/workspace/42cursus/lvl8_minishell", node->alt_env);
 }
 
 void	init_data(t_data **data)
