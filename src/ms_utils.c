@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 15:52:30 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:16:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	envlen(char *str)
 		return (2);
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]) || (str[i] >= 'A' && str[i] <= 'Z'))
+		if (ft_isalnum(str[i]))
 			i++;
 		else
 			break ;
