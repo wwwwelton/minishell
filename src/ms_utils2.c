@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 20:33:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 20:34:53 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/19 13:43:55 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,29 @@ char	*get_env(char *value, char **envp)
 		{
 			free_splited_mat(tmp);
 			return (ft_strdup(envp[i]));
+		}
+		free_splited_mat(tmp);
+	}
+	return (NULL);
+}
+
+char	*get_env_val(char *value, char **envp)
+{
+	int		i;
+	char	*val;
+	char	**tmp;
+
+	if (!value || !*value)
+		return (NULL);
+	i = -1;
+	while (envp[++i])
+	{
+		tmp = ft_split(envp[i], '=');
+		if (!ft_strncmp(value, tmp[0], ft_strlen(value)))
+		{
+			val = ft_strdup(tmp[1]);
+			free_splited_mat(tmp);
+			return (val);
 		}
 		free_splited_mat(tmp);
 	}
