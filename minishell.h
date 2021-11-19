@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 16:38:53 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/19 17:10:35 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_flags
 	int			heredoc;
 	int			builtins;
 	int			system_cmd;
+	int			error;
 }	t_flags;
 
 typedef struct s_builtin
@@ -108,10 +109,11 @@ char	*get_env_val(char *value, char **envp);
 int		executer(t_data *data);
 void	read_std_input(char *limiter, int file);
 void	read_previous_pipe(int fd_tmp, int file);
-void	execute_system(int *fd_tmp, t_data *data, int i);
-void	execute_builtin(int *fd_tmp, t_data *data, int i);
+int		execute_system(int *fd_tmp, t_data *data, int i);
+int		execute_builtin(int *fd_tmp, t_data *data, int i);
 int		dup_in(int *fd_tmp, t_data *data, int i);
 int		dup_out(int *fd, t_data *data, int i);
 void	here_doc(int *fd_tmp, t_data *data, int i);
+int		command_not_found(char *cmd, t_data *data);
 
 #endif

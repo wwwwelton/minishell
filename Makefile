@@ -28,6 +28,7 @@ SRCFILES	= minishell.c \
 			  ms_executer_system.c \
 			  ms_executer_utils.c \
 			  ms_executer_builtin.c \
+			  ms_error.c \
 
 BONUSFILES	= bonus.c \
 

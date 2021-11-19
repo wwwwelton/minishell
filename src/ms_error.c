@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_init_flags.c                                    :+:      :+:    :+:   */
+/*   ms_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/15 15:53:24 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 15:38:31 by wleite           ###   ########.fr       */
+/*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
+/*   Updated: 2021/11/19 16:13:21 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	init_flags(t_flags **flags, int cmds)
+int	command_not_found(char *cmd, t_data *data)
 {
-	int	i;
-
-	i = 0;
-	while (i < cmds)
-	{
-		flags[i]->file_in = NULL;
-		flags[i]->file_out = NULL;
-		flags[i]->in_append = 0;
-		flags[i]->out_append = 0;
-		flags[i]->heredoc = 0;
-		flags[i]->builtins = 0;
-		flags[i]->system_cmd = 0;
-		flags[i]->error = 0;
-		i++;
-	}
-	flags[i] = NULL;
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putendl_fd("command not found", 2);
+	return (127);
 }
