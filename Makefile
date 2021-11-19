@@ -7,7 +7,7 @@ SRCFILES	= minishell.c \
 			  ms_parser.c \
 			  ms_prompt.c \
 			  ms_utils.c \
-			  ms_utils2.c \
+			  ms_utils_env.c \
 			  ms_init_data.c \
 			  ms_init_patterns.c \
 			  ms_parser_patterns.c \
