@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 14:31:00 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/19 15:14:46 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	printfunctions(t_builtin *head);
 int		count_pipes(char *line);
 int		len_to_space(char *str);
 void	print_matrix(char ***cmd);
+void	printsplit(char **split, char *header);
 
 void	minishell(t_data *data);
 char	*prompt_user(void);

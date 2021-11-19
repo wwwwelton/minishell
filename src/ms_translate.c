@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 13:57:14 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/19 15:51:47 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char	*replace_env(char *cmd, char **envp)
 	char	*envvalue;
 
 	i = -1;
+	// printsplit(envp, "alt_env");
 	while (cmd[++i])
 	{
 		if (cmd[i] == '$')
@@ -122,7 +123,7 @@ char	***translate(t_pat *pat, char ***cmd, char **envp)
 		printcmd(cmd);
 		ftex_minprintf("\n");
 	}
-	cmd = restore_quoted(pat, cmd);
 	cmd = trim_quotes(cmd);
+	cmd = restore_quoted(pat, cmd);
 	return (cmd);
 }

@@ -1,55 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_utils.c                                         :+:      :+:    :+:   */
+/*   ms_utils_print.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 15:52:30 by jofelipe         ###   ########.fr       */
+/*   Created: 2021/11/19 15:52:33 by jofelipe          #+#    #+#             */
+/*   Updated: 2021/11/19 15:52:39 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	envlen(char *str)
+void	print_matrix(char ***cmd)
 {
 	int	i;
+	int	j;
 
-	i = 1;
-	if (str[1] == '?')
-		return (2);
-	while (str[i])
+	setbuf(stdout, NULL);
+	i = -1;
+	j = -1;
+	while (cmd[++i])
 	{
-		if (ft_isdigit(str[i]) || (str[i] >= 'A' && str[i] <= 'Z'))
-			i++;
-		else
-			break ;
+		ftex_minprintf("===== COMMAND %d ======\n\n", i + 1);
+		while (cmd[i][++j])
+			ftex_minprintf("%s|\n", cmd[i][j]);
+		j = -1;
 	}
-	return (i);
 }
 
-int	len_to_space(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] == ' ')
-		++i;
-	while (str[i] != ' ')
-		++i;
-	return (i);
-}
-
-void	free_splited_mat(char **mat)
+void	printsplit(char **split, char *header)
 {
 	int	i;
 
 	i = -1;
-	if (mat)
-	{
-		while (mat[++i])
-			ftex_null_ptr((void *)&mat[i]);
-		ftex_null_ptr((void *)&mat);
-	}
+	ftex_minprintf("========= %s ========\n\n", header);
+	while (split[++i])
+		ftex_minprintf("%s\n", split[i]);
+	ft_putchar_fd('\n', 1);
+}
+
+void	debug(t_data *data)
+{
+	print_matrix(data->cmd);
 }
