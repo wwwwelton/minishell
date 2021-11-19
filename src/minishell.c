@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:30 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/18 01:58:45 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:38:15 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	minishell(t_data *data)
 	int		pid;
 	int		i;
 
-	line = prompt_user();
+	line = prompt_user(&data->lastline);
 	parser(data, line);
 	translate(data->pat, data->cmd, data->alt_env);
 	executer(data);

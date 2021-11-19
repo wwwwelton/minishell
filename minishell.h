@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 15:14:46 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/19 16:38:53 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_pat
 
 typedef struct s_data
 {
+	char				*lastline;
 	char				**presplit;
 	char				***cmd;
 	char				**path;
@@ -81,7 +82,7 @@ void	print_matrix(char ***cmd);
 void	printsplit(char **split, char *header);
 
 void	minishell(t_data *data);
-char	*prompt_user(void);
+char	*prompt_user(char **lastline);
 void	pre_split(t_data *data, char *line);
 void	parser(t_data *data, char *line);
 char	*replace_quoted(t_pat *pat, char *line);
