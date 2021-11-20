@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/18 01:58:35 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/20 18:46:23 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,29 @@ static char
 	return (accesspath);
 }
 
+char	*empty_command_handler(char *str, int heredoc, char *filein)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ')
+		i++;
+	if (str[i] != '\0')
+		return (str);
+	if (heredoc)
+	{
+		free (str);
+		return (ft_strdup("cat"));
+	}
+	if (filein)
+	{
+		free (str);
+		return (ft_strdup("less"));
+	}
+	free (str);
+	return (ft_strdup(""));
+}
+
 void	parser(t_data *data, char *line)
 {
 	int		cmd_count;
@@ -90,7 +113,13 @@ void	parser(t_data *data, char *line)
 	data->cmd = (char ***)malloc(sizeof(char *) * (cmd_count + 1));
 	i = -1;
 	while (data->presplit[++i])
+	{
+		ftex_minprintf("|%s|\n", data->presplit[i]);
+		data->presplit[i] = empty_command_handler(data->presplit[i],
+				data->flags[i]->heredoc, data->flags[i]->file_in);
+		ftex_minprintf("|%s|\n", data->presplit[i]);
 		data->cmd[i] = ft_split(data->presplit[i], ' ');
+	}
 	data->cmd[i] = NULL;
 	data->cmd = restore_quoted(data->pat, data->cmd);
 	data->accesspath = parse_access(data, data->path, data->cmd, cmd_count);
