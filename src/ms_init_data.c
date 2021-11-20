@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 16:49:42 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/20 17:45:54 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	init_data(t_data **data)
 	t_builtin	*head;
 
 	unlink(TMP_FILE);
-	node->lastline = NULL;
 	node = (t_data *)malloc(sizeof(t_data));
+	node->lastline = NULL;
 	init_pat(&pat);
 	node->pat = pat;
 	init_builtins(&head);
