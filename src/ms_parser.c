@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/20 18:46:23 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/20 18:49:20 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,8 @@ void	parser(t_data *data, char *line)
 	i = -1;
 	while (data->presplit[++i])
 	{
-		ftex_minprintf("|%s|\n", data->presplit[i]);
 		data->presplit[i] = empty_command_handler(data->presplit[i],
 				data->flags[i]->heredoc, data->flags[i]->file_in);
-		ftex_minprintf("|%s|\n", data->presplit[i]);
 		data->cmd[i] = ft_split(data->presplit[i], ' ');
 	}
 	data->cmd[i] = NULL;
