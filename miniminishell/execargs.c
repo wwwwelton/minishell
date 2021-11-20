@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execargs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 01:59:36 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/07 02:04:41 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/20 18:44:07 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void execArgsPiped(char** parsed, char** parsedpipe)
 		// Child 1 executing..
 		// It only needs to write at the write end
 		close(pipefd[0]);
-		dup2(pipefd[1], STDOUT_FILENO);
+		dup42(pipefd[1], STDOUT_FILENO);
 		close(pipefd[1]);
 
 		if (execvp(parsed[0], parsed) < 0)
@@ -86,7 +86,7 @@ void execArgsPiped(char** parsed, char** parsedpipe)
 		if (p2 == 0)
 		{
 			close(pipefd[1]);
-			dup2(pipefd[0], STDIN_FILENO);
+			dup42(pipefd[0], STDIN_FILENO);
 			close(pipefd[0]);
 			if (execvp(parsedpipe[0], parsedpipe) < 0)
 			{
