@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_utils_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 20:33:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/20 00:02:59 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/20 16:34:05 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_env(char *value, char **envp)
 	while (envp[++i])
 	{
 		tmp = ft_split(envp[i], '=');
-		if (!ft_strncmp(value, tmp[0], ft_strlen(value)))
+		if (!ft_strncmp(value, tmp[0], ft_strlen(tmp[0])))
 		{
 			free_splited_mat(tmp);
 			return (ft_strdup(envp[i]));
