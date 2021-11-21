@@ -3,15 +3,18 @@ LIBFT		= $(LIBFTPATH)/libft.a
 
 SRCFILES	= minishell.c \
 			  ms_init_list.c \
+			  ms_init_data.c \
+			  ms_init_patterns.c \
+			  ms_init_flags.c \
 			  ms_builtins.c \
-			  ms_parser.c \
 			  ms_prompt.c \
+			  ms_prompt_validate.c \
+			  ms_parser.c \
+			  ms_parser_patterns.c \
+			  ms_parser_presplit.c \
 			  ms_utils.c \
 			  ms_utils_env.c \
 			  ms_utils_print.c \
-			  ms_init_data.c \
-			  ms_init_patterns.c \
-			  ms_parser_patterns.c \
 			  ms_builtin_echo.c \
 			  ms_builtin_pwd.c \
 			  ms_builtin_export.c \
@@ -21,13 +24,11 @@ SRCFILES	= minishell.c \
 			  ms_builtin_exit.c \
 			  ms_translate.c \
 			  ms_translate_trim.c \
-			  ms_init_flags.c \
-			  ms_parser_presplit.c \
 			  ms_executer.c \
-			  ms_reinit.c \
 			  ms_executer_system.c \
 			  ms_executer_utils.c \
 			  ms_executer_builtin.c \
+			  ms_reinit.c \
 			  ms_error.c \
 
 BONUSFILES	= bonus.c \
@@ -55,7 +56,7 @@ all:		mkdir $(NAME)
 
 $(NAME):	$(OBJ) $(HEADER)
 			make -C $(LIBFTPATH) all
-			$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LINKS)
+			$(CC) $(CFLAGS) main.c $(OBJ) -o $(NAME) $(LINKS)
 
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c $(HEADER)
 			$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
