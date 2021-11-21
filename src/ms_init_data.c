@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/20 17:45:54 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/21 12:43:47 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	init_env(t_data *node)
 {
 	int		i;
-	char	*env;
 
 	i = -1;
 	while (++i < 200)

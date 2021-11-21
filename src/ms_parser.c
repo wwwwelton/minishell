@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/20 18:49:20 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/21 12:44:41 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	*test_access(char **path, char *cmd)
 }
 
 static char
-	**parse_access(t_data *data, char **path, char ***cmd, int cmd_count)
+	**parse_access(char **path, char ***cmd, int cmd_count)
 {
 	int		i;
 	char	**accesspath;
@@ -120,6 +120,6 @@ void	parser(t_data *data, char *line)
 	}
 	data->cmd[i] = NULL;
 	data->cmd = restore_quoted(data->pat, data->cmd);
-	data->accesspath = parse_access(data, data->path, data->cmd, cmd_count);
+	data->accesspath = parse_access(data->path, data->cmd, cmd_count);
 	free(line);
 }

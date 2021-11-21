@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_executer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/19 17:04:24 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:46:59 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	print_system_error(t_data *data)
 	i = -1;
 	while (data->cmd[++i])
 		if (data->flags[i]->error == 127)
-			command_not_found(data->cmd[i][0], data);
+			command_not_found(data->cmd[i][0]);
 }
 
 static void	execute_system_command(int *fd_tmp, int *code, t_data *data, int i)

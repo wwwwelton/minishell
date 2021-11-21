@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ms_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/20 18:42:43 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/21 12:46:40 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	command_not_found(char *cmd, t_data *data)
+int	command_not_found(char *cmd)
 {
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd(": ", 2);

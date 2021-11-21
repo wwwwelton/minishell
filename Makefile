@@ -36,7 +36,7 @@ BONUSFILES	= bonus.c \
 
 CC			= clang -g3
 RM			= rm -f
-CFLAGS		=
+CFLAGS		= -Wall -Wextra -Werror
 SRCDIR		= src
 BONUSDIR	= srcbonus
 OBJDIR		= obj

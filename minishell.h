@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/21 12:37:47 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/21 12:46:44 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int		execute_builtin(int *fd_tmp, t_data *data, int i);
 int		dup_in(int *fd_tmp, t_data *data, int i);
 int		dup_out(int *fd, t_data *data, int i);
 void	here_doc(int *fd_tmp, t_data *data, int i);
-int		command_not_found(char *cmd, t_data *data);
+int		command_not_found(char *cmd);
 int		p_error(const char *str);
 int		dup42(int fd1, int fd2);
 

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 09:10:33 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/18 03:42:01 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/21 12:47:48 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	quote_size(char *str, char find)
 
 static char	*remove_quotes(char *str, char quotes)
 {
-	int		i;
+	size_t	i;
 	int		size;
 	char	*ret;
 
@@ -51,9 +51,8 @@ static char	*remove_quotes(char *str, char quotes)
 
 static char	*find_quotes(char *str)
 {
-	int		i;
+	size_t	i;
 	int		size;
-	char	*pat;
 
 	i = -1;
 	while (str[++i])

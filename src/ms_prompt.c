@@ -6,12 +6,11 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/21 12:32:34 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/21 12:47:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 static int	equal_last_line(char *line, char **lastline)
 {

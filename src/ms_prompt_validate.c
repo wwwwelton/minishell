@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/21 12:42:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/21 12:43:57 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ int	is_incorrect_redirection(char *line)
 
 int	validate_line(char *line)
 {
-	int	len;
-
 	if (is_blank_line(line))
 		return (0);
 	if (is_incorrect_redirection(line))

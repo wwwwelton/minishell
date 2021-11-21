@@ -65,7 +65,6 @@ static char	**restore_split(t_pat *pat, char **cmd)
 char	***restore_quoted(t_pat *pat, char ***cmd)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	pat->i = 0;
