@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/20 18:43:08 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/20 22:01:54 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_flags
 typedef struct s_builtin
 {
 	char				*name;
-	int				(*f)(char **, char **);
+	int					(*f)(char **, char **);
 	struct s_builtin	*next;
 }	t_builtin;
 
@@ -72,7 +72,7 @@ typedef struct s_data
 void	init_builtins(t_builtin **head);
 void	init_pat(t_pat **pat);
 void	init_data(t_data **data);
-void	init_flags(t_flags** flags, int cmds);
+void	init_flags(t_flags **flags, int cmds);
 
 int		envlen(char *str);
 void	debug(t_data *data);
