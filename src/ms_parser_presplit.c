@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:18:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/22 16:52:26 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:07:28 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,43 +28,53 @@ int	count_pipes(char *line)
 	return (i);
 }
 
-// void	clean_file_in(t_flags *flags, char *str)
-// {
-// 	int	i;
-
-// 	i = -1;
-// 	while (flags->redir_in[++i].file_in)
-// 	{
-// 		clean = ft_strnstr(arr[i], flags[i]->file_in, ft_strlen(arr[i]));
-// 	}
-// }
-
-void	clean_command(t_flags **flags, char **arr)
+char	*clean_file_in(t_flags *flags, char *str)
 {
 	int		i;
 	char	*clean;
 	char	*tmp;
 
-	i = 0;
-	while (arr[i])
+	i = -1;
+	while (flags->redir_in[++i].file_in)
 	{
-		if (flags[i]->file_in)
-		{
-			clean = ft_strnstr(arr[i], flags[i]->file_in, ft_strlen(arr[i]));
-			ft_memset(clean, ' ', ft_strlen(flags[i]->file_in));
-			tmp = arr[i];
-			arr[i] = ftex_strerase(arr[i], "<>\\;");
-			free(tmp);
-		}
-		if (flags[i]->file_out)
-		{
-			clean = ft_strnstr(arr[i], flags[i]->file_out, ft_strlen(arr[i]));
-			ft_memset(clean, ' ', ft_strlen(flags[i]->file_out));
-			tmp = arr[i];
-			arr[i] = ftex_strerase(arr[i], "<>\\;");
-			free(tmp);
-		}
-		i++;
+		clean = ft_strnstr(str, flags->redir_in[i].file_in, ft_strlen(str));
+		ft_memset(clean, ' ', ft_strlen(flags->redir_in[i].file_in));
+		tmp = str;
+		str = ftex_strerase(str, "<>\\;");
+		free(tmp);
+	}
+	return (str);
+}
+
+char	*clean_file_out(t_flags *flags, char *str)
+{
+	int		i;
+	char	*clean;
+	char	*tmp;
+
+	i = -1;
+	while (flags->redir_out[++i].file_out)
+	{
+		clean = ft_strnstr(str, flags->redir_out[i].file_out, ft_strlen(str));
+		ft_memset(clean, ' ', ft_strlen(flags->redir_out[i].file_out));
+		tmp = str;
+		str = ftex_strerase(str, "<>\\;");
+		free(tmp);
+	}
+	return (str);
+}
+
+void	clean_command(t_flags **flags, char **arr)
+{
+	int		i;
+
+	i = -1;
+	while (arr[++i])
+	{
+		if (flags[i]->redir_in[0].file_in)
+			arr[i] = clean_file_in(flags[i], arr[i]);
+		if (flags[i]->redir_out[0].file_out)
+			arr[i] = clean_file_out(flags[i], arr[i]);
 	}
 }
 

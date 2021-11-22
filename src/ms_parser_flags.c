@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:07:10 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/22 16:48:42 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/22 17:07:15 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd)
 	{
 		fill_redir_in(flags, tmp[i], tmp, i);
 		fill_redir_out(flags, tmp[i], tmp, i);
+		// remove from here until line 109 to test
 		if (tmp[i][0] == '<')
 		{
 			if (tmp[i][1] == '<')
