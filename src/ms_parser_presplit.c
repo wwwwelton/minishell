@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:18:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/17 03:40:24 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/22 16:52:26 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,45 +28,16 @@ int	count_pipes(char *line)
 	return (i);
 }
 
-void	set_exec_mode(t_builtin *builtins, t_flags *flags, char *cmd)
-{
-	while (builtins)
-	{
-		if (!strcmp(builtins->name, cmd))
-		{
-			flags->builtins = 1;
-			return ;
-		}
-		builtins = builtins->next;
-	}
-	flags->system_cmd = 1;
-}
+// void	clean_file_in(t_flags *flags, char *str)
+// {
+// 	int	i;
 
-void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd)
-{
-	char	**tmp;
-	int		i;
-
-	i = -1;
-	tmp = ft_split(cmd, ' ');
-	set_exec_mode(builtins, flags, tmp[0]);
-	while (tmp[++i])
-	{
-		if (tmp[i][0] == '<')
-		{
-			if (tmp[i][1] == '<')
-				flags->heredoc = 1;
-			flags->file_in = ft_strdup(tmp[i + 1]);
-		}
-		if (tmp[i][0] == '>')
-		{
-			if (tmp[i][1] == '>')
-				flags->out_append = 1;
-			flags->file_out = ft_strdup(tmp[i + 1]);
-		}
-	}
-	free_splited_mat(tmp);
-}
+// 	i = -1;
+// 	while (flags->redir_in[++i].file_in)
+// 	{
+// 		clean = ft_strnstr(arr[i], flags[i]->file_in, ft_strlen(arr[i]));
+// 	}
+// }
 
 void	clean_command(t_flags **flags, char **arr)
 {

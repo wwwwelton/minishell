@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/21 12:46:44 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/22 16:08:30 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,23 @@
 
 char		**g_environ;
 
+typedef struct s_redir_in
+{
+	char	*file_in;
+	int		heredoc;
+}	t_redir_in;
+
+typedef struct s_redir_out
+{
+	char	*file_out;
+	int		out_append;
+}	t_redir_out;
+
 typedef struct s_flags
 {
+	t_redir_in	redir_in[20];
+	t_redir_out	redir_out[20];
 	char		*file_in;
-	int			in_append;
 	char		*file_out;
 	int			out_append;
 	int			heredoc;
@@ -88,6 +101,7 @@ char	*prompt_user(char **lastline);
 int		validate_line(char *line);
 void	pre_split(t_data *data, char *line);
 void	parser(t_data *data, char *line);
+void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd);
 char	*replace_quoted(t_pat *pat, char *line);
 char	*single_quotes(t_pat *pat, char *line, int i);
 char	***translate(t_pat *pat, char ***cmd, char **envp);
