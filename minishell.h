@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/22 23:37:05 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 01:23:51 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ftex_tr(char *str, char del, char replace);
 void	minishell(t_data *data);
 char	*prompt_user(char **lastline);
 int		validate_line(char *line);
-void	pre_split(t_data *data, char *line);
+char	*pre_split(t_data *data, char *line);
 void	parser(t_data *data, char *line);
 char	*replace_quoted(t_pat *pat, char *line);
 char	*single_quotes(t_pat *pat, char *line, int i);

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/21 12:44:41 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 01:23:30 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	parser(t_data *data, char *line)
 		data->flags[i++] = (t_flags *)malloc(sizeof(t_flags) * 1);
 	data->flags[i] = NULL;
 	init_flags(data->flags, cmd_count);
-	pre_split(data, line);
+	line = pre_split(data, line);
 	data->cmd = (char ***)malloc(sizeof(char *) * (cmd_count + 1));
 	i = -1;
 	while (data->presplit[++i])
