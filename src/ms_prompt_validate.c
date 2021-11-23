@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 00:05:18 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 02:38:59 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	is_incorrect_redirection(char *line)
 			continue ;
 		if (line[len] == '<' || line[len] == '>')
 		{
-			ft_putstr_fd("zsh: parse error\n", 2);
+			ft_putstr_fd("zsh: parse error", 2);
 			return (1);
 		}
 		break ;
