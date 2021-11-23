@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 02:38:59 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 19:07:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,35 @@ int	is_incorrect_redirection(char *line)
 			continue ;
 		if (line[len] == '<' || line[len] == '>')
 		{
-			ft_putstr_fd("zsh: parse error", 2);
+			ft_putstr_fd("minishell: parse error", 2);
 			return (1);
 		}
 		break ;
+	}
+	return (0);
+}
+
+int	is_odd_quotes(char *line)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (!line)
+		return (1);
+	while (*line)
+	{
+		if (*line == DQUOTES)
+			++i;
+		else if (*line == SQUOTES)
+			++j;
+		++line;
+	}
+	if (i % 2 || j % 2)
+	{
+		ft_putstr_fd("minishell: close your quotes", 2);
+		return (1);
 	}
 	return (0);
 }
@@ -50,6 +75,8 @@ int	validate_line(char *line)
 	if (is_blank_line(line))
 		return (0);
 	if (is_incorrect_redirection(line))
+		return (0);
+	if (is_odd_quotes(line))
 		return (0);
 	return (1);
 }
