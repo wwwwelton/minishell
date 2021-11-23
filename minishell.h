@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/22 16:08:30 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 00:32:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_data
 	char				**path;
 	char				**accesspath;
 	char				*alt_env[200];
+	int					star;
 	t_pat				*pat;
 	t_flags				**flags;
 	t_builtin			*head;
@@ -95,6 +96,7 @@ int		len_to_space(char *str);
 void	print_matrix(char ***cmd);
 void	printsplit(char **split, char *header);
 void	free_splited_mat(char **mat);
+void	ftex_tr(char *str, char del, char replace);
 
 void	minishell(t_data *data);
 char	*prompt_user(char **lastline);
@@ -105,6 +107,7 @@ void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd);
 char	*replace_quoted(t_pat *pat, char *line);
 char	*single_quotes(t_pat *pat, char *line, int i);
 char	***translate(t_pat *pat, char ***cmd, char **envp);
+char	*find_stars(char *cmd);
 char	***restore_quoted(t_pat *pat, char ***cmd);
 char	***trim_quotes(char ***cmd);
 void	reinit(t_data *data);
