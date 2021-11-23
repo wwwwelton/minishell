@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/20 19:19:02 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/23 04:53:23 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int	execute_builtin(int *fd_tmp, t_data *data, int i)
 	cmd = data->cmd[i];
 	if (pipe(fd) == -1)
 		perror("pipe");
-	if (data->flags[i]->heredoc)
-		here_doc(fd_tmp, data, i);
 	dup_in(fd_tmp, data, i);
 	dup_out(fd, data, i);
 	exit_code = call_builtin(data->head, cmd, data->alt_env);
