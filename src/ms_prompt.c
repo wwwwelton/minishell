@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 02:38:56 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 19:08:33 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ char	*prompt_user(char **lastline)
 	char	*tmp;
 
 	line = NULL;
-
 	line = prompt_loop(line);
 	tmp = line;
 	line = ft_strtrim(line, " ");
