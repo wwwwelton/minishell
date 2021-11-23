@@ -24,6 +24,7 @@ SRCFILES	= minishell.c \
 			  ms_builtin_exit.c \
 			  ms_translate.c \
 			  ms_translate_trim.c \
+			  ms_translate_star.c \
 			  ms_executer.c \
 			  ms_executer_system.c \
 			  ms_executer_utils.c \

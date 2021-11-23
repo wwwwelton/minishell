@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/22 22:47:17 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/22 23:27:15 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,6 @@ void	ftex_tr(char *str, char del, char replace)
 			*str = replace;
 		str++;
 	}
+	--str;
+	*str = '\0';
 }

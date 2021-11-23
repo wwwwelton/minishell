@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/22 22:47:48 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/22 23:37:05 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_data
 	char				**path;
 	char				**accesspath;
 	char				*alt_env[200];
+	int					star;
 	t_pat				*pat;
 	t_flags				**flags;
 	t_builtin			*head;
@@ -92,6 +93,7 @@ void	parser(t_data *data, char *line);
 char	*replace_quoted(t_pat *pat, char *line);
 char	*single_quotes(t_pat *pat, char *line, int i);
 char	***translate(t_pat *pat, char ***cmd, char **envp);
+char	*find_stars(char *cmd);
 char	***restore_quoted(t_pat *pat, char ***cmd);
 char	***trim_quotes(char ***cmd);
 void	reinit(t_data *data);

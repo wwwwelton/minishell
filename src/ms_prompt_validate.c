@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/21 12:43:57 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 00:05:18 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	is_blank_line(char *line)
 	i = 0;
 	if (!line)
 		return (1);
-	if (line[i] == '\0')
-		return (1);
-	while (line[i] == ' ' || line[i] == '\t' || line[i] == '\b')
+	while (line[i] == ' ' || line[i] == '\t' || line[i] == '\n')
 		i++;
 	if (line[i] == '\0')
 		return (1);

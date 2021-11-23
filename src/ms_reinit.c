@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 20:11:17 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 00:00:53 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	reinit(t_data *data)
 	int	i;
 
 	i = -1;
-	free_splited_mat(data->presplit);
+	// free_splited_mat(data->presplit);
 	free_splited_mat(data->path);
 	free_splited_mat(data->accesspath);
 	while (data->pat->backup[++i])
