@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 00:13:52 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 02:37:09 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,10 @@ char	*prefix_cwd(char *cwd)
 	return (cwd);
 }
 
-char	*prompt_user(char **lastline)
+char	*prompt_loop(char *line)
 {
-	char	*line;
 	char	*cwd;
-	char	*tmp;
 
-	line = NULL;
 	cwd = NULL;
 	cwd = prefix_cwd(cwd);
 	while (!line)
@@ -51,11 +48,28 @@ char	*prompt_user(char **lastline)
 		line = readline(cwd);
 		if (!validate_line(line))
 		{
+			if (!line)
+			{
+				ft_putstr_fd("\n", 1);
+				continue ;
+			}
+			if (*line != 0)
+				ft_putstr_fd("\n", 1);
 			ftex_null_ptr((void **)&line);
-			ft_putstr_fd("\n", 1);
 		}
 	}
 	free(cwd);
+	return (line);
+}
+
+char	*prompt_user(char **lastline)
+{
+	char	*line;
+	char	*tmp;
+
+	line = NULL;
+
+	line = prompt_loop(line);
 	tmp = line;
 	line = ft_strtrim(line, " ");
 	free(tmp);
