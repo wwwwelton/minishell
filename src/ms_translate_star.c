@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:02:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 00:23:39 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 02:19:40 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	exec_ls(int *fd, char *access, char **cmd)
 {
 	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);
+	close(fd[1]);
 	execve(access, cmd, NULL);
 }
 
@@ -31,8 +32,8 @@ static char	*get_files(int fd)
 		line = get_next_line(fd);
 		if (line)
 			res = ftex_strmerge(res, line);
-
 	}
+	ftex_tr(res, '\t', ' ');
 	ftex_tr(res, '\n', ' ');
 	close (fd);
 	return (res);
@@ -53,6 +54,7 @@ static char	*fetch_ls(void)
 	pid = fork();
 	if (pid == 0)
 		exec_ls(fd, access, cmd);
+	wait(NULL);
 	close(fd[1]);
 	free_splited_mat(cmd);
 	return (get_files(fd[0]));

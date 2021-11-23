@@ -6,18 +6,19 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:04:31 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/22 22:48:44 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 02:19:23 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void execute(int *fd)
+void	execute(int *fd)
 {
-	char **ls;
-	char **path;
-	char *access = "/bin/ls";
+	char	**ls;
+	char	**path;
+	char	*access;
 
+	access = "/bin/ls";
 	path = (char **)malloc(sizeof(char *) * 2);
 	path[0] = "ls";
 	path[1] = NULL;
@@ -28,11 +29,10 @@ void execute(int *fd)
 
 int	main(void)
 {
-	int	pid;
-	int	fd[2];
-	char *line;
-	char *res;
-	char **split;
+	int		pid;
+	int		fd[2];
+	char	*line;
+	char	*res;
 
 	res = ft_strdup("");
 	pipe(fd);
