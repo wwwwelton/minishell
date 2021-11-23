@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 12:18:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 00:01:25 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 00:31:18 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	pre_split(t_data *data, char *line)
 	int		i;
 
 	i = -1;
-	line = find_stars(line);
+	// line = find_stars(line);
 	if (ft_strchr(line, '|'))
 		data->presplit = ft_split(line, '|');
 	else
