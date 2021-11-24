@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:35:49 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 00:08:56 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	init_builtins(t_builtin **head);
 void	init_pat(t_pat **pat);
 void	init_data(t_data **data);
 void	init_flags(t_flags **flags, int cmds);
+void	cleanup(t_data *data);
 
 int		envlen(char *str);
 int		last_status_code(char **envp);
