@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 00:08:56 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 02:01:30 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,23 @@
 
 char		**g_environ;
 
+typedef struct s_redir_in
+{
+	char	*file_in;
+	int		heredoc;
+}	t_redir_in;
+
+typedef struct s_redir_out
+{
+	char	*file_out;
+	int		out_append;
+}	t_redir_out;
+
 typedef struct s_flags
 {
+	t_redir_in	redir_in[20];
+	t_redir_out	redir_out[20];
 	char		*file_in;
-	int			in_append;
 	char		*file_out;
 	int			out_append;
 	int			heredoc;
@@ -97,6 +110,7 @@ char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp);
 int		validate_line(char *line, char **lastline);
 char	*pre_split(t_data *data, char *line);
 void	parser(t_data *data, char *line);
+void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd);
 char	*replace_quoted(t_pat *pat, char *line);
 char	*single_quotes(t_pat *pat, char *line, int i);
 char	***translate(t_pat *pat, char ***cmd, char **envp);
@@ -125,9 +139,10 @@ int		execute_system(int *fd_tmp, t_data *data, int i);
 int		execute_builtin(int *fd_tmp, t_data *data, int i);
 int		dup_in(int *fd_tmp, t_data *data, int i);
 int		dup_out(int *fd, t_data *data, int i);
-void	here_doc(int *fd_tmp, t_data *data, int i);
+void	here_doc(int *fd_tmp, t_data *data, int i, int j);
+void	read_doc(char *file, int *fd_tmp, int *fd);
 int		command_not_found(char *cmd);
 int		p_error(const char *str);
-int		dup42(int fd1, int fd2);
+int		write_to_files(t_data *data, int i);
 
 #endif

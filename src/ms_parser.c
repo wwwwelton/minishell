@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 01:23:30 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 02:01:44 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static char
 	return (accesspath);
 }
 
-char	*empty_command_handler(char *str, int heredoc, char *filein)
+char	*empty_command_handler(t_flags *flags, char *str)
 {
 	int	i;
 
@@ -81,15 +81,15 @@ char	*empty_command_handler(char *str, int heredoc, char *filein)
 		i++;
 	if (str[i] != '\0')
 		return (str);
-	if (heredoc)
-	{
-		free (str);
-		return (ft_strdup("cat"));
-	}
-	if (filein)
+	if (!flags->redir_in[0].heredoc && !flags->redir_in[1].file_in)
 	{
 		free (str);
 		return (ft_strdup("less"));
+	}
+	else
+	{
+		free (str);
+		return (ft_strdup("cat"));
 	}
 	free (str);
 	return (ft_strdup(""));
@@ -114,8 +114,8 @@ void	parser(t_data *data, char *line)
 	i = -1;
 	while (data->presplit[++i])
 	{
-		data->presplit[i] = empty_command_handler(data->presplit[i],
-				data->flags[i]->heredoc, data->flags[i]->file_in);
+		data->presplit[i] = empty_command_handler(data->flags[i],
+				data->presplit[i]);
 		data->cmd[i] = ft_split(data->presplit[i], ' ');
 	}
 	data->cmd[i] = NULL;

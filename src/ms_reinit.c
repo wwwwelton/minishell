@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 00:09:44 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 02:03:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ void	cleanup(t_data *data)
 	exit(EXIT_SUCCESS);
 }
 
+static void	free_redirs(t_flags *flags)
+{
+	int	i;
+
+	i = -1;
+	while (flags->redir_in[++i].file_in)
+		free(flags->redir_in[++i].file_in);
+	i = -1;
+	while (flags->redir_out[++i].file_out)
+		free(flags->redir_out[++i].file_out);
+}
+
 void	reinit(t_data *data)
 {
 	int	i;
@@ -54,7 +66,10 @@ void	reinit(t_data *data)
 		free(data->pat->holder[i]);
 	i = -1;
 	while (data->flags[++i])
+	{
+		free_redirs(data->flags[i]);
 		free(data->flags[i]);
+	}
 	free(data->flags);
 	data->flags = NULL;
 	i = -1;

@@ -13,6 +13,7 @@ SRCFILES	= minishell.c \
 			  ms_parser.c \
 			  ms_parser_patterns.c \
 			  ms_parser_presplit.c \
+			  ms_parser_flags.c \
 			  ms_utils.c \
 			  ms_utils_env.c \
 			  ms_utils_print.c \
@@ -28,10 +29,11 @@ SRCFILES	= minishell.c \
 			  ms_translate_star.c \
 			  ms_executer.c \
 			  ms_executer_system.c \
-			  ms_executer_utils.c \
 			  ms_executer_builtin.c \
 			  ms_reinit.c \
 			  ms_error.c \
+			  ms_executer_dup_utils.c \
+			  ms_executer_dup.c \
 
 BONUSFILES	= bonus.c \
 
