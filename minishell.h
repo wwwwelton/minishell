@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 09:10:44 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 09:19:27 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,28 @@ typedef struct s_data
 	t_builtin			*head;
 }	t_data;
 
+//controllers
+void	minishell(t_data *data);
+char	*prompt_user(char **lastline, char **envp);
+void	parser(t_data *data, char *line);
+char	***translate(t_pat *pat, char ***cmd, char **envp);
+int		executer(t_data *data);
+
+//signals
 void	init_sigaction(struct sigaction *action, void (*handler)(int), int sig);
 void	sig_heredoc(int sig);
 void	sig_prompt(int sig);
 void	sig_exec(int sig);
+
+//structures and memory management
 void	init_builtins(t_builtin **head);
 void	init_pat(t_pat **pat);
 void	init_data(t_data **data);
 void	init_flags(t_flags **flags, int cmds);
 void	cleanup(t_data *data);
+void	reinit(t_data *data);
 
+//support functions
 int		envlen(char *str);
 int		last_status_code(char **envp);
 void	debug(t_data *data);
@@ -107,23 +119,22 @@ void	free_splited_mat(char **mat);
 void	ftex_tr(char *str, char del, char replace);
 int		is_multiple_commands(char *buf);
 int		command_size(char *buf);
-char	*prompt_loop(char *line, char **lastline);
 
-void	minishell(t_data *data);
-char	*prompt_user(char **lastline, char **envp);
+//prompt
+char	*prompt_loop(char *line, char **lastline);
 char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp);
 int		validate_line(char *line, char **lastline);
+
+//parsing
 char	*pre_split(t_data *data, char *line);
-void	parser(t_data *data, char *line);
 void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd);
 char	*replace_quoted(t_pat *pat, char *line);
 char	*single_quotes(t_pat *pat, char *line, int i);
-char	***translate(t_pat *pat, char ***cmd, char **envp);
 char	*find_stars(char *cmd);
 char	***restore_quoted(t_pat *pat, char ***cmd);
 char	***trim_quotes(char ***cmd);
-void	reinit(t_data *data);
 
+//builtins
 int		alt_echo(char **str, char **envp);
 int		alt_cd(char **str, char **envp);
 int		alt_pwd(char **str, char **envp);
@@ -133,21 +144,25 @@ int		alt_exit(char **str, char **envp);
 int		alt_export(char **str, char **envp);
 int		alt_minishell(char **str, char **envp);
 
+//builtin helpers
 void	set_env(char *var, char *value, char **envp);
 void	set_env_val(char *var, char *value, char **envp);
 char	*get_env(char *value, char **envp);
 char	*get_env_val(char *value, char **envp);
-int		executer(t_data *data);
-void	read_std_input(char *limiter, int file);
-void	read_previous_pipe(int fd_tmp, int file);
+
+//execution
 int		execute_system(int *fd_tmp, t_data *data, int i);
 int		execute_builtin(int *fd_tmp, t_data *data, int i);
+void	read_previous_pipe(int fd_tmp, int file);
+void	read_std_input(char *limiter, int file);
 int		dup_in(int *fd_tmp, t_data *data, int i);
 int		dup_out(int *fd, t_data *data, int i);
 void	here_doc(int *fd_tmp, t_data *data, int i, int j);
 void	read_doc(char *file, int *fd_tmp, int *fd);
-int		command_not_found(char *cmd);
-int		p_error(const char *str);
 int		write_to_files(t_data *data, int i);
+
+//error management
+int		p_error(const char *str);
+int		command_not_found(char *cmd);
 
 #endif
