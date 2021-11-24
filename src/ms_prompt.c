@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 09:12:12 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 09:32:55 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ char	*prompt_loop(char *line, char **lastline)
 
 	cwd = NULL;
 	cwd = prefix_cwd(cwd);
-	init_sigaction(&action, &sig_prompt, SIGQUIT);
 	init_sigaction(&action, &sig_prompt, SIGINT);
-	init_sigaction(NULL, NULL, SIGQUIT);
+	init_sigaction(&action, SIG_IGN, SIGQUIT);
 	while (!line)
 	{
 		line = readline(cwd);
