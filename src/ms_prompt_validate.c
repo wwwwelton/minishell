@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:09:47 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 08:58:40 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	equal_last_line(char *line, char **lastline)
 		*lastline = ft_strdup(line);
 		return (0);
 	}
-	if (!ft_strncmp(line, *lastline, ft_strlen(*lastline)))
+	if (!ft_strncmp(line, *lastline, 300))
 		return (1);
 	free(*lastline);
 	*lastline = ft_strdup(line);
@@ -86,10 +86,10 @@ int	equal_last_line(char *line, char **lastline)
 
 int	validate_line(char *line, char **lastline)
 {
-	if (equal_last_line(line, lastline) == 0)
-		add_history(line);
 	if (is_blank_line(line))
 		return (0);
+	if (equal_last_line(line, lastline) == 0)
+		add_history(line);
 	if (is_incorrect_redirection(line))
 		return (0);
 	if (is_odd_quotes(line))

@@ -34,6 +34,7 @@ SRCFILES	= minishell.c \
 			  ms_error.c \
 			  ms_executer_dup_utils.c \
 			  ms_executer_dup.c \
+			  ms_signals.c \
 
 BONUSFILES	= bonus.c \
 

@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:35:57 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 09:12:12 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,21 @@ char	*prefix_cwd(char *cwd)
 
 char	*prompt_loop(char *line, char **lastline)
 {
-	char	*cwd;
+	struct sigaction	action;
+	char				*cwd;
 
 	cwd = NULL;
 	cwd = prefix_cwd(cwd);
+	init_sigaction(&action, &sig_prompt, SIGQUIT);
+	init_sigaction(&action, &sig_prompt, SIGINT);
+	init_sigaction(NULL, NULL, SIGQUIT);
 	while (!line)
 	{
 		line = readline(cwd);
 		if (!validate_line(line, lastline))
 		{
 			if (!line)
-			{
-				ft_putstr_fd("\n", 1);
-				continue ;
-			}
+				exit(1);
 			if (*line != 0)
 				ft_putstr_fd("\n", 1);
 			ftex_null_ptr((void **)&line);

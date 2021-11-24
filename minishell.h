@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 02:01:30 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 09:10:44 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/wait.h>
+# include <signal.h>
 
 char		**g_environ;
 
@@ -84,6 +85,10 @@ typedef struct s_data
 	t_builtin			*head;
 }	t_data;
 
+void	init_sigaction(struct sigaction *action, void (*handler)(int), int sig);
+void	sig_heredoc(int sig);
+void	sig_prompt(int sig);
+void	sig_exec(int sig);
 void	init_builtins(t_builtin **head);
 void	init_pat(t_pat **pat);
 void	init_data(t_data **data);
