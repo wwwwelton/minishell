@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/23 04:44:28 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/24 01:49:40 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,29 @@ int	dup_in(int *fd_tmp, t_data *data, int i)
 			j++;
 		}
 	}
-	dup42(fd_tmp[0], STDIN_FILENO);
+	dup2(fd_tmp[0], STDIN_FILENO);
 	return (0);
 }
 
 int	dup_out(int *fd, t_data *data, int i)
 {
-	int	file_out;
+	int		fd_out;
+	int		out_append;
+	char	*file_out;
+	char	**next_cmd;
 
-	if (data->cmd[i + 1])
-		dup42(fd[1], STDOUT_FILENO);
-	if (data->cmd[i + 1] == NULL && data->flags[i]->file_out)
+	out_append = data->flags[i]->redir_out[0].out_append;
+	file_out = data->flags[i]->redir_out[0].file_out;
+	next_cmd = data->cmd[i + 1];
+	if (next_cmd)
+		dup2(fd[1], STDOUT_FILENO);
+	if (!next_cmd && file_out)
 	{
-		file_out = open(data->flags[i]->file_out,
-				O_CREAT | O_WRONLY | O_TRUNC, 0777);
-		dup42(file_out, STDOUT_FILENO);
+		if (out_append)
+			fd_out = open(file_out, O_CREAT | O_WRONLY | O_APPEND, 0777);
+		else
+			fd_out = open(file_out, O_CREAT | O_WRONLY | O_TRUNC, 0777);
+		dup2(fd_out, STDOUT_FILENO);
 	}
 	return (0);
 }

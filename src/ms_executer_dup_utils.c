@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/23 04:46:47 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/24 01:57:31 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	read_std_input(char *limiter, int file)
 	char	*tmp;
 
 	pipe(fd);
-	dup42(STDIN_FILENO, fd[0]);
+	dup2(STDIN_FILENO, fd[0]);
 	while (1)
 	{
 		ft_putstr_fd("here_doc> ", 1);
@@ -82,4 +82,31 @@ void	read_previous_pipe(int fd_tmp, int file)
 		ftex_null_ptr((void *)&tmp);
 	}
 	ftex_null_ptr((void *)&tmp);
+}
+
+int	write_to_files(t_data *data, int i)
+{
+	int		fd_out;
+	int		j;
+	int		out_append;
+	int		src_file;
+	char	*file_out;
+
+	j = 1;
+	file_out = data->flags[i]->redir_out[j].file_out;
+	while (file_out)
+	{
+		src_file = open(data->flags[i]->redir_out[0].file_out, O_RDONLY);
+		out_append = data->flags[i]->redir_out[j].out_append;
+		file_out = data->flags[i]->redir_out[j].file_out;
+		if (out_append)
+			fd_out = open(file_out, O_CREAT | O_WRONLY | O_APPEND, 0777);
+		else
+			fd_out = open(file_out, O_CREAT | O_WRONLY | O_TRUNC, 0777);
+		read_previous_pipe(src_file, fd_out);
+		close(fd_out);
+		close(src_file);
+		j++;
+	}
+	return (0);
 }

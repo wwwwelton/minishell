@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/23 02:29:45 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/24 01:48:27 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 	waitpid(-1, &exit_code, 0);
 	fd_tmp[0] = fd[0];
 	close(fd[1]);
+	write_to_files(data, i);
 	return (exit_code);
 }

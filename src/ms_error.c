@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/21 12:46:40 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/24 01:58:42 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,4 @@ int	p_error(const char *str)
 {
 	perror(str);
 	return (-1);
-}
-
-int	dup42(int fd1, int fd2)
-{
-	if (dup2(fd1, fd2) == -1)
-	{
-		perror("dup2");
-		return (-1);
-	}
-	return (0);
 }

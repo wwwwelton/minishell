@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 04:24:14 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/24 01:50:33 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,6 @@ void	here_doc(int *fd_tmp, t_data *data, int i, int j);
 void	read_doc(char *file, int *fd_tmp, int *fd);
 int		command_not_found(char *cmd);
 int		p_error(const char *str);
-int		dup42(int fd1, int fd2);
+int		write_to_files(t_data *data, int i);
 
 #endif
