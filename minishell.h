@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 02:11:38 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 22:01:25 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define DQUOTES 34
 # define NEWPAT "___0x4242___"
 # define TMP_FILE "./tmp"
+# define BUFFER_SIZE 1000
 
 # include "libft.h"
 # include <stdio.h>
@@ -84,9 +85,13 @@ void	print_matrix(char ***cmd);
 void	printsplit(char **split, char *header);
 void	free_splited_mat(char **mat);
 void	ftex_tr(char *str, char del, char replace);
+int		is_multiple_commands(char *buf);
+int		command_size(char *buf);
+char	*prompt_loop(char *line);
 
 void	minishell(t_data *data);
 char	*prompt_user(char **lastline);
+char	*fetch_buffer(char *buf, char *line);
 int		validate_line(char *line);
 char	*pre_split(t_data *data, char *line);
 void	parser(t_data *data, char *line);
