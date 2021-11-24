@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ms_utils_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 20:33:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/20 16:34:05 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/23 22:37:29 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	last_status_code(char **envp)
+{
+	int		status_code;
+	char	*tmp;
+
+	tmp = get_env_val("?", envp);
+	status_code = ft_atoi(tmp);
+	ftex_null_ptr((void *)&tmp);
+	return (status_code);
+}
 
 void	set_env(char *var, char *value, char **envp)
 {

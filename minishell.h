@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 02:11:38 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 22:35:49 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define DQUOTES 34
 # define NEWPAT "___0x4242___"
 # define TMP_FILE "./tmp"
+# define BUFFER_SIZE 1000
 
 # include "libft.h"
 # include <stdio.h>
@@ -76,6 +77,7 @@ void	init_data(t_data **data);
 void	init_flags(t_flags **flags, int cmds);
 
 int		envlen(char *str);
+int		last_status_code(char **envp);
 void	debug(t_data *data);
 void	printfunctions(t_builtin *head);
 int		count_pipes(char *line);
@@ -84,10 +86,14 @@ void	print_matrix(char ***cmd);
 void	printsplit(char **split, char *header);
 void	free_splited_mat(char **mat);
 void	ftex_tr(char *str, char del, char replace);
+int		is_multiple_commands(char *buf);
+int		command_size(char *buf);
+char	*prompt_loop(char *line, char **lastline);
 
 void	minishell(t_data *data);
-char	*prompt_user(char **lastline);
-int		validate_line(char *line);
+char	*prompt_user(char **lastline, char **envp);
+char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp);
+int		validate_line(char *line, char **lastline);
 char	*pre_split(t_data *data, char *line);
 void	parser(t_data *data, char *line);
 char	*replace_quoted(t_pat *pat, char *line);
