@@ -6,25 +6,11 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:02:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 22:12:03 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static int	equal_last_line(char *line, char **lastline)
-{
-	if (!*lastline)
-	{
-		*lastline = ft_strdup(line);
-		return (0);
-	}
-	if (!ft_strncmp(line, *lastline, ft_strlen(*lastline)))
-		return (1);
-	free(*lastline);
-	*lastline = ft_strdup(line);
-	return (0);
-}
 
 char	*prefix_cwd(char *cwd)
 {
@@ -37,7 +23,7 @@ char	*prefix_cwd(char *cwd)
 	return (cwd);
 }
 
-char	*prompt_loop(char *line)
+char	*prompt_loop(char *line, char **lastline)
 {
 	char	*cwd;
 
@@ -46,7 +32,7 @@ char	*prompt_loop(char *line)
 	while (!line)
 	{
 		line = readline(cwd);
-		if (!validate_line(line))
+		if (!validate_line(line, lastline))
 		{
 			if (!line)
 			{
@@ -76,21 +62,19 @@ char	*store_commands(char *line, char *buf)
 
 char	*prompt_user(char **lastline)
 {
-	static char buf[BUFFER_SIZE];
-	char	*line;
-	char	*tmp;
+	static char	buf[BUFFER_SIZE];
+	char		*line;
+	char		*tmp;
 
 	line = NULL;
 	if (!*buf)
-		line = prompt_loop(line);
+		line = prompt_loop(line, lastline);
 	else
-		line = fetch_buffer(buf, line);
+		line = fetch_buffer(buf, line, lastline);
 	if (is_multiple_commands(line))
 		store_commands(line, buf);
 	tmp = line;
 	line = ft_strtrim(line, " ");
 	free(tmp);
-	if (equal_last_line(line, lastline) == 0)
-		add_history(line);
 	return (line);
 }

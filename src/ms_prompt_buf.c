@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:26:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:02:59 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 22:10:10 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	skip_command(char *buf)
 	buf[str_size - cmd_size] = '\0';
 }
 
-char	*fetch_buffer(char *buf, char *line)
+char	*fetch_buffer(char *buf, char *line, char **lastline)
 {
 	int		cmd_size;
 	int		str_size;
@@ -67,7 +67,7 @@ char	*fetch_buffer(char *buf, char *line)
 	while (buf[0] == '|')
 		skip_command(buf);
 	if (!*buf)
-		return (prompt_loop(line));
+		return (prompt_loop(line, lastline));
 	ft_memset(buf, ' ', 2);
 	str_size = ft_strlen(buf);
 	cmd_size = command_size(buf);
