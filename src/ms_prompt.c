@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:12:03 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 22:35:57 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*store_commands(char *line, char *buf)
 	return (line);
 }
 
-char	*prompt_user(char **lastline)
+char	*prompt_user(char **lastline, char **envp)
 {
 	static char	buf[BUFFER_SIZE];
 	char		*line;
@@ -70,7 +70,7 @@ char	*prompt_user(char **lastline)
 	if (!*buf)
 		line = prompt_loop(line, lastline);
 	else
-		line = fetch_buffer(buf, line, lastline);
+		line = fetch_buffer(buf, line, lastline, envp);
 	if (is_multiple_commands(line))
 		store_commands(line, buf);
 	tmp = line;

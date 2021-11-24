@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:11:07 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 22:35:49 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	init_data(t_data **data);
 void	init_flags(t_flags **flags, int cmds);
 
 int		envlen(char *str);
+int		last_status_code(char **envp);
 void	debug(t_data *data);
 void	printfunctions(t_builtin *head);
 int		count_pipes(char *line);
@@ -90,8 +91,8 @@ int		command_size(char *buf);
 char	*prompt_loop(char *line, char **lastline);
 
 void	minishell(t_data *data);
-char	*prompt_user(char **lastline);
-char	*fetch_buffer(char *buf, char *line, char **lastline);
+char	*prompt_user(char **lastline, char **envp);
+char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp);
 int		validate_line(char *line, char **lastline);
 char	*pre_split(t_data *data, char *line);
 void	parser(t_data *data, char *line);

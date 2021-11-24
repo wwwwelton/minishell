@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:26:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:10:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/23 22:38:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ void	skip_command(char *buf)
 	buf[str_size - cmd_size] = '\0';
 }
 
-char	*fetch_buffer(char *buf, char *line, char **lastline)
+char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp)
 {
 	int		cmd_size;
 	int		str_size;
 	char	*ret;
 
-	while (buf[0] == '|')
+	while (buf[0] == '|' && !last_status_code(envp))
 		skip_command(buf);
 	if (!*buf)
 		return (prompt_loop(line, lastline));
