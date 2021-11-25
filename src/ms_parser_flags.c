@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:07:10 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 09:13:34 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/25 06:15:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	set_exec_mode(t_builtin *builtins, t_flags *flags, char *cmd)
 {
 	while (builtins)
 	{
-		if (!strcmp(builtins->name, cmd))
+		if (!ft_strncmp(builtins->name, cmd, 100))
 		{
 			flags->builtins = 1;
 			return ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:30:54 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/16 21:37:09 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/25 06:16:00 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,40 @@
 // 	}
 // }
 
+char	**init_names(void)
+{
+	char	**ret;
+
+	ret = (char **)malloc(sizeof(char *) * 8);
+	ret[0] = ft_strdup("echo");
+	ret[1] = ft_strdup("cd");
+	ret[2] = ft_strdup("pwd");
+	ret[3] = ft_strdup("export");
+	ret[4] = ft_strdup("unset");
+	ret[5] = ft_strdup("env");
+	ret[6] = ft_strdup("exit");
+	ret[7] = NULL;
+	return (ret);
+}
+
 void	fetch_list(t_builtin *node)
 {
-	int			fd;
-	char		*line;
+	int			i;
+	char		**cmds;
 
-	fd = open("./builtins", O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	i = -1;
+	cmds = init_names();
+	while (cmds[++i])
 	{
-		line[ft_strlen(line) - 1] = '\0';
-		node->name = line;
-		line = get_next_line(fd);
-		if (line)
+		node->name = ft_strdup(cmds[i]);
+		if (cmds[i + 1])
 		{
 			node->next = (t_builtin *)malloc(sizeof(t_builtin));
 			node = node->next;
 		}
 	}
 	node->next = NULL;
-	close(fd);
+	free_splited_mat(cmds);
 }
 
 void	init_builtins(t_builtin **head)
@@ -64,6 +78,4 @@ void	init_builtins(t_builtin **head)
 	node->f = &alt_env;
 	node = node->next;
 	node->f = &alt_exit;
-	node = node->next;
-	node->f = &alt_minishell;
 }
