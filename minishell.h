@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/25 03:54:02 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/25 03:58:35 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # include <sys/wait.h>
 # include <signal.h>
 # include <term.h>
+
+typedef struct sigaction	t_sigaction;
 
 typedef struct s_redir_in
 {
@@ -92,7 +94,7 @@ char	***translate(t_pat *pat, char ***cmd, char **envp);
 int		executer(t_data *data);
 
 //signals
-void	init_sigaction(struct sigaction *action, void (*handler)(int), int sig);
+void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig);
 void	sig_heredoc(int sig);
 void	sig_prompt(int sig);
 void	sig_exec(int sig);

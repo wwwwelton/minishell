@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_executer_system.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/25 03:35:46 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/25 04:00:15 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	execute_system(int *fd_tmp, t_data *data, int i)
 {
-	int					exit_code;
-	int					fd[2];
-	pid_t				pid;
-	struct sigaction	action;
+	int			exit_code;
+	int			fd[2];
+	pid_t		pid;
+	t_sigaction	action;
 
 	init_sigaction(&action, SIG_IGN, SIGINT);
 	init_sigaction(&action, SIG_IGN, SIGQUIT);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_executer_dup_utils.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/25 03:31:56 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/25 03:59:47 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	read_doc(char *file, int *fd_tmp, int *fd)
 
 void	read_std_input(char *limiter, int file)
 {
-	int					fd[2];
-	char				*tmp;
-	struct sigaction	action;
+	int			fd[2];
+	char		*tmp;
+	t_sigaction	action;
 
 	pipe(fd);
 	dup2(STDIN_FILENO, fd[0]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/25 02:36:57 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/25 03:59:11 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ char	*prefix_cwd(char *cwd)
 
 char	*prompt_loop(char *line, char **lastline)
 {
-	struct sigaction	action;
-	char				*cwd;
+	t_sigaction	action;
+	char		*cwd;
 
 	cwd = NULL;
 	cwd = prefix_cwd(cwd);
