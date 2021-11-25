@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:52:33 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/19 22:45:50 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/25 04:17:56 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	printsplit(char **split, char *header)
 	i = -1;
 	ftex_minprintf("========= %s ========\n\n", header);
 	while (split[++i])
-		ftex_minprintf("%s\n", split[i]);
+		ftex_minprintf("%s|\n", split[i]);
 	ft_putchar_fd('\n', 1);
 }
 

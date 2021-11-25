@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 02:01:44 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/25 04:31:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,24 @@ static char	**parse_path(char **envp)
 {
 	int		i;
 	char	**ret;
+	char	*path;
 
 	i = 0;
-	while (envp)
+	while (envp[i])
 	{
 		if (!ft_strncmp(envp[i], "PATH", 4))
 		{
-			ret = ft_split(envp[i], ':');
+			path = get_env_val("PATH", envp);
+			ret = ft_split(path, ':');
+			free(path);
 			return (ret);
 		}
 		i++;
 	}
-	return (NULL);
+	ret = (char **)malloc(sizeof(char *) * 2);
+	ret[0] = ft_strdup("");
+	ret[1] = NULL;
+	return (ret);
 }
 
 static char	*test_access(char **path, char *cmd)
@@ -36,7 +42,7 @@ static char	*test_access(char **path, char *cmd)
 	char	*bin;
 	char	*cmd2;
 
-	i = 1;
+	i = 0;
 	while (path[i])
 	{
 		cmd2 = ft_strjoin("/", cmd);
