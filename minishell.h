@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 09:19:27 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/25 03:54:02 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@
 # include <readline/history.h>
 # include <sys/wait.h>
 # include <signal.h>
-
-char		**g_environ;
+# include <term.h>
 
 typedef struct s_redir_in
 {
@@ -119,6 +118,7 @@ void	free_splited_mat(char **mat);
 void	ftex_tr(char *str, char del, char replace);
 int		is_multiple_commands(char *buf);
 int		command_size(char *buf);
+int		ms_putchar(int c);
 
 //prompt
 char	*prompt_loop(char *line, char **lastline);

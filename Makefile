@@ -35,6 +35,7 @@ SRCFILES	= minishell.c \
 			  ms_executer_dup_utils.c \
 			  ms_executer_dup.c \
 			  ms_signals.c \
+			  ms_signals_utils.c \
 
 BONUSFILES	= bonus.c \
 
@@ -50,7 +51,7 @@ HEADER		= minishell.h
 NAME		= minishell
 #BONUSNAME	= checker
 INCLUDES	= -I./libft -I./
-LINKS		= -I$(LIBFTPATH) -L$(LIBFTPATH) -lft -lreadline
+LINKS		= -I$(LIBFTPATH) -L$(LIBFTPATH) -lft -lreadline -lcurses
 
 SRC			= $(addprefix $(SRCDIR)/, $(SRCFILES))
 #BONUSSRC	= $(addprefix $(BONUSDIR)/, $(BONUSFILES))

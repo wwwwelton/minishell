@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/24 01:57:31 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/25 03:31:56 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,19 @@ void	read_doc(char *file, int *fd_tmp, int *fd)
 
 void	read_std_input(char *limiter, int file)
 {
-	int		fd[2];
-	char	*tmp;
+	int					fd[2];
+	char				*tmp;
+	struct sigaction	action;
 
 	pipe(fd);
 	dup2(STDIN_FILENO, fd[0]);
+	init_sigaction(&action, &sig_heredoc, SIGINT);
 	while (1)
 	{
 		ft_putstr_fd("here_doc> ", 1);
 		tmp = get_next_line(fd[0]);
+		if (!tmp)
+			ft_putstr_fd("\n", 1);
 		if (ft_strncmp(tmp, limiter, ft_strlen(limiter)) == 0
 			&& tmp[ft_strlen(limiter)] == '\n')
 		{

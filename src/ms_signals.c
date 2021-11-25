@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 09:35:05 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/25 03:37:24 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,17 @@ void	sig_exec(int sig)
 
 void	sig_heredoc(int sig)
 {
-	ftex_minprintf("%d", sig);
+	char	str[1];
+
+	str[0] = '\0';
+	if (sig == SIGINT)
+		tputs(str, 0, &ms_putchar);
 }
 
 void	init_sigaction(struct sigaction *action, void (*handler)(int), int sig)
 {
 	action->sa_handler = handler;
+	action->sa_flags = 0;
+		sigemptyset(&action->sa_mask);
 	sigaction(sig, action, NULL);
 }

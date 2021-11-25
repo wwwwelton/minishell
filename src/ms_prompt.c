@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 09:32:55 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/25 02:36:57 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	*prompt_loop(char *line, char **lastline)
 			ftex_null_ptr((void **)&line);
 		}
 	}
+	init_sigaction(&action, SIG_IGN, SIGINT);
 	free(cwd);
 	return (line);
 }
