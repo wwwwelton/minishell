@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:29:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/26 00:39:28 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/26 02:25:59 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 char	**g_envp;
 
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
 	t_data		*data;
 
+	(void)argc;
+	(void)argv;
+	g_envp = envp;
 	init_data(&data);
 	// printfunctions(head);
 	while (1)
