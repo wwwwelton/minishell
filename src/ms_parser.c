@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/25 07:31:56 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:37:15 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,7 @@ static char
 	{
 		accesspath[i] = test_access(path, cmd[i][0]);
 		if (!accesspath[i])
-		{
 			accesspath[i] = ft_strdup(cmd[i][0]);
-			// cleanup(data, errno);
-		}
 		++i;
 	}
 	accesspath[i] = NULL;
