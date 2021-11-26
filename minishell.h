@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/26 00:42:18 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/26 06:05:49 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_data
 void	minishell(t_data *data);
 char	*prompt_user(char **lastline, char **envp);
 void	parser(t_data *data, char *line);
-char	***translate(t_pat *pat, char ***cmd, char **envp);
+void	translate(t_pat *pat, char ***cmd, char **envp);
 int		executer(t_data *data);
 
 //signals
@@ -134,8 +134,8 @@ void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd);
 char	*replace_quoted(t_pat *pat, char *line);
 char	*single_quotes(t_pat *pat, char *line, int i);
 char	*find_stars(char *cmd);
-char	***restore_quoted(t_pat *pat, char ***cmd);
-char	***trim_quotes(char ***cmd);
+void	restore_quoted(t_pat *pat, char ***cmd);
+void	trim_quotes(char ***cmd);
 
 //builtins
 int		alt_echo(char **str, char **envp);

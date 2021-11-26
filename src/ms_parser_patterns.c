@@ -34,7 +34,7 @@ char	*double_quotes(t_pat *pat, char *line, int i)
 	return (line);
 }
 
-static char	**restore_split(t_pat *pat, char **cmd)
+void	restore_split(t_pat *pat, char **cmd)
 {
 	int	i;
 
@@ -53,29 +53,29 @@ static char	**restore_split(t_pat *pat, char **cmd)
 			if (!pat->backup[pat->i])
 			{
 				pat->i = 0;
-				return (cmd);
+				return ;
 			}
 		}
 		else
 			i++;
 	}
-	return (cmd);
+	return ;
 }
 
-char	***restore_quoted(t_pat *pat, char ***cmd)
+void	restore_quoted(t_pat *pat, char ***cmd)
 {
 	int	i;
 
 	i = 0;
 	pat->i = 0;
 	if (!pat->backup[0])
-		return (cmd);
+		return ;
 	while (pat->backup[pat->i])
 	{
-		cmd[i] = restore_split(pat, cmd[i]);
+		restore_split(pat, cmd[i]);
 		i++;
 	}
-	return (cmd);
+	return ;
 }
 
 char	*replace_quoted(t_pat *pat, char *line)

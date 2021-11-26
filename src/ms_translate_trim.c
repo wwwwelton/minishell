@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 09:10:33 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/21 12:47:48 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/26 06:04:29 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static char	*find_quotes(char *str)
 	return (str);
 }
 
-char	***trim_quotes(char ***cmd)
+void	trim_quotes(char ***cmd)
 {
 	int	i;
 	int	j;
@@ -90,5 +90,5 @@ char	***trim_quotes(char ***cmd)
 			cmd[i][j] = find_quotes(cmd[i][j]);
 		j = -1;
 	}
-	return (cmd);
+	return ;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/26 01:37:15 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/26 06:02:58 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	parser(t_data *data, char *line)
 		data->cmd[i] = ft_split(data->presplit[i], ' ');
 	}
 	data->cmd[i] = NULL;
-	data->cmd = restore_quoted(data->pat, data->cmd);
+	restore_quoted(data->pat, data->cmd);
 	data->accesspath = parse_access(data->path, data->cmd, cmd_count);
 	free(line);
 }
