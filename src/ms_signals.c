@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/25 04:00:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:00:52 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,8 @@ void	sig_prompt(int sig)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
+		set_env_val("?", "130", g_envp);
 	}
-}
-
-void	sig_exec(int sig)
-{
-	ftex_minprintf("%d", sig);
 }
 
 void	sig_heredoc(int sig)
@@ -34,7 +30,10 @@ void	sig_heredoc(int sig)
 
 	str[0] = '\0';
 	if (sig == SIGINT)
+	{
 		tputs(str, 0, &ms_putchar);
+		set_env_val("?", "130", g_envp);
+	}
 }
 
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig)

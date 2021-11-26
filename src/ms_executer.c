@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_executer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/21 12:46:59 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:33:22 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ static int	set_return_value(int code, t_data *data, int i)
 {
 	char	*value;
 
+	if (code == 11)
+		code = 130;
+	if (code == 256)
+		code = 1;
 	value = ft_itoa(code);
 	if (code)
 		data->flags[i]->error = code;
@@ -58,8 +62,8 @@ int	executer(t_data *data)
 	int		fd_tmp;
 
 	code = 0;
-	i = -1;
 	fd_tmp = STDIN_FILENO;
+	i = -1;
 	while (data->cmd[++i])
 	{
 		if (data->flags[i]->system_cmd)

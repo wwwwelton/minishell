@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_executer_system.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/25 04:00:15 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/26 01:30:21 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 		if (execve(data->accesspath[i], data->cmd[i], data->alt_env) == -1)
 			exit_code = p_error(data->cmd[i][0]);
 	}
-	waitpid(-1, &exit_code, 0);
+	waitpid(pid, &exit_code, 0);
 	fd_tmp[0] = fd[0];
 	close(fd[1]);
 	write_to_files(data, i);

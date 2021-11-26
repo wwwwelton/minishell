@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/25 03:58:35 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/26 00:42:18 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # include <sys/wait.h>
 # include <signal.h>
 # include <term.h>
+
+extern char					**g_envp;
 
 typedef struct sigaction	t_sigaction;
 
@@ -97,7 +99,6 @@ int		executer(t_data *data);
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig);
 void	sig_heredoc(int sig);
 void	sig_prompt(int sig);
-void	sig_exec(int sig);
 
 //structures and memory management
 void	init_builtins(t_builtin **head);
