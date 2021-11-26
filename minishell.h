@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/26 06:05:49 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/26 06:14:04 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ typedef struct s_data
 
 //controllers
 void	minishell(t_data *data);
-char	*prompt_user(char **lastline, char **envp);
-void	parser(t_data *data, char *line);
+char	*prompt(char **lastline, char **envp);
+void	parse(t_data *data, char *line);
 void	translate(t_pat *pat, char ***cmd, char **envp);
-int		executer(t_data *data);
+int		execute(t_data *data);
 
 //signals
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig);

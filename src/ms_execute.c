@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_executer.c                                      :+:      :+:    :+:   */
+/*   ms_execute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -55,7 +55,7 @@ static void	execute_builtin_command(int *fd_tmp, int *code, t_data *data, int i)
 	set_return_value(*code, data, i);
 }
 
-int	executer(t_data *data)
+int	execute(t_data *data)
 {
 	int		i;
 	int		code;

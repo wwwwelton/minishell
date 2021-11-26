@@ -10,10 +10,10 @@ SRCFILES	= minishell.c \
 			  ms_prompt.c \
 			  ms_prompt_validate.c \
 			  ms_prompt_buf.c \
-			  ms_parser.c \
-			  ms_parser_patterns.c \
-			  ms_parser_presplit.c \
-			  ms_parser_flags.c \
+			  ms_parse.c \
+			  ms_parse_patterns.c \
+			  ms_parse_presplit.c \
+			  ms_parse_flags.c \
 			  ms_utils.c \
 			  ms_utils_env.c \
 			  ms_utils_print.c \
@@ -27,13 +27,13 @@ SRCFILES	= minishell.c \
 			  ms_translate.c \
 			  ms_translate_trim.c \
 			  ms_translate_star.c \
-			  ms_executer.c \
-			  ms_executer_system.c \
-			  ms_executer_builtin.c \
+			  ms_execute.c \
+			  ms_execute_system.c \
+			  ms_execute_builtin.c \
 			  ms_reinit.c \
 			  ms_error.c \
-			  ms_executer_dup_utils.c \
-			  ms_executer_dup.c \
+			  ms_execute_dup_utils.c \
+			  ms_execute_dup.c \
 			  ms_signals.c \
 			  ms_signals_utils.c \
 

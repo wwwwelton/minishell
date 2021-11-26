@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_parser.c                                        :+:      :+:    :+:   */
+/*   ms_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -94,7 +94,7 @@ char	*empty_command_handler(t_flags *flags, char *str)
 	return (ft_strdup(""));
 }
 
-void	parser(t_data *data, char *line)
+void	parse(t_data *data, char *line)
 {
 	int		cmd_count;
 	int		i;

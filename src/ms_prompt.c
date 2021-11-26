@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/25 03:59:11 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/26 06:14:04 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*store_commands(char *line, char *buf)
 	return (line);
 }
 
-char	*prompt_user(char **lastline, char **envp)
+char	*prompt(char **lastline, char **envp)
 {
 	static char	buf[BUFFER_SIZE];
 	char		*line;
