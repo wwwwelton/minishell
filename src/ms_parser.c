@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 23:23:41 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/25 04:31:43 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/25 07:31:56 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,12 @@ static char	**parse_path(char **envp)
 	char	*path;
 
 	i = 0;
-	while (envp[i])
+	path = get_env_val("PATH", envp);
+	ret = ft_split(path, ':');
+	if (ret)
 	{
-		if (!ft_strncmp(envp[i], "PATH", 4))
-		{
-			path = get_env_val("PATH", envp);
-			ret = ft_split(path, ':');
-			free(path);
-			return (ret);
-		}
-		i++;
+		free(path);
+		return (ret);
 	}
 	ret = (char **)malloc(sizeof(char *) * 2);
 	ret[0] = ft_strdup("");
