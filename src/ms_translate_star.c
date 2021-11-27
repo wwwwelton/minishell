@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:02:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 02:19:40 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 09:25:09 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ static char	*get_files(int fd)
 		if (line)
 			res = ftex_strmerge(res, line);
 	}
-	ftex_tr(res, '\t', ' ');
-	ftex_tr(res, '\n', ' ');
+	ftex_tr(res, "\n\t", " ");
 	close (fd);
 	return (res);
 }

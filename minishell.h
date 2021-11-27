@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/26 06:14:04 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 09:26:11 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int		len_to_space(char *str);
 void	print_matrix(char ***cmd);
 void	printsplit(char **split, char *header);
 void	free_splited_mat(char **mat);
-void	ftex_tr(char *str, char del, char replace);
 int		is_multiple_commands(char *buf);
 int		command_size(char *buf);
 int		ms_putchar(int c);

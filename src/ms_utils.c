@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 02:00:44 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 09:24:16 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,3 @@ void	free_splited_mat(char **mat)
 	}
 }
 
-void	ftex_tr(char *str, char del, char replace)
-{
-	if (!str)
-		return ;
-	while (*str)
-	{
-		if (*str == del)
-			*str = replace;
-		str++;
-	}
-}
