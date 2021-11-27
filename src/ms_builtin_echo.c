@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/12 20:28:36 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/27 01:50:41 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	print_new_line(int flag)
 		ft_putstr_fd("\n", 1);
 }
 
-int	alt_echo(char **str, char **envp)
+int	alt_echo(char **str, t_data *data)
 {
 	int	i;
 	int	new_line;
 	int	printed_a_line;
 
-	(void)envp;
+	(void)data;
 	i = 0;
 	new_line = 1;
 	printed_a_line = 0;

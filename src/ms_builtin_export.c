@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/16 21:48:28 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/27 16:03:16 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ static int	is_alphanumeric(char *str)
 	return (1);
 }
 
-int	alt_export(char **str, char **envp)
+int	alt_export(char **str, t_data *data)
 {
 	int		i;
 	int		exit_code;
 	char	**tmp;
 
 	if (str && !str[1])
-		return (alt_env(str, envp));
+		return (alt_env(str, data));
 	exit_code = 0;
 	i = 0;
 	while (str[++i])
@@ -51,7 +51,7 @@ int	alt_export(char **str, char **envp)
 			exit_code = 1;
 			continue ;
 		}
-		set_env(tmp[0], str[i], envp);
+		set_env(tmp[0], str[i], data->alt_env);
 		free_splited_mat(tmp);
 	}
 	return (exit_code);

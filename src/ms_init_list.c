@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 01:30:54 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/25 06:16:00 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 01:53:14 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// void	printfunctions(t_builtin *head)
-// {
-// 	while (head)
-// 	{
-// 		ftex_minprintf("%s", head->name);
-// 		head->f(head->name, head->alt_env);
-// 		head = head->next;
-// 	}
-// }
 
 char	**init_names(void)
 {

@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/17 00:08:50 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/27 01:50:16 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*get_dir(char **str, char **envp)
 	return (home);
 }
 
-int	alt_cd(char **str, char **envp)
+int	alt_cd(char **str, t_data *data)
 {
 	char	*old_dir;
 	char	*cur_dir;
@@ -83,7 +83,7 @@ int	alt_cd(char **str, char **envp)
 
 	if (too_many_arguments(str))
 		return (EXIT_FAILURE);
-	new_dir = get_dir(str, envp);
+	new_dir = get_dir(str, data->alt_env);
 	old_dir = get_current_dir();
 	if (chdir(new_dir))
 	{
@@ -95,8 +95,8 @@ int	alt_cd(char **str, char **envp)
 	cur_dir = get_current_dir();
 	if (ft_strncmp(old_dir, cur_dir, ft_strlen(old_dir)))
 	{
-		update_env_dir("OLDPWD", old_dir, envp);
-		update_env_dir("PWD", cur_dir, envp);
+		update_env_dir("OLDPWD", old_dir, data->alt_env);
+		update_env_dir("PWD", cur_dir, data->alt_env);
 	}
 	ftex_null_ptr((void *)&old_dir);
 	ftex_null_ptr((void *)&cur_dir);

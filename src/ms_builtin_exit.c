@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/12 17:14:27 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/27 01:51:42 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ static void	printf_invalid_parameter(char *str)
 	ft_putendl_fd(": numeric argument required", 2);
 }
 
-int	alt_exit(char **str, char **envp)
+int	alt_exit(char **str, t_data *data)
 {
-	(void)envp;
+	(void)data;
 	if (too_many_arguments(str))
 		exit (EXIT_FAILURE);
 	if (str[1] && !is_numeric(str[1]))

@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/12 02:01:51 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/27 01:52:33 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	unset_env(char *value, char **envp)
 	envp[i] = NULL;
 }
 
-int	alt_unset(char **str, char **envp)
+int	alt_unset(char **str, t_data *data)
 {
 	int	i;
 	int	exit_code;
@@ -72,7 +72,7 @@ int	alt_unset(char **str, char **envp)
 			exit_code = 1;
 			continue ;
 		}
-		unset_env(str[i], envp);
+		unset_env(str[i], data->alt_env);
 	}
 	return (exit_code);
 }

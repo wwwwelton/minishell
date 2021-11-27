@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 09:33:11 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:00:58 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,6 @@ typedef struct s_flags
 	int			error;
 }	t_flags;
 
-typedef struct s_builtin
-{
-	char				*name;
-	int					(*f)(char **, char **);
-	struct s_builtin	*next;
-}	t_builtin;
-
 typedef struct s_pat
 {
 	char	*backup[50];
@@ -85,8 +78,15 @@ typedef struct s_data
 	int					star;
 	t_pat				*pat;
 	t_flags				**flags;
-	t_builtin			*head;
+	void				*head;
 }	t_data;
+
+typedef struct s_builtin
+{
+	char				*name;
+	int					(*f)(char **, t_data *);
+	struct s_builtin	*next;
+}	t_builtin;
 
 //controllers
 void	minishell(t_data *data);
@@ -137,14 +137,14 @@ void	restore_quoted(t_pat *pat, char ***cmd);
 void	trim_quotes(char ***cmd);
 
 //builtins
-int		alt_echo(char **str, char **envp);
-int		alt_cd(char **str, char **envp);
-int		alt_pwd(char **str, char **envp);
-int		alt_env(char **str, char **envp);
-int		alt_unset(char **str, char **envp);
-int		alt_exit(char **str, char **envp);
-int		alt_export(char **str, char **envp);
-int		alt_minishell(char **str, char **envp);
+int		alt_echo(char **str, t_data *data);
+int		alt_cd(char **str, t_data *data);
+int		alt_pwd(char **str, t_data *data);
+int		alt_env(char **str, t_data *data);
+int		alt_unset(char **str, t_data *data);
+int		alt_exit(char **str, t_data *data);
+int		alt_export(char **str, t_data *data);
+int		alt_minishell(char **str, t_data *data);
 
 //builtin helpers
 void	set_env(char *var, char *value, char **envp);
