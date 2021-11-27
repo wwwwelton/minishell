@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 16:21:37 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:37:25 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	cleanup(t_data *data, int code)
 	reinit(data);
 	deinit_builtins((t_builtin *)data->head);
 	free(data->pat);
+	free(data->lastline);
 	i = -1;
 	while (data->alt_env[++i])
 		free(data->alt_env[i]);
@@ -44,6 +45,7 @@ static void	free_redirs(t_flags *flags)
 {
 	int	i;
 
+	i = -1;
 	i = -1;
 	while (flags->redir_in[++i].file_in)
 		free(flags->redir_in[++i].file_in);
