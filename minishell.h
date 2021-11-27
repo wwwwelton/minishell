@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 16:00:58 by wleite           ###   ########.fr       */
+/*   Updated: 2021/11/27 16:21:56 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	init_builtins(t_builtin **head);
 void	init_pat(t_pat **pat);
 void	init_data(t_data **data);
 void	init_flags(t_flags **flags, int cmds);
-void	cleanup(t_data *data);
+int		cleanup(t_data *data, int code);
 void	reinit(t_data *data);
 
 //support functions

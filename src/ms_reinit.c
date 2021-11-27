@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 16:15:49 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:21:37 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	deinit_builtins(t_builtin *head)
 	}
 }
 
-void	cleanup(t_data *data)
+int	cleanup(t_data *data, int code)
 {
 	int	i;
 
@@ -36,7 +36,8 @@ void	cleanup(t_data *data)
 	while (data->alt_env[++i])
 		free(data->alt_env[i]);
 	free(data);
-	exit(EXIT_SUCCESS);
+	exit(code);
+	return (0);
 }
 
 static void	free_redirs(t_flags *flags)
