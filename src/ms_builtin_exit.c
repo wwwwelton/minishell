@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/27 16:21:15 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:40:03 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	alt_exit(char **str, t_data *data)
 {
 	(void)data;
 	if (too_many_arguments(str))
-		return  (cleanup(data, EXIT_FAILURE));
+		return (cleanup(data, EXIT_FAILURE));
 	if (str[1] && !is_numeric(str[1]))
 	{
 		printf_invalid_parameter(str[1]);
