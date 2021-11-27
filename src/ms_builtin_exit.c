@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/27 16:40:03 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:52:11 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	alt_exit(char **str, t_data *data)
 		return (cleanup(data, EXIT_FAILURE));
 	}
 	else if (str[1])
-		return (ft_atoi(str[1]));
+		return (cleanup(data, ft_atoi(str[1])));
 	else
 		return (cleanup(data, EXIT_SUCCESS));
 	return (cleanup(data, EXIT_SUCCESS));
