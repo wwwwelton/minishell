@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:26:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 09:09:54 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 09:31:55 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	command_size(char *buf)
 	return (i);
 }
 
-int	is_multiple_commands(char *line)
+t_bool	is_multiple_commands(char *line)
 {
 	int	i;
 
@@ -39,11 +39,11 @@ int	is_multiple_commands(char *line)
 		if (line[i] != '|' && line[i] != '&')
 			continue ;
 		if (line[i + 1] == '|')
-			return (i);
+			return (true);
 		if (line[i + 1] == '&')
-			return (i);
+			return (true);
 	}
-	return (0);
+	return (false);
 }
 
 void	skip_command(char *buf)
