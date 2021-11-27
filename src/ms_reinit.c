@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/24 02:03:32 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:15:49 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	cleanup(t_data *data)
 	int	i;
 
 	reinit(data);
-	deinit_builtins(data->head);
+	deinit_builtins((t_builtin *)data->head);
 	free(data->pat);
 	i = -1;
 	while (data->alt_env[++i])

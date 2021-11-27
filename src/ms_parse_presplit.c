@@ -93,7 +93,8 @@ char	*pre_split(t_data *data, char *line)
 		data->presplit[1] = NULL;
 	}
 	while (data->presplit[++i])
-		identify_flags(data->flags[i], data->head, data->presplit[i]);
+		identify_flags(data->flags[i],
+			(t_builtin *)data->head, data->presplit[i]);
 	clean_command(data->flags, data->presplit);
 	return (line);
 }
