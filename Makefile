@@ -58,9 +58,9 @@ SRC			= $(addprefix $(SRCDIR)/, $(SRCFILES))
 OBJ			= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 #BONUSOBJ	= $(BONUSSRC:$(BONUSDIR)/%.c=$(OBJDIR)/%.o)
 
-all:		mkdir $(NAME)
+all:		$(NAME)
 
-$(NAME):	$(OBJ) $(HEADER)
+$(NAME):	$(LIBFT) $(OBJ) $(HEADER)
 			make -C $(LIBFTPATH) all
 			$(CC) $(CFLAGS) main.c $(OBJ) -o $(NAME) $(LINKS)
 
@@ -81,12 +81,12 @@ mkdir:
 
 re:			fclean all
 
-run:		mkdir $(OBJ) $(HEADER)
+run:		$(LIBFT) $(OBJ) $(HEADER)
 			make -C libft
 			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
 			./$(NAME)
 
-runv:		mkdir $(OBJ) $(HEADER)
+runv:		$(LIBFT) $(OBJ) $(HEADER)
 			make -C libft
 			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
 			valgrind -q --leak-check=full --track-origins=yes ./$(NAME)
