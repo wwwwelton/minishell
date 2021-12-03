@@ -3,3 +3,6 @@ obj
 minishell
 .vscode
 *.o
+README.md
+license
+images
