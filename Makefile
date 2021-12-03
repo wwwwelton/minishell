@@ -81,12 +81,12 @@ mkdir:
 
 re:			fclean all
 
-run:		$(LIBFT) $(OBJ) $(HEADER)
+run:		mkdir $(OBJ) $(HEADER)
 			make -C libft
 			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
 			./$(NAME)
 
-runv:		$(LIBFT) $(OBJ) $(HEADER)
+runv:		mkdir $(OBJ) $(HEADER)
 			make -C libft
 			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
 			valgrind -q --leak-check=full --track-origins=yes ./$(NAME)
