@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 16:21:56 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/03 15:32:48 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int		execute(t_data *data);
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig);
 void	sig_heredoc(int sig);
 void	sig_prompt(int sig);
+void	sig_ign(int sig);
 
 //structures and memory management
 void	init_builtins(t_builtin **head);

@@ -19,8 +19,6 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 	pid_t		pid;
 	t_sigaction	action;
 
-	init_sigaction(&action, SIG_IGN, SIGINT);
-	init_sigaction(&action, SIG_IGN, SIGQUIT);
 	if (pipe(fd) == -1)
 		perror("pipe");
 	pid = fork();
@@ -34,6 +32,8 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 		if (execve(data->accesspath[i], data->cmd[i], data->alt_env) == -1)
 			exit_code = p_error(data->cmd[i][0]);
 	}
+	init_sigaction(&action, &sig_ign, SIGINT);
+	init_sigaction(&action, &sig_ign, SIGQUIT);
 	waitpid(pid, &exit_code, 0);
 	fd_tmp[0] = fd[0];
 	close(fd[1]);

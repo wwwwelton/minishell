@@ -17,6 +17,8 @@ static int	set_return_value(int code, t_data *data, int i)
 	char	*value;
 
 	if (code == 11)
+		code = 0;
+	if (code > 255)
 		code = 130;
 	if (code == 256)
 		code = 1;
