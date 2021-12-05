@@ -16,12 +16,6 @@ static int	set_return_value(int code, t_data *data, int i)
 {
 	char	*value;
 
-	if (code == 11)
-		code = 0;
-	if (code > 255)
-		code = 130;
-	if (code == 256)
-		code = 1;
 	value = ft_itoa(code);
 	if (code)
 		data->flags[i]->error = code;
@@ -48,7 +42,10 @@ static void	execute_system_command(int *fd_tmp, int *code, t_data *data, int i)
 		set_return_value(*code, data, i);
 	}
 	else
+	{
 		*code = set_return_value(127, data, i);
+		// flush_fd_in(fd_tmp[0], data, i);
+	}
 }
 
 static void	execute_builtin_command(int *fd_tmp, int *code, t_data *data, int i)

@@ -19,6 +19,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 	pid_t		pid;
 	t_sigaction	action;
 
+	exit_code = RETURN_130;
 	if (pipe(fd) == -1)
 		perror("pipe");
 	pid = fork();
@@ -35,6 +36,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 	init_sigaction(&action, &sig_ign, SIGINT);
 	init_sigaction(&action, &sig_ign, SIGQUIT);
 	waitpid(pid, &exit_code, 0);
+	exit_code = WEXITSTATUS(exit_code);
 	fd_tmp[0] = fd[0];
 	close(fd[1]);
 	write_to_files(data, i);

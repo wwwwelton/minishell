@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/03 15:32:48 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/04 20:59:50 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define NEWPAT "___0x4242___"
 # define TMP_FILE "./tmp"
 # define BUFFER_SIZE 1000
+# define RETURN_130 33500
 
 # include "libft.h"
 # include <stdio.h>
@@ -122,6 +123,7 @@ void	free_splited_mat(char **mat);
 t_bool	is_multiple_commands(char *buf);
 int		command_size(char *buf);
 int		ms_putchar(int c);
+void	flush_fd_in(int fd, t_data *data, int i);
 
 //prompt
 char	*prompt_loop(char *line, char **lastline);
