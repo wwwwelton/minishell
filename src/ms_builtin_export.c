@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/27 16:03:16 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/04 22:04:06 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	is_alphanumeric(char *str)
 
 	i = -1;
 	while (str[++i])
-		if (!ft_isalnum(str[i]))
+		if (!ft_isalnum(str[i]) && str[i] != ':')
 			return (0);
 	return (1);
 }
