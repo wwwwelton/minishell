@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/27 01:50:16 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/04 22:09:08 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,8 @@ int	alt_cd(char **str, t_data *data)
 		return (EXIT_FAILURE);
 	}
 	cur_dir = get_current_dir();
-	if (ft_strncmp(old_dir, cur_dir, ft_strlen(old_dir)))
-	{
-		update_env_dir("OLDPWD", old_dir, data->alt_env);
-		update_env_dir("PWD", cur_dir, data->alt_env);
-	}
+	update_env_dir("OLDPWD", old_dir, data->alt_env);
+	update_env_dir("PWD", cur_dir, data->alt_env);
 	ftex_null_ptr((void *)&old_dir);
 	ftex_null_ptr((void *)&cur_dir);
 	ftex_null_ptr((void *)&new_dir);
