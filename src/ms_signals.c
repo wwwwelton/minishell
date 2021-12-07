@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/03 16:07:59 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/07 15:31:17 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,8 @@ void	sig_ign(int sig)
 
 void	sig_heredoc(int sig)
 {
-	char	str[1];
-
-	str[0] = '\0';
 	if (sig == SIGINT)
-		tputs(str, 0, &ms_putchar);
+		exit(130);
 }
 
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig)

@@ -12,6 +12,14 @@
 
 #include "minishell.h"
 
+static void	handle_exit_code(pid_t pid, int *exit_code, t_sigaction *action)
+{
+	init_sigaction(action, &sig_ign, SIGINT);
+	init_sigaction(action, &sig_ign, SIGQUIT);
+	waitpid(pid, exit_code, 0);
+	*exit_code = WEXITSTATUS(*exit_code);
+}
+
 int	execute_system(int *fd_tmp, t_data *data, int i)
 {
 	int			exit_code;
@@ -33,10 +41,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 		if (execve(data->accesspath[i], data->cmd[i], data->alt_env) == -1)
 			exit_code = p_error(data->cmd[i][0]);
 	}
-	init_sigaction(&action, &sig_ign, SIGINT);
-	init_sigaction(&action, &sig_ign, SIGQUIT);
-	waitpid(pid, &exit_code, 0);
-	exit_code = WEXITSTATUS(exit_code);
+	handle_exit_code(pid, &exit_code, &action);
 	fd_tmp[0] = fd[0];
 	close(fd[1]);
 	write_to_files(data, i);

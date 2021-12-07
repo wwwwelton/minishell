@@ -42,10 +42,7 @@ static void	execute_system_command(int *fd_tmp, int *code, t_data *data, int i)
 		set_return_value(*code, data, i);
 	}
 	else
-	{
 		*code = set_return_value(127, data, i);
-		// flush_fd_in(fd_tmp[0], data, i);
-	}
 }
 
 static void	execute_builtin_command(int *fd_tmp, int *code, t_data *data, int i)
