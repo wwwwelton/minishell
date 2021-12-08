@@ -90,6 +90,6 @@ run:		mkdir $(OBJ) $(HEADER)
 runv:		mkdir $(OBJ) $(HEADER)
 			make -C libft
 			$(CC) main.c $(OBJ) -o $(NAME) $(INCLUDES) $(LINKS)
-			valgrind -q --leak-check=full --track-origins=yes ./$(NAME)
+			valgrind --leak-check=full ./$(NAME)
 
 .PHONY:		all clean fclean re

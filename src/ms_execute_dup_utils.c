@@ -39,6 +39,18 @@ void	read_doc(char *file, int *fd_tmp, int *fd)
 	close(fd[1]);
 }
 
+void	read_here_doc(int *fd_tmp, int *fd)
+{
+	int	file_in;
+
+	file_in = open("./tmp", O_RDONLY);
+	if (fd_tmp[0] != STDIN_FILENO)
+		read_previous_pipe(fd_tmp[0], fd[1]);
+	read_previous_pipe(file_in, fd[1]);
+	fd_tmp[0] = fd[0];
+	close(fd[1]);
+}
+
 void	read_std_input(char *limiter, int file)
 {
 	int			fd[2];

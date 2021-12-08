@@ -24,14 +24,18 @@ int	dup_in(int *fd_tmp, t_data *data, int i)
 	file_in = data->flags[i]->redir_in[j].file_in;
 	if (heredoc || file_in)
 	{
+
 		while (heredoc || file_in)
 		{
 			pipe(fd);
 			heredoc = data->flags[i]->redir_in[j].heredoc;
 			file_in = data->flags[i]->redir_in[j].file_in;
 			if (heredoc)
+			{
 				here_doc(fd_tmp, data, i, j);
-			if (file_in)
+				read_here_doc(fd_tmp, fd);
+			}
+			else if (file_in)
 				read_doc(file_in, fd_tmp, fd);
 			j++;
 		}
