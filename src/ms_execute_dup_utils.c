@@ -32,8 +32,6 @@ void	read_doc(char *file, int *fd_tmp, int *fd)
 	int	file_in;
 
 	file_in = open(file, O_RDONLY);
-	if (file_in == -1)
-		return ;
 	if (fd_tmp[0] != STDIN_FILENO)
 		read_previous_pipe(fd_tmp[0], fd[1]);
 	read_previous_pipe(file_in, fd[1]);
@@ -90,25 +88,29 @@ void	read_previous_pipe(int fd_tmp, int file)
 	ftex_null_ptr((void *)&tmp);
 }
 
-int	create_all_files(t_data *data, int i)
+int	write_to_files(t_data *data, int i)
 {
 	int		fd_out;
-	int		out_append;
 	int		j;
+	int		out_append;
+	int		src_file;
 	char	*file_out;
 
-	j = 0;
+	j = 1;
 	file_out = data->flags[i]->redir_out[j].file_out;
 	while (file_out)
 	{
+		src_file = open(data->flags[i]->redir_out[0].file_out, O_RDONLY);
 		out_append = data->flags[i]->redir_out[j].out_append;
 		file_out = data->flags[i]->redir_out[j].file_out;
 		if (out_append)
 			fd_out = open(file_out, O_CREAT | O_WRONLY | O_APPEND, 0777);
-		else if (file_out)
+		else
 			fd_out = open(file_out, O_CREAT | O_WRONLY | O_TRUNC, 0777);
+		read_previous_pipe(src_file, fd_out);
 		close(fd_out);
+		close(src_file);
 		j++;
 	}
-	return (j - 2);
+	return (0);
 }

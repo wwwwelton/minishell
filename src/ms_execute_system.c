@@ -35,8 +35,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 		perror("fork");
 	else if (pid == 0)
 	{
-		if (dup_in(fd_tmp, data, i))
-			return (1);
+		dup_in(fd_tmp, data, i);
 		dup_out(fd, data, i);
 		close(fd[0]);
 		if (execve(data->accesspath[i], data->cmd[i], data->alt_env) == -1)
@@ -45,5 +44,6 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 	handle_exit_code(pid, &exit_code, &action);
 	fd_tmp[0] = fd[0];
 	close(fd[1]);
+	write_to_files(data, i);
 	return (exit_code);
 }

@@ -43,5 +43,6 @@ int	execute_builtin(int *fd_tmp, t_data *data, int i)
 	close(fd[1]);
 	dup2(backup[0], STDIN_FILENO);
 	dup2(backup[1], STDOUT_FILENO);
+	write_to_files(data, i);
 	return (exit_code);
 }
