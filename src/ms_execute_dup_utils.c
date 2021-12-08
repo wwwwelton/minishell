@@ -53,7 +53,10 @@ void	read_std_input(char *limiter, int file)
 		ft_putstr_fd("here_doc> ", 1);
 		tmp = get_next_line(fd[0]);
 		if (!tmp)
+		{
 			ft_putstr_fd("\n", 1);
+			exit (130);
+		}
 		if (ft_strncmp(tmp, limiter, ft_strlen(limiter)) == 0
 			&& tmp[ft_strlen(limiter)] == '\n')
 		{
