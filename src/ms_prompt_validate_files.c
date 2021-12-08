@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 01:43:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/08 01:44:55 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/08 01:59:09 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ t_bool	is_file_invalid(char *line)
 		file = ft_strchr(line, '<');
 		if (!file)
 			return (false);
-		line += file - line + 1;
+		line += file - line + 2;
+		if (file[1] == '<')
+			continue ;
 		file = filename(file);
 		if (access(file, R_OK))
 		{
