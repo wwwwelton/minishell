@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 16:37:25 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/08 16:11:23 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,11 @@ static void	free_redirs(t_flags *flags)
 	int	i;
 
 	i = -1;
-	i = -1;
 	while (flags->redir_in[++i].file_in)
-		free(flags->redir_in[++i].file_in);
+		free(flags->redir_in[i].file_in);
 	i = -1;
 	while (flags->redir_out[++i].file_out)
-		free(flags->redir_out[++i].file_out);
+		free(flags->redir_out[i].file_out);
 }
 
 void	reinit(t_data *data)
