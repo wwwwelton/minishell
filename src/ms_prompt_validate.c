@@ -6,27 +6,27 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 16:35:51 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/08 01:43:22 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_blank_line(char *line)
+t_bool	is_blank_line(char *line)
 {
 	int	i;
 
 	i = 0;
 	if (!line)
-		return (1);
+		return (true);
 	while (line[i] == ' ' || line[i] == '\t' || line[i] == '\n')
 		i++;
 	if (line[i] == '\0')
-		return (1);
-	return (0);
+		return (true);
+	return (false);
 }
 
-int	is_incorrect_redirection(char *line)
+t_bool	is_incorrect_redirection(char *line)
 {
 	int	len;
 
@@ -38,14 +38,14 @@ int	is_incorrect_redirection(char *line)
 		if (line[len] == '<' || line[len] == '>')
 		{
 			ft_putstr_fd("minishell: parse error", 2);
-			return (1);
+			return (true);
 		}
 		break ;
 	}
-	return (0);
+	return (false);
 }
 
-int	is_odd_quotes(char *line)
+t_bool	is_odd_quotes(char *line)
 {
 	int	i;
 	int	j;
@@ -65,23 +65,23 @@ int	is_odd_quotes(char *line)
 	if (i % 2 || j % 2)
 	{
 		ft_putstr_fd("minishell: close your quotes", 2);
-		return (1);
+		return (true);
 	}
-	return (0);
+	return (false);
 }
 
-int	equal_last_line(char *line, char **lastline)
+t_bool	equal_last_line(char *line, char **lastline)
 {
 	if (!*lastline)
 	{
 		*lastline = ft_strdup(line);
-		return (0);
+		return (false);
 	}
 	if (!ft_strncmp(line, *lastline, 300))
-		return (1);
+		return (true);
 	free(*lastline);
 	*lastline = ft_strdup(line);
-	return (0);
+	return (false);
 }
 
 t_bool	validate_line(char *line, char **lastline)
@@ -93,6 +93,8 @@ t_bool	validate_line(char *line, char **lastline)
 	if (is_incorrect_redirection(line))
 		return (false);
 	if (is_odd_quotes(line))
+		return (false);
+	if (is_file_invalid(line))
 		return (false);
 	return (true);
 }

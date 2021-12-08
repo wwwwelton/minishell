@@ -9,6 +9,7 @@ SRCFILES	= minishell.c \
 			  ms_builtins.c \
 			  ms_prompt.c \
 			  ms_prompt_validate.c \
+			  ms_prompt_validate_files.c \
 			  ms_prompt_buf.c \
 			  ms_parse.c \
 			  ms_parse_patterns.c \

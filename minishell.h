@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/07 23:14:55 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/08 01:43:41 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int		ms_putchar(int c);
 char	*prompt_loop(char *line, char **lastline);
 char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp);
 t_bool	validate_line(char *line, char **lastline);
+t_bool	is_file_invalid(char *line);
 
 //parsing
 char	*pre_split(t_data *data, char *line);
