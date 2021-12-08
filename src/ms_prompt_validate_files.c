@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 01:43:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/08 01:59:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/08 02:48:58 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*filename(char *line)
 
 	i = 0;
 	line++;
-	while (*line == ' ')
+	while (*line == ' ' && *line)
 		line++;
-	while (line[i] != ' ')
+	while (line[i] != ' ' && line[i])
 		i++;
 	ret = ft_substr(line, 0, i);
 	return (ret);
