@@ -66,8 +66,7 @@ $(OBJ_DIR)/%.o:		$(SOURCES_DIR)/%.c $(HEADER)
 all:				$(NAME)
 
 $(NAME):			$(LIBFT) $(OBJ_DIR) $(OBJECTS) $(HEADER)
-					$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(LINKS) -o $(NAME) \
-					$(INCLUDES)
+					$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(LINKS) -o $(NAME)
 
 $(LIBFT):
 					$(MAKE) -C $(LIBFT_PATH)
