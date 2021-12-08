@@ -39,18 +39,6 @@ void	read_doc(char *file, int *fd_tmp, int *fd)
 	close(fd[1]);
 }
 
-void	read_here_doc(int *fd_tmp, int *fd)
-{
-	int	file_in;
-
-	file_in = open("./tmp", O_RDONLY);
-	if (fd_tmp[0] != STDIN_FILENO)
-		read_previous_pipe(fd_tmp[0], fd[1]);
-	read_previous_pipe(file_in, fd[1]);
-	fd_tmp[0] = fd[0];
-	close(fd[1]);
-}
-
 void	read_std_input(char *limiter, int file)
 {
 	int			fd[2];
@@ -65,16 +53,12 @@ void	read_std_input(char *limiter, int file)
 		ft_putstr_fd("here_doc> ", 1);
 		tmp = get_next_line(fd[0]);
 		if (!tmp)
-		{
-			ft_putstr_fd("\n", 1);
-			exit (130);
-		}
+			here_doc_eof_handler();
 		if (ft_strncmp(tmp, limiter, ft_strlen(limiter)) == 0
 			&& tmp[ft_strlen(limiter)] == '\n')
 		{
 			ftex_null_ptr((void *)&tmp);
 			close(fd[0]);
-			tmp = get_next_line(fd[0]);
 			break ;
 		}
 		ft_putstr_fd(tmp, file);
@@ -117,7 +101,6 @@ int	write_to_files(t_data *data, int i)
 	{
 		src_file = open(data->flags[i]->redir_out[0].file_out, O_RDONLY);
 		out_append = data->flags[i]->redir_out[j].out_append;
-		file_out = data->flags[i]->redir_out[j].file_out;
 		if (out_append)
 			fd_out = open(file_out, O_CREAT | O_WRONLY | O_APPEND, 0777);
 		else
@@ -126,6 +109,7 @@ int	write_to_files(t_data *data, int i)
 		close(fd_out);
 		close(src_file);
 		j++;
+		file_out = data->flags[i]->redir_out[j].file_out;
 	}
 	return (0);
 }

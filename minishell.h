@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/08 02:42:07 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/08 18:43:36 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,8 +163,8 @@ void	read_std_input(char *limiter, int file);
 int		dup_in(int *fd_tmp, t_data *data, int i);
 int		dup_out(int *fd, t_data *data, int i);
 void	here_doc(int *fd_tmp, t_data *data, int i, int j);
+void	here_doc_eof_handler(void);
 void	read_doc(char *file, int *fd_tmp, int *fd);
-void	read_here_doc(int *fd_tmp, int *fd);
 int		write_to_files(t_data *data, int i);
 
 //error management

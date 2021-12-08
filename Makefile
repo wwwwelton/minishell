@@ -54,7 +54,7 @@ NAME			=	minishell
 CC				=	clang
 RM				=	rm -rf
 
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror -g3
 
 INCLUDES		=	-I./libft -I./
 
@@ -75,6 +75,9 @@ $(OBJ_DIR):
 					mkdir -p $(OBJ_DIR)
 
 run:				all
+					./$(NAME)
+
+runv:				all
 					valgrind --leak-check=full -s --trace-children=yes --error-exitcode=1 --track-origins=yes ./$(NAME)
 
 clean:
