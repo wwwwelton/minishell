@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 20:33:32 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/23 22:37:29 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/08 23:22:21 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*get_env_val(char *value, char **envp)
 	while (envp[++i])
 	{
 		tmp = ft_split(envp[i], '=');
-		if (!ft_strncmp(value, tmp[0], ft_strlen(tmp[0])))
+		if (!ft_strncmp(tmp[0], value, ft_strlen(value)))
 		{
 			val = ft_strdup(tmp[1]);
 			free_splited_mat(tmp);
