@@ -6,11 +6,24 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 16:43:49 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:10:02 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_bool	ft_isspace(char *str)
+{
+	if (!str)
+		return (true);
+	while (*str)
+	{
+		if (*str != ' ' || *str != '\t')
+			return (false);
+		str++;
+	}
+	return (true);
+}
 
 char	*prefix_cwd(char *cwd)
 {
@@ -42,7 +55,7 @@ char	*prompt_loop(char *line, char **lastline)
 				ft_putchar_fd('\n', 1);
 				exit(1);
 			}
-			if (*line != 0)
+			if (ft_isspace(line) == true)
 				ft_putstr_fd("\n", 1);
 			ftex_null_ptr((void **)&line);
 		}
