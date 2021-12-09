@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 01:43:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/08 02:48:58 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:15:59 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_bool	is_file_invalid(char *line)
 		if (access(file, R_OK))
 		{
 			ft_putstr_fd("Minishell: no such file or directory: ", 2);
-			ft_putstr_fd(file, 2);
+			ft_putendl_fd(file, 2);
 			free(file);
 			return (true);
 		}
