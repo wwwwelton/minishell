@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/08 22:11:17 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/09 15:21:52 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,11 @@ t_bool	is_odd_quotes(char *line)
 	return (false);
 }
 
-t_bool	equal_last_line(char *line, char **lastline)
-{
-	if (!*lastline)
-	{
-		*lastline = ft_strdup(line);
-		return (false);
-	}
-	if (!ft_strncmp(line, *lastline, 300))
-		return (true);
-	free(*lastline);
-	*lastline = ft_strdup(line);
-	return (false);
-}
-
 t_bool	validate_line(char *line, char **lastline)
 {
+	(void)lastline;
 	if (is_blank_line(line))
 		return (false);
-	if (equal_last_line(line, lastline) == 0)
-		add_history(line);
 	if (is_incorrect_redirection(line))
 		return (false);
 	if (is_odd_quotes(line))

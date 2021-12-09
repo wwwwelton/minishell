@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/08 18:43:36 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/09 15:25:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int		execute(t_data *data);
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig);
 void	sig_heredoc(int sig);
 void	sig_prompt(int sig);
+void	sig_prompt_quit(int sig);
 void	sig_ign(int sig);
 
 //structures and memory management
@@ -129,6 +130,8 @@ char	*prompt_loop(char *line, char **lastline);
 char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp);
 t_bool	validate_line(char *line, char **lastline);
 t_bool	is_file_invalid(char *line);
+char	*check_redir_spaces(char *line);
+char	*check_here_doc_spaces(char *line);
 
 //parsing
 char	*pre_split(t_data *data, char *line);

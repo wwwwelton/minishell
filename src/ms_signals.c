@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/07 15:31:17 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/09 15:25:22 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	sig_prompt(int sig)
 		rl_redisplay();
 		set_env_val("?", "130", g_envp);
 	}
+}
+
+void	sig_prompt_quit(int sig)
+{
+	ft_putchar_fd('\n', 1);
+	exit(sig);
 }
 
 void	sig_ign(int sig)
