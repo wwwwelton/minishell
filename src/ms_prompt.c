@@ -6,23 +6,37 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/08 22:15:03 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:52:46 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_bool	ft_isspace(char *str)
+char	*check_missing_spaces(char *line)
 {
-	if (!str)
-		return (true);
-	while (*str)
+	int	i;
+
+	i = -1;
+	while (line[++i])
 	{
-		if (*str != ' ' && *str != '\t')
-			return (false);
-		str++;
+		if (line[i] == '<')
+		{
+			if (i == 0 || line[i + 1] != ' ' || line [i - 1] != ' ')
+			{
+				line = ftex_str_replace_all(line, "<", "__0x424242");
+				line = ftex_str_replace_all(line, "__0x424242", " < ");
+			}
+		}
+		if (line[i] == '>')
+		{
+			if (i == 0 || line[i + 1] != ' ' || line[i - 1] != ' ')
+			{
+				line = ftex_str_replace_all(line, ">", "__0x424242");
+				line = ftex_str_replace_all(line, "__0x424242", " > ");
+			}
+		}
 	}
-	return (true);
+	return (line);
 }
 
 char	*prefix_cwd(char *cwd)
@@ -58,6 +72,7 @@ char	*prompt_loop(char *line, char **lastline)
 			ftex_null_ptr((void **)&line);
 		}
 	}
+	line = check_missing_spaces(line);
 	free(cwd);
 	return (line);
 }
