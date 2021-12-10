@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 02:48:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/09 15:49:21 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:00:11 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,11 @@ char	*check_redir_spaces(char *line)
 	while (line[++i])
 	{
 		if (line[i] == '<' && line[i + 1] == '<')
-			if (i == 0 || line[i + 2] != ' ' || line [i - 1] != ' ')
 				line = ftex_str_replace(line, "<<", "__0xDOCIN");
 		if (line[i] == '<')
 			if (i == 0 || line[i + 1] != ' ' || line[i - 1] != ' ')
 				line = ftex_str_replace(line, "<", "__0xREDIRIN");
 		if (line[i] == '>' && line[i + 1] == '>')
-			if (i == 0 || line[i + 2] != ' ' || line [i - 1] != ' ')
 				line = ftex_str_replace(line, ">>", "__0xDOCOUT");
 		if (line[i] == '>')
 			if (i == 0 || line[i + 1] != ' ' || line [i - 1] != ' ')
