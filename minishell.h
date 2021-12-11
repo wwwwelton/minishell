@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 03:41:55 by coder            ###   ########.fr       */
+/*   Updated: 2021/12/11 00:33:29 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 # define DQUOTES 34
 # define NEWPAT "___0x4242___"
 # define TMP_FILE "./tmp"
-# define BUFFER_SIZE 1000
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1000
+# endif
 # define RETURN_130 33500
 
 # include "libft.h"
