@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 00:33:29 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/11 01:53:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,6 @@ typedef struct s_flags
 {
 	t_redir_in	redir_in[20];
 	t_redir_out	redir_out[20];
-	char		*file_in;
-	char		*file_out;
-	int			out_append;
-	int			heredoc;
 	int			builtins;
 	int			system_cmd;
 	int			error;

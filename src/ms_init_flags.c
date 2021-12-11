@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 15:53:24 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/22 16:32:00 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/11 01:53:23 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ void	init_flags(t_flags **flags, int cmds)
 	i = 0;
 	while (i < cmds)
 	{
-		flags[i]->file_in = NULL;
-		flags[i]->file_out = NULL;
-		flags[i]->out_append = 0;
-		flags[i]->heredoc = 0;
 		flags[i]->builtins = 0;
 		flags[i]->system_cmd = 0;
 		flags[i]->error = 0;
