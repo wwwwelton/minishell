@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 03:41:17 by coder            ###   ########.fr       */
+/*   Updated: 2021/12/10 23:54:20 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	append_minishell_path(void)
 {
 	char	*shell;
-	char	*path;
+	char	*var;
 	char	*slash;
 
 	shell = get_env_val("_", g_envp);
@@ -23,10 +23,14 @@ static void	append_minishell_path(void)
 	ft_memset(slash, '\0', ft_strlen(slash));
 	shell = ftex_str_replace(shell, "/.", "");
 	shell = ftex_strmerge(ft_strdup(":"), shell);
-	path = get_env_val("PATH", g_envp);
-	path = ftex_strmerge(path, shell);
-	set_env_val("PATH", path, g_envp);
-	ftex_null_ptr((void *)&path);
+	var = get_env_val("PATH", g_envp);
+	var = ftex_strmerge(var, shell);
+	set_env_val("PATH", var, g_envp);
+	ftex_null_ptr((void *)&var);
+	var = get_env_val("LOGNAME", g_envp);
+	set_env_val("USER", var, g_envp);
+	ftex_null_ptr((void *)&var);
+
 }
 
 void	init_env(t_data *node)
