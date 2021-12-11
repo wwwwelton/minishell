@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/10 23:54:20 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/11 04:00:57 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ static void	append_minishell_path(void)
 	var = ftex_strmerge(var, shell);
 	set_env_val("PATH", var, g_envp);
 	ftex_null_ptr((void *)&var);
-	var = get_env_val("LOGNAME", g_envp);
-	set_env_val("USER", var, g_envp);
-	ftex_null_ptr((void *)&var);
-
 }
 
 void	init_env(t_data *node)
