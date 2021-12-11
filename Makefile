@@ -52,7 +52,7 @@ OBJECTS			=	$(SOURCES:$(SOURCES_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 NAME			=	minishell
 
-CC				=	clang
+CC				=	gcc
 RM				=	rm -rf
 
 CFLAGS			=	-Wall -Wextra -Werror -g3

@@ -14,11 +14,9 @@
 
 static char	**parse_path(char **envp)
 {
-	int		i;
 	char	**ret;
 	char	*path;
 
-	i = 0;
 	path = get_env_val("PATH", envp);
 	ret = ft_split(path, ':');
 	if (ret)

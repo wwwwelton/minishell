@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:02:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 09:25:09 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/10 23:49:07 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,8 @@ static char	*fetch_ls(void)
 
 char	*find_stars(char *line)
 {
-	int		i;
-	int		j;
 	char	*files;
 
-	i = -1;
-	j = -1;
 	if (!ft_strchr(line, '*'))
 		return (line);
 	files = fetch_ls();
