@@ -6,7 +6,6 @@ SOURCES_FILES	=	minishell.c \
 					ms_init_data.c \
 					ms_init_patterns.c \
 					ms_init_flags.c \
-					ms_builtins.c \
 					ms_prompt.c \
 					ms_prompt_validate.c \
 					ms_prompt_validate_files.c \

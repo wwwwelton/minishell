@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 03:44:55 by coder            ###   ########.fr       */
+/*   Updated: 2021/12/11 02:49:41 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*prompt_loop(char *line, char **lastline)
 	{
 		line = readline(cwd);
 		if (!line)
-			sig_prompt_quit(EXIT_SUCCESS);
+			sig_prompt(EXIT_SUCCESS);
 		if (equal_last_line(line, lastline) == 0)
 			add_history(line);
 		line = check_redir_spaces(line);

@@ -14,10 +14,11 @@
 
 static void	handle_exit_code(pid_t pid, int *exit_code, t_sigaction *action)
 {
-	init_sigaction(action, &sig_ign, SIGINT);
-	init_sigaction(action, &sig_ign, SIGQUIT);
+	init_sigaction(action, &sig_cmd, SIGINT);
+	init_sigaction(action, &sig_cmd, SIGQUIT);
 	waitpid(pid, exit_code, 0);
-	*exit_code = WEXITSTATUS(*exit_code);
+	if (WIFEXITED(*exit_code))
+		*exit_code = WEXITSTATUS(*exit_code);
 }
 
 int	execute_system(int *fd_tmp, t_data *data, int i)
@@ -27,7 +28,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 	pid_t		pid;
 	t_sigaction	action;
 
-	exit_code = RETURN_130;
+	exit_code = DFL_SIGNAL;
 	if (pipe(fd) == -1)
 		perror("pipe");
 	pid = fork();
@@ -35,6 +36,8 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 		perror("fork");
 	else if (pid == 0)
 	{
+		init_sigaction(&action, &sig_child, SIGQUIT);
+		init_sigaction(&action, &sig_child, SIGINT);
 		dup_in(fd_tmp, data, i);
 		dup_out(fd, data, i);
 		close(fd[0]);

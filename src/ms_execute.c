@@ -19,7 +19,8 @@ static int	set_return_value(int code, t_data *data, int i)
 	value = ft_itoa(code);
 	if (code)
 		data->flags[i]->error = code;
-	set_env_val("?", value, data->alt_env);
+	if (code != DFL_SIGNAL)
+		set_env_val("?", value, data->alt_env);
 	ftex_null_ptr((void *)&value);
 	return (code);
 }

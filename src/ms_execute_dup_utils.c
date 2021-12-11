@@ -47,7 +47,7 @@ void	read_std_input(char *limiter, int file)
 
 	pipe(fd);
 	dup2(STDIN_FILENO, fd[0]);
-	init_sigaction(&action, &sig_heredoc, SIGINT);
+	init_sigaction(&action, &sig_child, SIGINT);
 	while (1)
 	{
 		ft_putstr_fd("here_doc> ", 1);

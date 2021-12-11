@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/09 15:25:22 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/11 02:48:47 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,33 @@ void	sig_prompt(int sig)
 		rl_redisplay();
 		set_env_val("?", "130", g_envp);
 	}
+	if (sig == EXIT_SUCCESS)
+	{
+		ft_putchar_fd('\n', 1);
+		exit(sig);
+	}
 }
 
-void	sig_prompt_quit(int sig)
-{
-	ft_putchar_fd('\n', 1);
-	exit(sig);
-}
-
-void	sig_ign(int sig)
-{
-	char	c;
-
-	c = '\n';
-	if (sig == SIGINT || sig == SIGQUIT)
-		tputs(&c, 0, &ms_putchar);
-}
-
-void	sig_heredoc(int sig)
+void	sig_child(int sig)
 {
 	if (sig == SIGINT)
 		exit(130);
+	if (sig == SIGQUIT)
+		exit(131);
+}
+
+void	sig_cmd(int sig)
+{
+	if (sig == SIGQUIT)
+	{
+		ft_putendl_fd("Quit", 2);
+		set_env_val("?", "131", g_envp);
+	}
+	if (sig == SIGINT)
+	{
+		ft_putchar_fd('\n', 1);
+		set_env_val("?", "130", g_envp);
+	}
 }
 
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig)

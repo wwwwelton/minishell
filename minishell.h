@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 01:53:14 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/11 02:57:11 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
 # endif
-# define RETURN_130 33500
+# define DFL_SIGNAL 12500
 
 # include "libft.h"
 # include <stdio.h>
@@ -96,10 +96,9 @@ int		execute(t_data *data);
 
 //signals
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig);
-void	sig_heredoc(int sig);
 void	sig_prompt(int sig);
-void	sig_prompt_quit(int sig);
-void	sig_ign(int sig);
+void	sig_cmd(int sig);
+void	sig_child(int sig);
 
 //structures and memory management
 void	init_builtins(t_builtin **head);
