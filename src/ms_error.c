@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/12/08 18:43:14 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/11 05:21:56 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	p_error(const char *str)
 void	here_doc_eof_handler(void)
 {
 	ft_putstr_fd("\n", 1);
-	exit (130);
+	exit (0);
 }
