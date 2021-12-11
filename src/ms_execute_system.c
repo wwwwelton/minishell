@@ -16,9 +16,18 @@ static void	handle_exit_code(pid_t pid, int *exit_code, t_sigaction *action)
 {
 	init_sigaction(action, &sig_cmd, SIGINT);
 	init_sigaction(action, &sig_cmd, SIGQUIT);
+	wait(NULL);
 	waitpid(pid, exit_code, 0);
 	if (WIFEXITED(*exit_code))
 		*exit_code = WEXITSTATUS(*exit_code);
+	else if (WIFSIGNALED(*exit_code))
+		*exit_code = DFL_SIGNAL;
+}
+
+static void	set_child_sigaction(t_sigaction *action)
+{
+	init_sigaction(action, &sig_child, SIGQUIT);
+	init_sigaction(action, &sig_child, SIGINT);
 }
 
 int	execute_system(int *fd_tmp, t_data *data, int i)
@@ -36,8 +45,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 		perror("fork");
 	else if (pid == 0)
 	{
-		init_sigaction(&action, &sig_child, SIGQUIT);
-		init_sigaction(&action, &sig_child, SIGINT);
+		set_child_sigaction(&action);
 		dup_in(fd_tmp, data, i);
 		dup_out(fd, data, i);
 		close(fd[0]);
