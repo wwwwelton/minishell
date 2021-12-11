@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/10 14:57:01 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/11 03:44:55 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ char	*prompt_loop(char *line, char **lastline)
 		if (equal_last_line(line, lastline) == 0)
 			add_history(line);
 		line = check_redir_spaces(line);
-		ftex_minprintf("%s\n", line);
 		line = check_here_doc_spaces(line);
-		ftex_minprintf("%s\n", line);
 		if (!validate_line(line, lastline))
 			ftex_null_ptr((void **)&line);
 	}
