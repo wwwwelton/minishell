@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt_validate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 04:13:26 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 06:15:42 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,25 +75,23 @@ t_bool	is_odd_quotes(char *line)
 t_bool	is_empty_pipes(char *line)
 {
 	int	i;
-	int	flag;
 
-	i = -1;
-	flag = 1;
-	while (line[++i])
+	i = 0;
+	while (line[i++])
 	{
+		if (line[i] == '|' && line[i + 1] == '|')
+			i++;
 		if (line[i] == '|')
 		{
-			while (line[i] && line[i] != '|')
-				if (ft_isalnum(line[i]))
-					flag = 0;
-			if (flag == 1)
+			i++;
+			while (line[i] == ' ' || line[i] == '\t' || line[i] == '\v')
+					i++;
+			if (!line[i] || line[i] == '|')
 			{
 				ft_putstr_fd("minishell: parse error\n", 2);
 				set_env_val("?", "1", g_envp);
 				return (true);
 			}
-			else
-				flag = 1;
 		}
 	}
 	return (false);
