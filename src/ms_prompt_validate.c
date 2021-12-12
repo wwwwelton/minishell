@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt_validate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 03:20:45 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/12 04:13:26 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ t_bool	is_empty_pipes(char *line)
 	{
 		if (line[i] == '|')
 		{
-			while(line[i] && line[i] != '|')
+			while (line[i] && line[i] != '|')
 				if (ft_isalnum(line[i]))
 					flag = 0;
 			if (flag == 1)
 			{
 				ft_putstr_fd("minishell: parse error\n", 2);
 				set_env_val("?", "1", g_envp);
-				return(true);
+				return (true);
 			}
 			else
 				flag = 1;
