@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 02:48:47 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/12 09:45:25 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	sig_cmd(int sig)
 void	init_sigaction(t_sigaction *action, void (*handler)(int), int sig)
 {
 	action->sa_handler = handler;
-	action->sa_flags = 0;
+	action->sa_flags = SA_RESTART;
 	sigemptyset(&action->sa_mask);
 	sigaction(sig, action, NULL);
 }

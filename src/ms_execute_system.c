@@ -16,7 +16,7 @@ static void	handle_exit_code(pid_t pid, int *exit_code, t_sigaction *action)
 {
 	init_sigaction(action, &sig_cmd, SIGINT);
 	init_sigaction(action, &sig_cmd, SIGQUIT);
-	wait_pid(pid, exit_code, 0);
+	waitpid(pid, exit_code, 0);
 	if (WIFEXITED(*exit_code))
 		*exit_code = WEXITSTATUS(*exit_code);
 	else if (WIFSIGNALED(*exit_code))

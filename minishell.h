@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 04:59:04 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 09:51:11 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,6 @@ void	here_doc(int *fd_tmp, t_data *data, int i, int j);
 void	here_doc_eof_handler(void);
 void	read_doc(char *file, int *fd_tmp, int *fd);
 int		write_to_files(t_data *data, int i);
-pid_t	wait_pid(pid_t pid, int *exit_code, int options);
 
 //error management
 int		p_error(const char *str);

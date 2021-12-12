@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:37:37 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 04:45:53 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 09:51:02 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,4 @@ void	free_splited_mat(char **mat)
 			ftex_null_ptr((void *)&mat[i]);
 		ftex_null_ptr((void *)&mat);
 	}
-}
-
-pid_t	wait_pid(pid_t pid, int *exit_code, int options)
-{
-	wait(exit_code);
-	pid = waitpid(pid, exit_code, options);
-	return (pid);
 }
