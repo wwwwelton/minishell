@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 06:16:35 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/12 06:22:14 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 #  define BUFFER_SIZE 1000
 # endif
 # define DFL_SIGNAL 12500
+# ifndef WORKSPACE
+#  define WORKSPACE 1
+# endif
 
 # define BOLDBLUE "\001\033[38;5;74m\002"
 # define BOLDGREEN "\001\033[1;32m\002"

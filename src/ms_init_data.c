@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_init_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 11:32:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 04:00:57 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 06:37:42 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,27 @@ static void	append_minishell_path(void)
 
 void	init_env(t_data *node)
 {
-	int		i;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (++i < 4000)
 		node->alt_env[i] = NULL;
-	i = -1;
-	node->alt_env[++i] = ft_strdup("?=0");
-	while (g_envp[++i])
-		node->alt_env[i] = ft_strdup(g_envp[i]);
+	j = 0;
+	i = 0;
+	node->alt_env[i++] = ft_strdup("?=0");
+	while (g_envp[j])
+	{
+		if (WORKSPACE)
+		{
+			if (ft_strnstr(g_envp[j], "WORKSPACE", ft_strlen(g_envp[j])))
+				j++;
+			else
+				node->alt_env[i++] = ft_strdup(g_envp[j++]);
+		}
+		else
+			node->alt_env[i++] = ft_strdup(g_envp[j++]);
+	}
 	g_envp = node->alt_env;
 	append_minishell_path();
 }
