@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 22:27:36 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 00:35:16 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*prefix_cwd(char *cwd)
 	cwd = (char *)ft_calloc(sizeof(char), cwdsize);
 	cwd = getcwd(cwd, cwdsize);
 	paint_cwd(&cwd);
-	cwd = ftex_strmerge(cwd, ft_strdup("$ "));
+	cwd = ftex_strmerge(cwd, ft_strdup(" "));
 	return (cwd);
 }
 

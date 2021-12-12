@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 21:52:28 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 00:57:10 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@
 #  define BUFFER_SIZE 1000
 # endif
 # define DFL_SIGNAL 12500
+
+# define BOLDBLUE "\001\033[38;5;67m\002"
+# define BOLDGREEN "\001\033[1;32m\002"
+# define BOLDRED "\001\033[1;31m\002"
+# define RESET "\001\033[0m\002"
 
 # include "libft.h"
 # include <stdio.h>
@@ -130,6 +135,8 @@ t_bool	is_file_invalid(char *line);
 char	*check_redir_spaces(char *line);
 char	*check_here_doc_spaces(char *line);
 void	paint_cwd(char **cwd);
+void	replace_cwd_path(char **cwd);
+void	replace_dir_name(char **cwd);
 
 //parsing
 char	*pre_split(t_data *data, char *line);

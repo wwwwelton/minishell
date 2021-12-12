@@ -10,6 +10,7 @@ SOURCES_FILES	=	minishell.c \
 					ms_prompt_validate.c \
 					ms_prompt_validate_files.c \
 					ms_prompt_buf.c \
+					ms_prompt_colors.c \
 					ms_prompt_utils.c \
 					ms_parse.c \
 					ms_parse_patterns.c \
