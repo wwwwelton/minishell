@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 06:22:14 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/12 03:32:29 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # endif
 # define DFL_SIGNAL 12500
 # ifndef WORKSPACE
-#  define WORKSPACE 1
+#  define WORKSPACE 0
 # endif
 
 # define BOLDBLUE "\001\033[38;5;74m\002"
