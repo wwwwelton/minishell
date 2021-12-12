@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 06:16:56 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/12 03:20:45 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,33 @@ t_bool	is_odd_quotes(char *line)
 	return (false);
 }
 
+t_bool	is_empty_pipes(char *line)
+{
+	int	i;
+	int	flag;
+
+	i = -1;
+	flag = 1;
+	while (line[++i])
+	{
+		if (line[i] == '|')
+		{
+			while(line[i] && line[i] != '|')
+				if (ft_isalnum(line[i]))
+					flag = 0;
+			if (flag == 1)
+			{
+				ft_putstr_fd("minishell: parse error\n", 2);
+				set_env_val("?", "1", g_envp);
+				return(true);
+			}
+			else
+				flag = 1;
+		}
+	}
+	return (false);
+}
+
 t_bool	validate_line(char *line, char **lastline)
 {
 	(void)lastline;
@@ -82,6 +109,8 @@ t_bool	validate_line(char *line, char **lastline)
 	if (is_odd_quotes(line))
 		return (false);
 	if (is_file_invalid(line))
+		return (false);
+	if (is_empty_pipes(line))
 		return (false);
 	return (true);
 }
