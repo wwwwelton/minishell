@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt_validate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/09 15:21:52 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/12 06:03:28 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_bool	is_incorrect_redirection(char *line)
 		if (line[len] == '<' || line[len] == '>')
 		{
 			ft_putstr_fd("minishell: parse error\n", 2);
+			set_env_val("?", "1", g_envp);
 			return (true);
 		}
 		break ;
@@ -65,8 +66,10 @@ t_bool	is_odd_quotes(char *line)
 	if (i % 2 || j % 2)
 	{
 		ft_putstr_fd("minishell: close your quotes\n", 2);
+		set_env_val("?", "1", g_envp);
 		return (true);
 	}
+
 	return (false);
 }
 
