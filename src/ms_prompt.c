@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 00:35:16 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 06:05:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*prefix_cwd(char *cwd)
 	int	cwdsize;
 
 	cwdsize = 100;
+	if (cwd)
+		free(cwd);
 	cwd = (char *)ft_calloc(sizeof(char), cwdsize);
 	cwd = getcwd(cwd, cwdsize);
 	paint_cwd(&cwd);
@@ -44,11 +46,11 @@ char	*prompt_loop(char *line, char **lastline)
 	char		*cwd;
 
 	cwd = NULL;
-	cwd = prefix_cwd(cwd);
 	init_sigaction(&action, &sig_prompt, SIGINT);
 	init_sigaction(&action, SIG_IGN, SIGQUIT);
 	while (!line)
 	{
+		cwd = prefix_cwd(cwd);
 		line = readline(cwd);
 		if (!line)
 			sig_prompt(EXIT_SUCCESS);
