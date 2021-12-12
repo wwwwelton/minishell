@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/11/27 01:52:33 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 04:09:47 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void	unset_env(char *value, char **envp)
 		envp[i] = ft_strdup(envp[i + 1]);
 		i++;
 	}
+	ftex_null_ptr((void *)&envp[i]);
 	envp[i] = NULL;
 }
 
