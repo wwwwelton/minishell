@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 04:46:06 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 04:57:02 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #  define WORKSPACE 0
 # endif
 
-# define BOLDBLUE "\001\033[38;5;74m\002"
+# define BOLDBLUE "\001\033[1;36m\002"
 # define BOLDGREEN "\001\033[1;32m\002"
 # define BOLDRED "\001\033[1;31m\002"
 # define RESET "\001\033[0m\002"
