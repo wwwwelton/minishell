@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 00:57:10 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 06:16:35 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # endif
 # define DFL_SIGNAL 12500
 
-# define BOLDBLUE "\001\033[38;5;67m\002"
+# define BOLDBLUE "\001\033[38;5;74m\002"
 # define BOLDGREEN "\001\033[1;32m\002"
 # define BOLDRED "\001\033[1;31m\002"
 # define RESET "\001\033[0m\002"
