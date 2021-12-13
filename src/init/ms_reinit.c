@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 05:44:34 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 06:34:52 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ int	cleanup(t_data *data, int code)
 	int	i;
 
 	if (code == SIG_PROMPT)
+	{
+		ft_putchar_fd('\n', 1);
 		code = EXIT_SUCCESS;
+	}
 	else
 		reinit(data);
 	fd_collector();
