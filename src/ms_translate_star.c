@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:02:28 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/10 23:49:07 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 05:44:34 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	exec_ls(int *fd, char *access, char **cmd)
 	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);
 	close(fd[1]);
+	fd_collector();
 	execve(access, cmd, NULL);
 }
 

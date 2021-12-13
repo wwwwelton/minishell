@@ -37,8 +37,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 	t_sigaction	action;
 
 	exit_code = 0;
-	if (pipe(fd) == -1)
-		perror("pipe");
+	pipe(fd);
 	pid = fork();
 	if (pid == -1)
 		perror("fork");
@@ -47,6 +46,7 @@ int	execute_system(int *fd_tmp, t_data *data, int i)
 		set_child_sigaction(&action);
 		dup_in(fd_tmp, data, i);
 		dup_out(fd, data, i);
+		fd_collector();
 		close(fd[0]);
 		if (execve(data->accesspath[i], data->cmd[i], data->alt_env) == -1)
 			exit_code = p_error(data->cmd[i][0]);

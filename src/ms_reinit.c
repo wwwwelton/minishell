@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 05:31:24 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 05:44:34 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	fd_collector(void)
 	int	fd;
 
 	fd = open(TMP_FILE, O_RDONLY | O_CREAT);
+	close(fd + 1);
 	while (fd > 2)
 		close(fd--);
 	unlink(TMP_FILE);

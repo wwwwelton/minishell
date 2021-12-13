@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 03:50:19 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 05:39:33 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ void	free_splited_mat(char **mat);
 int		command_size(char *buf);
 int		ms_putchar(int c);
 t_bool	is_blank_line(char *line);
+void	fd_collector(void);
 
 //prompt
 char	*prompt_loop(t_data *data, char *line, char **lastline);
