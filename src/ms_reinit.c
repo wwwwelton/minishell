@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 03:53:22 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 05:31:24 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ static void	deinit_builtins(t_builtin *head)
 	}
 }
 
+void	fd_collector(void)
+{
+	int	fd;
+
+	fd = open(TMP_FILE, O_RDONLY | O_CREAT);
+	while (fd > 2)
+		close(fd--);
+	unlink(TMP_FILE);
+}
+
 int	cleanup(t_data *data, int code)
 {
 	int	i;
@@ -33,6 +43,7 @@ int	cleanup(t_data *data, int code)
 		code = EXIT_SUCCESS;
 	else
 		reinit(data);
+	fd_collector();
 	deinit_builtins((t_builtin *)data->head);
 	free(data->pat);
 	free(data->lastline);
@@ -61,6 +72,7 @@ void	reinit(t_data *data)
 	int	i;
 
 	i = -1;
+	fd_collector();
 	free_splited_mat(data->presplit);
 	free_splited_mat(data->path);
 	free_splited_mat(data->accesspath);
