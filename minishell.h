@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 09:51:11 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 10:23:39 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define SQUOTES 39
 # define DQUOTES 34
 # define NEWPAT "___0x4242___"
-# define TMP_FILE "./tmp"
+# define TMP_FILE "/tmp/here_doc_tmp_file"
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
 # endif
@@ -173,6 +173,7 @@ int		dup_in(int *fd_tmp, t_data *data, int i);
 int		dup_out(int *fd, t_data *data, int i);
 void	here_doc(int *fd_tmp, t_data *data, int i, int j);
 void	here_doc_eof_handler(void);
+int		inside_here_doc(void);
 void	read_doc(char *file, int *fd_tmp, int *fd);
 int		write_to_files(t_data *data, int i);
 

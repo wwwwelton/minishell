@@ -67,7 +67,6 @@ int	execute(t_data *data)
 			execute_system_command(&fd_tmp, &code, data, i);
 		if (data->flags[i]->builtins)
 			execute_builtin_command(&fd_tmp, &code, data, i);
-		unlink(TMP_FILE);
 	}
 	print_system_error(data);
 	return (0);

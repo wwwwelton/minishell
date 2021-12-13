@@ -37,6 +37,7 @@ int	dup_in(int *fd_tmp, t_data *data, int i)
 		}
 	}
 	dup2(fd_tmp[0], STDIN_FILENO);
+	unlink(TMP_FILE);
 	return (0);
 }
 
