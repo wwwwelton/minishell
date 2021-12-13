@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 23:54:12 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 03:51:41 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*prefix_cwd(char *cwd)
 	return (cwd);
 }
 
-char	*prompt_loop(char *line, char **lastline)
+char	*prompt_loop(t_data *data, char *line, char **lastline)
 {
 	t_sigaction	action;
 	char		*cwd;
@@ -53,12 +53,12 @@ char	*prompt_loop(char *line, char **lastline)
 		cwd = prefix_cwd(cwd);
 		line = readline(cwd);
 		if (!line)
-			sig_prompt(EXIT_SUCCESS);
+			cleanup(data, SIG_PROMPT);
 		if (!equal_last_line(line, lastline) && !is_blank_line(line))
 			add_history(line);
 		line = check_redir_spaces(line);
 		line = check_here_doc_spaces(line);
-		if (!validate_line(line, lastline))
+		if (!validate_line(line))
 			ftex_null_ptr((void **)&line);
 	}
 	free(cwd);
@@ -77,7 +77,7 @@ char	*store_commands(char *line, char *buf)
 	return (line);
 }
 
-char	*prompt(char **lastline, char **envp)
+char	*prompt(t_data *data, char **lastline)
 {
 	static char	buf[BUFFER_SIZE];
 	char		*line;
@@ -85,9 +85,9 @@ char	*prompt(char **lastline, char **envp)
 
 	line = NULL;
 	if (!*buf)
-		line = prompt_loop(line, lastline);
+		line = prompt_loop(data, line, lastline);
 	else
-		line = fetch_buffer(buf, line, lastline, envp);
+		line = fetch_buffer(data, buf, line, lastline);
 	if (is_multiple_commands(line))
 		store_commands(line, buf);
 	tmp = line;

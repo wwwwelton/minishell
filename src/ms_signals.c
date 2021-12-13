@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 03:21:19 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 03:32:34 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ void	sig_prompt(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 		set_env_val("?", "130", g_envp);
-	}
-	if (sig == EXIT_SUCCESS)
-	{
-		ft_putchar_fd('\n', 1);
-		exit(sig);
 	}
 }
 

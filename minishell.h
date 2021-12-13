@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 03:18:43 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 03:50:19 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@
 # ifndef DEBUG
 #  define DEBUG 0
 # endif
-# define SQUOTES 39
-# define DQUOTES 34
-# define NEWPAT "___0x4242___"
-# define TMP_FILE "/tmp/here_doc_tmp_file"
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1000
 # endif
-# define DFL_SIGNAL 12500
 # ifndef WORKSPACE
 #  define WORKSPACE 0
 # endif
 
+# define SQUOTES 39
+# define DQUOTES 34
+# define NEWPAT "___0x4242___"
+# define TMP_FILE "/tmp/here_doc_tmp_file"
+# define DFL_SIGNAL 12500
+# define SIG_PROMPT 3
 # define BOLDBLUE "\001\033[1;36m\002"
 # define BOLDGREEN "\001\033[1;32m\002"
 # define BOLDRED "\001\033[1;31m\002"
@@ -95,7 +96,7 @@ typedef struct s_builtin
 
 //controllers
 void	minishell(t_data *data);
-char	*prompt(char **lastline, char **envp);
+char	*prompt(t_data *data, char **lastline);
 void	parse(t_data *data, char *line);
 void	translate(t_pat *pat, char ***cmd, char **envp);
 int		execute(t_data *data);
@@ -124,21 +125,21 @@ int		len_to_space(char *str);
 void	print_matrix(char ***cmd);
 void	printsplit(char **split, char *header);
 void	free_splited_mat(char **mat);
-t_bool	is_multiple_commands(char *buf);
 int		command_size(char *buf);
 int		ms_putchar(int c);
 t_bool	is_blank_line(char *line);
 
 //prompt
-char	*prompt_loop(char *line, char **lastline);
-char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp);
-t_bool	validate_line(char *line, char **lastline);
+char	*prompt_loop(t_data *data, char *line, char **lastline);
+char	*fetch_buffer(t_data *data, char *buf, char *line, char **lastline);
+t_bool	validate_line(char *line);
 t_bool	is_file_invalid(char *line);
 char	*check_redir_spaces(char *line);
 char	*check_here_doc_spaces(char *line);
 void	paint_cwd(char **cwd);
 void	replace_cwd_path(char **cwd);
 void	replace_dir_name(char **cwd);
+t_bool	is_multiple_commands(char *buf);
 
 //parsing
 char	*pre_split(t_data *data, char *line);

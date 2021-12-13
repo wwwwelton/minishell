@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 06:15:42 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 03:49:30 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,8 @@ t_bool	is_empty_pipes(char *line)
 	return (false);
 }
 
-t_bool	validate_line(char *line, char **lastline)
+t_bool	validate_line(char *line)
 {
-	(void)lastline;
 	if (is_blank_line(line))
 		return (false);
 	if (is_incorrect_redirection(line))

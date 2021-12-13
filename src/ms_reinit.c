@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/08 16:11:23 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 03:53:22 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	cleanup(t_data *data, int code)
 {
 	int	i;
 
-	reinit(data);
+	if (code == SIG_PROMPT)
+		code = EXIT_SUCCESS;
+	else
+		reinit(data);
 	deinit_builtins((t_builtin *)data->head);
 	free(data->pat);
 	free(data->lastline);

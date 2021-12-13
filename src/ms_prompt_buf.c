@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:26:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/11/27 09:31:55 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 03:37:13 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,19 @@ void	skip_command(char *buf)
 	buf[str_size - cmd_size] = '\0';
 }
 
-char	*fetch_buffer(char *buf, char *line, char **lastline, char **envp)
+char	*fetch_buffer(t_data *data, char *buf, char *line, char **lastline)
 {
 	int		cmd_size;
 	int		str_size;
 	char	*ret;
+	char	*last_return;
 
-	while (buf[0] == '|' && !last_status_code(envp))
+	last_return = get_env_val("?", g_envp);
+	while (buf[0] == '|' && last_return[0] == '0')
 		skip_command(buf);
+	ftex_null_ptr((void *)&last_return);
 	if (!*buf)
-		return (prompt_loop(line, lastline));
+		return (prompt_loop(data, line, lastline));
 	ft_memset(buf, ' ', 2);
 	str_size = ft_strlen(buf);
 	cmd_size = command_size(buf);
