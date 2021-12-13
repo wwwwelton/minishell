@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 06:15:58 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:54:12 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*prompt_loop(char *line, char **lastline)
 		line = readline(cwd);
 		if (!line)
 			sig_prompt(EXIT_SUCCESS);
-		if (equal_last_line(line, lastline) == 0)
+		if (!equal_last_line(line, lastline) && !is_blank_line(line))
 			add_history(line);
 		line = check_redir_spaces(line);
 		line = check_here_doc_spaces(line);

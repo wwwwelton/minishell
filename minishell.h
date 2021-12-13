@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 10:23:39 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 23:49:00 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	free_splited_mat(char **mat);
 t_bool	is_multiple_commands(char *buf);
 int		command_size(char *buf);
 int		ms_putchar(int c);
+t_bool	is_blank_line(char *line);
 
 //prompt
 char	*prompt_loop(char *line, char **lastline);
