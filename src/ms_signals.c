@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 23:38:23 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:55:48 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	sig_child(int sig)
 
 void	sig_cmd(int sig)
 {
-	char str[100];
-	int	i;
+	char	str[100];
+	int		i;
 
 	i = -1;
 	while (++i < 2)
