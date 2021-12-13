@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 23:49:00 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 03:18:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ int		dup_in(int *fd_tmp, t_data *data, int i);
 int		dup_out(int *fd, t_data *data, int i);
 void	here_doc(int *fd_tmp, t_data *data, int i, int j);
 void	here_doc_eof_handler(void);
-int		inside_here_doc(void);
+t_bool	inside_here_doc(void);
 void	read_doc(char *file, int *fd_tmp, int *fd);
 int		write_to_files(t_data *data, int i);
 

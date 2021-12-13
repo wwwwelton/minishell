@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 23:55:48 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 03:21:19 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	sig_child(int sig)
 {
 	if (sig == SIGINT)
 		exit(130);
-	if (sig == SIGQUIT && !inside_here_doc())
+	if (sig == SIGQUIT && inside_here_doc() == false)
 		exit(131);
 }
 
@@ -51,16 +51,16 @@ void	sig_cmd(int sig)
 		ft_putchar_fd('\n', 1);
 		set_env_val("?", "130", g_envp);
 	}
-	if (sig == SIGQUIT && !inside_here_doc())
-	{
-		ft_putendl_fd("Quit", 2);
-		set_env_val("?", "131", g_envp);
-	}
-	else if (sig == SIGQUIT)
+	if (sig == SIGQUIT && inside_here_doc() == true)
 	{
 		ft_putstr_fd(str, 1);
 		write(1, "  ", 2);
 		ft_putstr_fd(str, 1);
+	}
+	else if (sig == SIGQUIT)
+	{
+		ft_putendl_fd("Quit", 2);
+		set_env_val("?", "131", g_envp);
 	}
 }
 
