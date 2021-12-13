@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 23:04:44 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/12 23:38:23 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ void	sig_child(int sig)
 
 void	sig_cmd(int sig)
 {
+	char str[100];
+	int	i;
+
+	i = -1;
+	while (++i < 2)
+		str[i] = 8;
+	str[i] = 0;
 	if (sig == SIGINT)
 	{
 		ft_putchar_fd('\n', 1);
@@ -48,6 +55,12 @@ void	sig_cmd(int sig)
 	{
 		ft_putendl_fd("Quit", 2);
 		set_env_val("?", "131", g_envp);
+	}
+	else if (sig == SIGQUIT)
+	{
+		ft_putstr_fd(str, 1);
+		write(1, "  ", 2);
+		ft_putstr_fd(str, 1);
 	}
 }
 
