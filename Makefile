@@ -3,42 +3,42 @@ LIBFT			=	$(LIBFT_PATH)/libft.a
 
 SOURCES_FILES	=	minishell.c \
 					main.c \
-					builtins/ms_builtin_echo.c \
-					builtins/ms_builtin_pwd.c \
-					builtins/ms_builtin_export.c \
-					builtins/ms_builtin_unset.c \
-					builtins/ms_builtin_env.c \
-					builtins/ms_builtin_cd.c \
-					builtins/ms_builtin_exit.c \
-					execute/ms_execute.c \
-					execute/ms_execute_system.c \
-					execute/ms_execute_builtin.c \
-					execute/ms_execute_dup_utils.c \
-					execute/ms_execute_dup.c \
-					init/ms_init_list.c \
-					init/ms_init_data.c \
-					init/ms_init_patterns.c \
-					init/ms_init_flags.c \
-					init/ms_reinit.c \
-					parse/ms_parse.c \
-					parse/ms_parse_patterns.c \
-					parse/ms_parse_presplit.c \
-					parse/ms_parse_flags.c \
-					prompt/ms_prompt.c \
-					prompt/ms_prompt_validate.c \
-					prompt/ms_prompt_validate_files.c \
-					prompt/ms_prompt_buf.c \
-					prompt/ms_prompt_colors.c \
-					prompt/ms_prompt_utils.c \
-					signals/ms_signals.c \
-					signals/ms_signals_utils.c \
-					translate/ms_translate.c \
-					translate/ms_translate_trim.c \
-					translate/ms_translate_star.c \
-					utils/ms_utils.c \
-					utils/ms_utils_env.c \
-					utils/ms_utils_print.c \
-					utils/ms_error.c \
+					ms_builtin_echo.c \
+					ms_builtin_pwd.c \
+					ms_builtin_export.c \
+					ms_builtin_unset.c \
+					ms_builtin_env.c \
+					ms_builtin_cd.c \
+					ms_builtin_exit.c \
+					ms_execute.c \
+					ms_execute_system.c \
+					ms_execute_builtin.c \
+					ms_execute_dup_utils.c \
+					ms_execute_dup.c \
+					ms_init_list.c \
+					ms_init_data.c \
+					ms_init_patterns.c \
+					ms_init_flags.c \
+					ms_reinit.c \
+					ms_parse.c \
+					ms_parse_patterns.c \
+					ms_parse_presplit.c \
+					ms_parse_flags.c \
+					ms_prompt.c \
+					ms_prompt_validate.c \
+					ms_prompt_validate_files.c \
+					ms_prompt_buf.c \
+					ms_prompt_colors.c \
+					ms_prompt_utils.c \
+					ms_signals.c \
+					ms_signals_utils.c \
+					ms_translate.c \
+					ms_translate_trim.c \
+					ms_translate_star.c \
+					ms_utils.c \
+					ms_utils_env.c \
+					ms_utils_print.c \
+					ms_error.c \
 
 SOURCES_DIR		=	src
 OBJ_DIR			=	obj
@@ -69,14 +69,6 @@ $(LIBFT):
 
 $(OBJ_DIR):
 					mkdir -p obj
-					mkdir -p obj/builtins
-					mkdir -p obj/execute
-					mkdir -p obj/init
-					mkdir -p obj/parse
-					mkdir -p obj/prompt
-					mkdir -p obj/translate
-					mkdir -p obj/utils
-					mkdir -p obj/signals
 
 run:				all
 					./$(NAME)
