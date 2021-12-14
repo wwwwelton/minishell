@@ -51,7 +51,7 @@ RM				=	rm -rf
 CFLAGS			=	-Wall -Wextra -Werror -g3
 
 INCLUDES		=	-I./libft -I./
-LINKS			=	-lreadline -lcurses
+LINKS			=	-lreadline
 
 VPATH			=	src src/builtins src/execute src/init src/parse \
 					src/prompt src/signals src/translate src/utils \

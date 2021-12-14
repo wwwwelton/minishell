@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/14 03:57:59 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/14 06:30:36 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void	print_matrix(char ***cmd);
 void	printsplit(char **split, char *header);
 void	free_splited_mat(char **mat);
 int		command_size(char *buf);
-int		ms_putchar(int c);
 t_bool	is_blank_line(char *line);
 void	fd_collector(void);
 
