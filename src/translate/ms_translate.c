@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 21:05:07 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/14 05:12:31 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	replace_single_quotes(t_pat *pat, char **cmd)
 			if (cmd[i][j] == DQUOTES)
 			{
 				++j;
-				while (cmd[i][j] != DQUOTES && cmd[i][j])
+				while (cmd[i][j] != DQUOTES && cmd[i][j] && cmd[i][j + 1])
 					++j;
 			}
 			if (cmd[i][j] == SQUOTES)
