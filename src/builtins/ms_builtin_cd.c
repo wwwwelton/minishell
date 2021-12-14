@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/12/04 22:09:08 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/14 05:04:56 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	alt_cd(char **str, t_data *data)
 		ft_putstr_fd("cd: ", 1);
 		perror(new_dir);
 		ftex_null_ptr((void *)&old_dir);
+		ftex_null_ptr((void *)&new_dir);
 		return (EXIT_FAILURE);
 	}
 	cur_dir = get_current_dir();
