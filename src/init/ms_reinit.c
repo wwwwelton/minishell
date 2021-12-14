@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 06:34:52 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/14 03:10:02 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	cleanup(t_data *data, int code)
 	i = -1;
 	while (data->alt_env[++i])
 		free(data->alt_env[i]);
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
 	free(data);
 	exit(code);
 	return (0);
