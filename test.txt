@@ -1,0 +1,142 @@
+/bin/ls
+echo $?
+
+empty command
+echo $?
+
+only spaces
+
+only tabs
+
+empty command
+echo $?
+
+/bin/ls -la
+echo $?
+
+echo Hello
+echo -n Hello
+echo -n -n Hello
+echo Hello -n
+echo $?
+
+exit
+exit 1
+exit 2
+echo $?
+
+/usr/bin/tr -x
+/usr/bin/tr "-x b"
+echo $?
+
+/bin/ls srrc
+/bin/ls "srrc"
+echo $?
+
+echo aaaaaaaaaaaaaaaaa > out
+cat out | cat out > out
+echo $?
+
+echo aaaaaaaaaaaaaaaaa > out
+echo "cat out | cat out > out"
+echo $?
+
+echo '$USER'
+echo 'abacate'
+
+env
+
+export TESTE1=batata
+export TESTE2=potato
+echo $TESTE1
+echo $TESTE2
+
+unset TESTE1
+unset TESTE2
+echo $TESTE1
+echo $TESTE2
+
+cd .
+pwd
+cd ..
+pwd
+cd
+pwd
+cd /
+pwd
+cd /home/avatar/42school/Minishell
+pwd
+
+../SoLong/so_long ../SoLong/assets/maps/another_4.ber
+
+echo aaaaa | wc -l
+ls | grep mini
+
+unset PATH
+ls
+wc
+clear
+export PATH=/usr/bin:/usr/
+ls
+clear
+
+echo aaaaaaaaaaa > out1 > out2 > out3
+cat out1 && cat out2 && cat out3
+
+echo bbbbbbbbbbb>out1>out2>out3
+cat out1 && cat out2 && cat out3
+
+echo bbbbbbbbbbb>out1>out2>>out3
+cat out1 && cat out2 && cat out3
+cat out3
+
+rm -rf out1 out2 out3
+
+echo aaaaaaaaaaa > out1
+echo bbbbbbbbbbb > out2
+echo ccccccccccc > out3
+echo ddddddddddd > out4 && cat out4
+echo eeeeeeeeeee >> out4 && cat out4
+
+rm -rf out1 out2 out3 out4
+
+echo aaaaaaaaaaa > out1
+echo bbbbbbbbbbb > out2
+echo ccccccccccc > out3
+cat < out1 < out2 < out3
+cat<out1<out2<out3
+cat<out1<out2<out3<<END
+
+echo aaaaaaaaaaa > out1
+echo bbbbbbbbbbb > out2
+echo ccccccccccc > out3
+cat < NOTEXIST < out2 < out3
+cat < NOTEXIST < NOTEXIST < out3
+cat < out1 < out2 < NOTEXIST
+cat < NOTEXIST
+rm -rf out1 out2 out3
+
+<< END
+oi
+END
+
+echo aaaaaaaaaaa > out1
+< out1 tr a b | tr b c | tr c d
+rm -rf out1
+
+env | grep PATH
+
+ls file | grep ms | more
+echo $?
+
+cat | cat | ls
+
+echo "$USER"
+
+export USER=potato
+echo $USER
+echo "'$USER'"
+echo '"$USER"'
+
+echo oi && echo io
+ls srrc || ls
