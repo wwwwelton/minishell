@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 07:33:05 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 05:51:01 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/14 04:39:21 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,17 @@ void	sig_prompt(int sig)
 
 void	sig_child(int sig)
 {
-	fd_collector();
+
 	if (sig == SIGINT)
+	{
+		fd_collector();
 		exit(130);
+	}
 	if (sig == SIGQUIT && inside_here_doc() == false)
+	{
+		fd_collector();
 		exit(131);
+	}
 }
 
 void	sig_cmd(int sig)
