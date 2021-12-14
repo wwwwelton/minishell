@@ -50,7 +50,7 @@ RM				=	rm -rf
 CFLAGS			=	-Wall -Wextra -Werror -g3
 
 INCLUDES		=	-I./libft -I./
-LINKS			=	-lreadline
+LDFLAGS			=	-lreadline
 
 VPATH			=	src src/builtins src/execute src/init src/parse \
 					src/prompt src/signals src/translate src/utils \
@@ -61,7 +61,7 @@ $(OBJ_DIR)/%.o:		%.c $(HEADER)
 all:				$(NAME)
 
 $(NAME):			$(LIBFT) $(OBJ_DIR) $(OBJECTS) $(HEADER)
-					$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(LINKS) -o $(NAME)
+					$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) $(LDFLAGS) -o $(NAME)
 
 $(LIBFT):
 					$(MAKE) -C $(LIBFT_PATH)
