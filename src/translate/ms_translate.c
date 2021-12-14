@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 03:51:10 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/13 21:05:07 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*replace_env(char *cmd, char **envp)
 	i = -1;
 	while (cmd[++i])
 	{
-		if (cmd[i] == '$')
+		if (cmd[i] == '$' && cmd[i + 1] && cmd[i + 1] != ' ')
 		{
 			env = ft_substr(cmd, i, envlen(&cmd[i]));
 			envvalue = get_env_val(&env[1], envp);
@@ -84,6 +84,7 @@ void	find_env(char ***cmd, char **envp)
 {
 	int		i;
 	int		j;
+	char	*dollar;
 
 	i = -1;
 	j = -1;
@@ -94,7 +95,9 @@ void	find_env(char ***cmd, char **envp)
 			if (ft_strchr(cmd[i][j], '$'))
 			{
 				cmd[i][j] = replace_env(cmd[i][j], envp);
-				j = -1;
+				dollar = ft_strchr(cmd[i][j], '$');
+				if (!dollar)
+					j = -1;
 			}
 		}
 		j = -1;
@@ -109,9 +112,7 @@ void	translate(t_pat *pat, char ***cmd, char **envp)
 	i = -1;
 	pat->i = 0;
 	while (cmd[++i])
-	{
 		replace_single_quotes(pat, cmd[i]);
-	}
 	find_env(cmd, envp);
 	if (DEBUG)
 	{
