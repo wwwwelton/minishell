@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt_validate_files.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 01:43:06 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/11 01:36:04 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/14 03:55:13 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_bool	is_file_invalid(char *line)
 		file = filename(file);
 		if (access(file, R_OK))
 		{
-			ft_putstr_fd("Minishell: no such file or directory: ", 2);
+			ft_putstr_fd("minishell: no such file or directory: ", 2);
 			ft_putendl_fd(file, 2);
 			free(file);
 			set_env_val("?", "1", g_envp);

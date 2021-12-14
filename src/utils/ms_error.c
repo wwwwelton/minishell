@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/12/13 05:53:46 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/14 04:04:28 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ int	p_error(const char *str)
 	exit (-1);
 }
 
-void	here_doc_eof_handler(void)
+void	here_doc_eof_handler(char *limiter)
 {
 	fd_collector();
+	ft_putstr_fd("minishell: warning: here-document"
+		"at line 1 delimited by end-of-file", 1);
+	ft_putstr_fd(" (wanted `", 1);
+	ft_putstr_fd(limiter, 1);
+	ft_putstr_fd("')", 1);
 	ft_putstr_fd("\n", 1);
 	exit (0);
 }

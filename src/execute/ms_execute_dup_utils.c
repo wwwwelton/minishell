@@ -50,10 +50,10 @@ void	read_std_input(char *limiter, int file)
 	init_sigaction(&action, &sig_child, SIGINT);
 	while (1)
 	{
-		ft_putstr_fd("here_doc> ", 1);
+		ft_putstr_fd("> ", 1);
 		tmp = get_next_line(fd[0]);
 		if (!tmp)
-			here_doc_eof_handler();
+			here_doc_eof_handler(limiter);
 		if (ft_strncmp(tmp, limiter, ft_strlen(limiter)) == 0
 			&& tmp[ft_strlen(limiter)] == '\n')
 		{
