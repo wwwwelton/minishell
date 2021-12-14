@@ -31,7 +31,6 @@ SOURCES_FILES	=	minishell.c \
 					ms_prompt_colors.c \
 					ms_prompt_utils.c \
 					ms_signals.c \
-					ms_signals_utils.c \
 					ms_translate.c \
 					ms_translate_trim.c \
 					ms_translate_star.c \
