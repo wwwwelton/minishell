@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 08:21:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/15 13:51:08 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:06:40 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_bool	is_in_set(char c, char *set)
 {
 	if (!set)
 		return (false);
-	ftex_minprintf("%s\n", set);
 	while (*set)
 	{
 		if (c == *set)
