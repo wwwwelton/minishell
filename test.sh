@@ -60,6 +60,8 @@ echo 'cd ..\npwd\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'cd ..\ncd ..\npwd\nexit' | $MINISHELL
 echo "=============================================================="
+echo 'cd ../..\npwd\nexit' | $MINISHELL
+echo "=============================================================="
 echo 'cd /\npwd\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'cd \npwd\nexit' | $MINISHELL
