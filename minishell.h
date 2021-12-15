@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/15 12:18:37 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:20:02 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ char	*replace_quoted(t_pat *pat, char *line);
 char	*single_quotes(t_pat *pat, char *line, int i);
 char	*find_stars(char *cmd);
 void	restore_quoted(t_pat *pat, char ***cmd);
+char	*restore_line(t_pat *pat, char *line);
 void	trim_quotes(char ***cmd);
 
 //builtins

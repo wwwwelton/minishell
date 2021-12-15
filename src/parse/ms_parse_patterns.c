@@ -78,6 +78,25 @@ void	restore_quoted(t_pat *pat, char ***cmd)
 	return ;
 }
 
+char	*restore_line(t_pat *pat, char *line)
+{
+	pat->i = 0;
+	if (!pat->backup[0])
+		return (line);
+	while (pat->backup[pat->i])
+	{
+		line = ftex_str_replace
+			(line, pat->holder[pat->i], pat->backup[pat->i]);
+		free(pat->backup[pat->i]);
+		free(pat->holder[pat->i]);
+		pat->backup[pat->i] = NULL;
+		pat->holder[pat->i] = NULL;
+		pat->i++;
+	}
+	pat->i = 0;
+	return (line);
+}
+
 char	*replace_quoted(t_pat *pat, char *line)
 {
 	int	i;

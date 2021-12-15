@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 08:21:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/15 14:06:40 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:36:39 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	*token_echo(t_pat *pat, char *line)
 
 	tmp = ft_strdup(line);
 	bkup = tmp;
+	pat->i = 0;
 	tmp = ft_strnstr(tmp, "echo", ft_strlen(line));
 	while (tmp)
 	{
@@ -69,8 +70,6 @@ char	*token_echo(t_pat *pat, char *line)
 			line = apply_token(pat, line, tmp, size);
 			tmp += size + 1;
 		}
-		if ((*tmp == '|' && *(tmp + 1) == '|') || *tmp == '&')
-			break ;
 		tmp = ft_strnstr(tmp, "echo", ft_strlen(tmp));
 	}
 	free(bkup);
