@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_prompt_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
+/*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 02:48:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/12 01:01:15 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/15 15:20:35 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*check_here_doc_spaces(char *line)
 {
 	if (ft_strnstr(line, "__0x", ft_strlen(line)))
 	{
+		// line = ftex_str_replace_all(line, "__0xNEWLINE__0x", " \n ");
 		line = ftex_str_replace_all(line, "__0xREDIRIN", " < ");
 		line = ftex_str_replace_all(line, "__0xREDIROUT", " > ");
 		line = ftex_str_replace_all(line, "__0xDOCOUT", " >> ");
@@ -31,6 +32,8 @@ char	*check_redir_spaces(char *line)
 	i = -1;
 	while (line[++i])
 	{
+		// if (line[i] == '\\' && line [i + 1] == 'n')
+		// 		line = ftex_str_replace(line, "\\n", "__0xNEWLINE__0x");
 		if (line[i] == '<' && line[i + 1] == '<')
 				line = ftex_str_replace(line, "<<", "__0xDOCIN");
 		if (line[i] == '<')
