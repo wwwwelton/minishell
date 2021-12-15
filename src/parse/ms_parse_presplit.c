@@ -84,6 +84,7 @@ char	*pre_split(t_data *data, char *line)
 
 	i = -1;
 	line = find_stars(line);
+	line = ftex_strerase(line, "()");
 	if (ft_strchr(line, '|'))
 		data->presplit = ft_split(line, '|');
 	else
