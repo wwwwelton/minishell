@@ -81,9 +81,12 @@ void	clean_command(t_flags **flags, char **arr)
 char	*pre_split(t_data *data, char *line)
 {
 	int		i;
+	char	*tmp;
 
 	i = -1;
+	tmp = line;
 	line = ftex_strerase(line, "()");
+	free(tmp);
 	line = find_stars(line);
 	if (ft_strchr(line, '|'))
 		data->presplit = ft_split(line, '|');
