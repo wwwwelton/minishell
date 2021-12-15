@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 23:20:40 by wleite            #+#    #+#             */
-/*   Updated: 2021/12/14 04:04:28 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/15 16:39:23 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	here_doc_eof_handler(char *limiter)
 {
 	fd_collector();
 	ft_putstr_fd("minishell: warning: here-document"
-		"at line 1 delimited by end-of-file", 1);
+		" at line 1 delimited by end-of-file", 1);
 	ft_putstr_fd(" (wanted `", 1);
 	ft_putstr_fd(limiter, 1);
 	ft_putstr_fd("')", 1);
