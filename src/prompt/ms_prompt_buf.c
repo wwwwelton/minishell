@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:26:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 03:37:13 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/15 13:17:37 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ char	*fetch_buffer(t_data *data, char *buf, char *line, char **lastline)
 	ft_strlcpy(ret, buf, cmd_size + 1);
 	ft_memmove(buf, &buf[cmd_size], str_size - cmd_size);
 	buf[str_size - cmd_size] = '\0';
+	ret = token_echo(data->pat, ret);
 	return (ret);
 }

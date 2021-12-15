@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/14 06:30:36 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/15 12:18:37 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ void	paint_cwd(char **cwd);
 void	replace_cwd_path(char **cwd);
 void	replace_dir_name(char **cwd);
 t_bool	is_multiple_commands(char *buf);
+char	*token_echo(t_pat *pat, char *line);
+
 
 //parsing
 char	*pre_split(t_data *data, char *line);
