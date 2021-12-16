@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 08:21:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/15 14:36:39 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/16 02:27:04 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ t_bool	is_in_set(char c, char *set)
 	while (*set)
 	{
 		if (c == *set)
-		{
 			return (true);
-		}
 		set++;
 	}
 	return (false);
@@ -35,6 +33,25 @@ int	echo_size(char *line, char quote)
 	while (line[i] && line[i] != quote)
 			i++;
 	return (i);
+}
+
+char	*restore_line(t_pat *pat, char *line)
+{
+	pat->i = 0;
+	if (!pat->backup[0])
+		return (line);
+	while (pat->backup[pat->i])
+	{
+		line = ftex_str_replace
+			(line, pat->holder[pat->i], pat->backup[pat->i]);
+		free(pat->backup[pat->i]);
+		free(pat->holder[pat->i]);
+		pat->backup[pat->i] = NULL;
+		pat->holder[pat->i] = NULL;
+		pat->i++;
+	}
+	pat->i = 0;
+	return (line);
 }
 
 char	*apply_token(t_pat *pat, char *line, char *tmp, int size)
