@@ -6,24 +6,11 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 08:21:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/16 02:27:04 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/16 02:43:42 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_bool	is_in_set(char c, char *set)
-{
-	if (!set)
-		return (false);
-	while (*set)
-	{
-		if (c == *set)
-			return (true);
-		set++;
-	}
-	return (false);
-}
 
 int	echo_size(char *line, char quote)
 {
@@ -79,7 +66,7 @@ char	*token_echo(t_pat *pat, char *line)
 	{
 		while (tmp && *tmp != '|' && *tmp != '&')
 		{
-			while (*tmp && is_in_set(*tmp, "|&\'\"") == false)
+			while (*tmp && ftex_is_in_set(*tmp, "|&\'\"") == false)
 				tmp++;
 			if (!*tmp || *tmp == '|' || *tmp == '&')
 				break ;
