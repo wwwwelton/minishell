@@ -22,7 +22,7 @@ echo '\nexit' | $MINISHELL
 echo "=============================================================="
 echo '         \nexit' | $MINISHELL
 echo "=============================================================="
-echo '/bin/ls -la\nexit' | $MINISHELL
+echo '/bin/ls -la\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo Hello\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
@@ -55,9 +55,17 @@ echo '/usr/bin/tr "-x b"\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo '/bin/ls srrc\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
-echo 'echo aaaaaaaaaaaaaaaaa > out\ncat out\necho $?\nexit' | $MINISHELL
+echo '/bin/lss srrc\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
-echo 'cat out | cat out > out\ncat out\necho $?\nrm -rf out\nexit' | $MINISHELL
+echo 'echoo\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'lss\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'pwdd\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo aaaaaaaaaaaaaaaaa > out\ncat out\necho $?\nrm -rf out\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo aaaaaaaaaaaaaaaaa > out\ncat out | cat out > out\ncat out\necho $?\nrm -rf out\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo aaaaaaaaaaaaaaaaa > out\necho "cat out | cat out > out"\necho $?\nrm -rf out\nexit' | $MINISHELL
 echo "=============================================================="
