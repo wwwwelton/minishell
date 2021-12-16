@@ -75,6 +75,8 @@ echo "echo 'abacate'\nexit" | $MINISHELL
 echo "=============================================================="
 echo 'export TESTE1=batata\necho $TESTE1\nunset TESTE1\necho $TESTE1\nexit' | $MINISHELL
 echo "=============================================================="
+echo 'cd\npwd\nexit' | $MINISHELL
+echo "=============================================================="
 echo 'cd .\npwd\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'cd ..\npwd\nexit' | $MINISHELL
