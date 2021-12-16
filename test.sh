@@ -1,7 +1,10 @@
-#bin/bash
+#!/bin/sh
 
-MINISHELL="valgrind -q --leak-check=full ./minishell"
+MINISHELL="valgrind -q --leak-check=full --track-fds=no ./minishell"
+# MINISHELL="valgrind -q --leak-check=full --track-fds=yes ./minishell"
+# MINISHELL="./minishell"
 
+make
 clear
 
 echo '  __  __ _____ _   _ _____  _____ _    _ ______ _      _
@@ -35,6 +38,16 @@ echo $?
 echo "=============================================================="
 echo 'exit 33\necho $?' | $MINISHELL
 echo $?
+echo "=============================================================="
+echo 'exit exit exit' | $MINISHELL
+echo $?
+echo "=============================================================="
+echo 'exit exit 33' | $MINISHELL
+echo $?
+echo "=============================================================="
+echo 'exit 2 exit\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'exit 2 2\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo '/usr/bin/tr -x\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
@@ -72,6 +85,8 @@ echo 'echo aaaaa | wc -l\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'unset PATH\nls\nwc\nclear\nexport PATH=/usr/bin\nls\nexit' | $MINISHELL
 echo "=============================================================="
+echo 'unset PATH\nexport PATH=/usr/bin:/bin\nenv | grep PATH\nexit' | $MINISHELL
+echo "=============================================================="
 echo 'echo aaaaaaaaaaa > out1 > out2 > out3\ncat out1\ncat out2\ncat out3\nrm -rf out1 out2 out3\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo aaaaaaaaaaa>out1>out2>out3\ncat out1\ncat out2\ncat out3\nrm -rf out1 out2 out3\nexit' | $MINISHELL
@@ -89,6 +104,8 @@ echo "=============================================================="
 echo 'echo aaaaaaaaaaa > out1\necho bbbbbbbbbbb > out2\necho ccccccccccc > out3\ncat <out1<out2<out3\nrm -rf out1 out2 out3\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo aaaaaaaaaaa > out1\necho bbbbbbbbbbb > out2\necho ccccccccccc > out3\ncat <out1<out2<out3\nrm -rf out1 out2 out3\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo aaaaaaaaaaa > out1\ncat < out1 > out2\ncat < out2\nrm -rf out1 out2\nexit' | $MINISHELL
 echo "=============================================================="
 echo '<< OUT\nexit' | $MINISHELL
 echo "=============================================================="
@@ -108,17 +125,27 @@ echo 'ping -c1 8.8.8.8 > out1\ncat out1 | grep ms | more\necho $?\nrm -rf out1\n
 echo "=============================================================="
 echo 'cat | cat | ls\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
-echo 'echo "$USER"\necho $?\nexit' | $MINISHELL
-echo "=============================================================="
 echo 'export USER=potato\necho $?\necho $USER\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
-echo 'echo '"'\$USER'"'\necho $?\nexit' | $MINISHELL
+echo 'echo $USER\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
-echo 'echo "'\$USER'"\necho $?\nexit' | $MINISHELL
+echo 'echo "$USER"\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo "echo "\"\'\$USER\'"\"\necho $?\nexit" | $MINISHELL
+echo "=============================================================="
+echo "echo "\'\"\$USER\"\'"\necho $?\nexit" | $MINISHELL
+echo "=============================================================="
+echo 'echo $USER $ $USER $\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo $ $USER $ $USER\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo $USER123\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo oi && echo io\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo oi || echo io\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'ech oi || echo io\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo ()\nexit' | $MINISHELL
 echo "=============================================================="
@@ -146,11 +173,25 @@ echo 'echo <||>>><<<|;()|>\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo "<||>>><<<|;()|>"\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
-echo 'echo "||"\necho $?\nexit' | $MINISHELL
+echo 'echo ||\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo | |\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo |\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo ;;\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo > <\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo >\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'env | grep USER\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'env | grep PATH\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
+echo 'top -bn 1\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
 echo 'env\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'unset ?\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
