@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/14 05:12:31 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/17 08:24:31 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	find_env(char ***cmd, char **envp)
 	{
 		while (cmd[i][++j])
 		{
+			if (!ft_strncmp(cmd[i][j], "~", ft_strlen(cmd[i][j])))
+				cmd[i][j] = replace_home(cmd[i][j]);
 			if (ft_strchr(cmd[i][j], '$'))
 			{
 				cmd[i][j] = replace_env(cmd[i][j], envp);

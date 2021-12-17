@@ -35,6 +35,7 @@ SOURCES_FILES	=	minishell.c \
 					ms_translate.c \
 					ms_translate_trim.c \
 					ms_translate_star.c \
+					ms_translate_home.c \
 					ms_utils.c \
 					ms_utils_env.c \
 					ms_utils_print.c \

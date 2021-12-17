@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/15 14:20:02 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/17 08:39:03 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ void	replace_dir_name(char **cwd);
 t_bool	is_multiple_commands(char *buf);
 char	*token_echo(t_pat *pat, char *line);
 
-
 //parsing
 char	*pre_split(t_data *data, char *line);
 void	identify_flags(t_flags *flags, t_builtin *builtins, char *cmd);
@@ -153,6 +152,7 @@ char	*find_stars(char *cmd);
 void	restore_quoted(t_pat *pat, char ***cmd);
 char	*restore_line(t_pat *pat, char *line);
 void	trim_quotes(char ***cmd);
+char	*replace_home(char *line);
 
 //builtins
 int		alt_echo(char **str, t_data *data);
