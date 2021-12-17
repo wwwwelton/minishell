@@ -1,7 +1,7 @@
 LIBFT_PATH		=	libft
 LIBFT			=	$(LIBFT_PATH)/libft.a
 
-SOURCES_FILES	=	minishell.c \
+SOURCES			=	minishell.c \
 					main.c \
 					ms_builtin_echo.c \
 					ms_builtin_pwd.c \
@@ -44,8 +44,7 @@ SOURCES_FILES	=	minishell.c \
 SOURCES_DIR		=	src
 OBJ_DIR			=	obj
 HEADER			=	minishell.h
-SOURCES			=	$(addprefix $(SOURCES_DIR)/, $(SOURCES_FILES))
-OBJECTS			=	$(SOURCES:$(SOURCES_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJECTS			=	$(SOURCES:%.c=$(OBJ_DIR)/%.o)
 NAME			=	minishell
 CC				=	gcc
 RM				=	rm -rf
@@ -70,6 +69,9 @@ $(LIBFT):
 
 $(OBJ_DIR):
 					mkdir -p obj
+
+test:
+					echo $(VPATH)
 
 run:				all
 					./$(NAME)
