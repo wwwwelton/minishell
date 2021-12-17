@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/12/17 15:33:47 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/17 16:05:06 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	*get_dir(char **str, char **envp)
 	char	*env;
 	char	*home;
 
-	if (str && !str[1])
+	if ((str && !str[1]) || (str && !*str[1]))
 	{
 		env = get_env("HOME", envp);
 		if (env == NULL)
