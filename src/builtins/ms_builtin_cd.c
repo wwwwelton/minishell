@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/12/14 05:04:56 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/17 15:33:47 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ static char	*get_dir(char **str, char **envp)
 	if (str && !str[1])
 	{
 		env = get_env("HOME", envp);
+		if (env == NULL)
+		{
+			ft_putendl_fd("cd: HOME not set", 2);
+			return (NULL);
+		}
 		tmp = ft_split(env, '=');
 		home = ft_strdup(tmp[1]);
 		ftex_null_ptr((void *)&env);
@@ -84,6 +89,8 @@ int	alt_cd(char **str, t_data *data)
 	if (too_many_arguments(str))
 		return (EXIT_FAILURE);
 	new_dir = get_dir(str, data->alt_env);
+	if (new_dir == NULL)
+		return (EXIT_FAILURE);
 	old_dir = get_current_dir();
 	if (chdir(new_dir))
 	{
