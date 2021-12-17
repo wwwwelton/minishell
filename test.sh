@@ -81,6 +81,16 @@ echo 'cd\npwd\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'cd .\npwd\nexit' | $MINISHELL
 echo "=============================================================="
+echo 'cd ~\npwd\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'cd ~~\npwd\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'cd nope~\npwd\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'cd ~nope\npwd\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'cd ~/\npwd\nexit' | $MINISHELL
+echo "=============================================================="
 echo 'cd ..\npwd\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'cd ..\ncd ..\npwd\nexit' | $MINISHELL
@@ -92,6 +102,14 @@ echo "=============================================================="
 echo 'cd \npwd\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'cd not_exist\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'unset HOME\ncd\necho $?\npwd\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'unset HOME\ncd \necho $?\npwd\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'unset HOME\ncd ~\necho $?\npwd\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'unset HOME\ncd $HOME\necho $?\npwd\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo aaaaa | wc -l\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
@@ -152,6 +170,26 @@ echo "=============================================================="
 echo 'echo $ $USER $ $USER\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo $USER123\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo $U\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo $USE\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo $USERR\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo ~\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo "~"\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo "echo '~'\necho \$?\nexit" | $MINISHELL
+echo "=============================================================="
+echo "echo ~nope\necho \$?\nexit" | $MINISHELL
+echo "=============================================================="
+echo "echo nope~\necho \$?\nexit" | $MINISHELL
+echo "=============================================================="
+echo "echo ~/\necho \$?\nexit" | $MINISHELL
+echo "=============================================================="
+echo "echo ~ ~nope ~ nope~ ~ ~nope~ ~ 'quote~' ~ \"dquote~\" ~/path '~/quote' \"~/dquote\"\necho \$?\nexit" | $MINISHELL
 echo "=============================================================="
 echo 'echo oi && echo io\nexit' | $MINISHELL
 echo "=============================================================="
