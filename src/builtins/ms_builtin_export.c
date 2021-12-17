@@ -6,7 +6,7 @@
 /*   By: wleite <wleite@student.42sp.org.br>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 16:07:26 by wleite            #+#    #+#             */
-/*   Updated: 2021/12/04 22:04:06 by wleite           ###   ########.fr       */
+/*   Updated: 2021/12/17 17:31:21 by wleite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	alt_export(char **str, t_data *data)
 	i = 0;
 	while (str[++i])
 	{
-		if (!strchr(str[i], '='))
+		if (!ft_strchr(str[i], '='))
 			continue ;
 		tmp = ft_split(str[i], '=');
 		if (!is_alphanumeric(tmp[0]))
