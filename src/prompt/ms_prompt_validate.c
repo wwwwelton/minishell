@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 12:26:22 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/13 03:49:30 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:10:58 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,20 @@ t_bool	is_empty_pipes(char *line)
 	return (false);
 }
 
-t_bool	validate_line(char *line)
+t_bool	validate_line(t_pat *pat, char **line)
 {
-	if (is_blank_line(line))
+	if (is_blank_line(*line))
 		return (false);
-	if (is_incorrect_redirection(line))
+	if (is_odd_quotes(*line))
 		return (false);
-	if (is_odd_quotes(line))
+	*line = token_echo(pat, *line);
+	*line = check_redir_spaces(*line);
+	*line = check_here_doc_spaces(*line);
+	if (is_incorrect_redirection(*line))
 		return (false);
-	if (is_file_invalid(line))
+	if (is_file_invalid(*line))
 		return (false);
-	if (is_empty_pipes(line))
+	if (is_empty_pipes(*line))
 		return (false);
 	return (true);
 }

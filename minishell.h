@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:37:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/17 09:25:06 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/17 13:09:28 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	fd_collector(void);
 //prompt
 char	*prompt_loop(t_data *data, char *line, char **lastline);
 char	*fetch_buffer(t_data *data, char *buf, char *line, char **lastline);
-t_bool	validate_line(char *line);
+t_bool	validate_line(t_pat *pat, char **line);
 t_bool	is_file_invalid(char *line);
 char	*check_redir_spaces(char *line);
 char	*check_here_doc_spaces(char *line);
