@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 08:56:07 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/17 11:00:56 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:50:32 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void	translate(t_pat *pat, char ***cmd, char **envp)
 	int	i;
 
 	i = -1;
-	pat->i = 0;
 	while (cmd[++i])
 		replace_single_quotes(pat, cmd[i]);
 	find_env(cmd, envp);

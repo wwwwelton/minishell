@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:06:25 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/17 13:09:57 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:32:18 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,17 @@ char	*prompt_loop(t_data *data, char *line, char **lastline)
 	return (line);
 }
 
-char	*store_commands(char *line, char *buf)
+char	*store_commands(t_pat *pat, char *line, char *buf)
 {
 	int	cmd_size;
 	int	str_size;
 
+	line = restore_token_echo(pat, line);
 	cmd_size = command_size(line);
 	str_size = ft_strlen(line);
 	ft_strlcpy(buf, &line[cmd_size], BUFFER_SIZE);
 	ft_memset(&line[cmd_size], ' ', str_size - cmd_size);
+	line = token_echo(pat, line);
 	return (line);
 }
 
@@ -87,7 +89,7 @@ char	*prompt(t_data *data, char **lastline)
 	else
 		line = fetch_buffer(data, buf, line, lastline);
 	if (is_multiple_commands(line))
-		store_commands(line, buf);
+		line = store_commands(data->pat, line, buf);
 	tmp = line;
 	line = ft_strtrim(line, " ");
 	free(tmp);

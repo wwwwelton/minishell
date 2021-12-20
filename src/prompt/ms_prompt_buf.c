@@ -6,11 +6,21 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 20:26:17 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/15 13:17:37 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:39:46 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	len_to_next(char *str, char to_find)
+{
+	int	i;
+
+	i = 1;
+	while (str[i] != to_find)
+		i++;
+	return (i);
+}
 
 int	command_size(char *buf)
 {
@@ -19,6 +29,10 @@ int	command_size(char *buf)
 	i = -1;
 	while (buf[++i])
 	{
+		if (buf[i] == SQUOTES)
+			i += len_to_next(&buf[i], SQUOTES);
+		if (buf[i] == DQUOTES)
+			i += len_to_next(&buf[i], DQUOTES);
 		if (buf[i] != '|' && buf[i] != '&')
 			continue ;
 		if (buf[i + 1] == '|')

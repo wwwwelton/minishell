@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 19:46:16 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/14 03:10:02 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/20 16:56:09 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,10 @@ void	reinit(t_data *data)
 		free_redirs(data->flags[i]);
 		free(data->flags[i]);
 	}
-	free(data->flags);
-	data->flags = NULL;
+	ftex_null_ptr((void *)&(data->flags));
 	i = -1;
 	while (data->cmd[++i])
 		free_splited_mat(data->cmd[i]);
-	free(data->cmd);
-	data->cmd = NULL;
+	ftex_null_ptr((void *)&(data->cmd));
+	data->pat->i = 0;
 }

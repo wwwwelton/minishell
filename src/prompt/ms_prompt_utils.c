@@ -6,11 +6,27 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 02:48:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/16 02:25:04 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:02:43 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*restore_token_echo(t_pat *pat, char *line)
+{
+	pat->i = 0;
+	while (pat->backup[pat->i])
+	{
+		line = ftex_str_replace(line, pat->holder[pat->i], pat->backup[pat->i]);
+		free(pat->backup[pat->i]);
+		free(pat->holder[pat->i]);
+		pat->backup[pat->i] = NULL;
+		pat->holder[pat->i] = NULL;
+		pat->i++;
+	}
+	pat->i = 0;
+	return (line);
+}
 
 char	*check_here_doc_spaces(char *line)
 {

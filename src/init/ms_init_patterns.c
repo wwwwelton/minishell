@@ -17,6 +17,7 @@ void	null_pat(t_pat *pat)
 	int	i;
 
 	i = -1;
+	pat->i = 0;
 	while (++i < 50)
 	{
 		pat->backup[i] = NULL;

@@ -75,6 +75,7 @@ void	restore_quoted(t_pat *pat, char ***cmd)
 		restore_split(pat, cmd[i]);
 		i++;
 	}
+	pat->i = 0;
 	return ;
 }
 
@@ -83,7 +84,6 @@ char	*replace_quoted(t_pat *pat, char *line)
 	int	i;
 
 	i = 0;
-	pat->i = 0;
 	while (line[i])
 	{
 		if (line[i] == SQUOTES)
