@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 08:21:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/20 22:30:11 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/20 23:03:40 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,12 @@ t_bool	stop_breaking_things(char *str)
 	if (i % 2 || j % 2)
 		return (false);
 	return (true);
-
 }
 
 char	*token_echo(t_pat *pat, char *line)
 {
 	char	*tmp;
 	char	*bkup;
-	int		size;
 
 	tmp = ft_strdup(line);
 	bkup = tmp;
@@ -95,9 +93,8 @@ char	*token_echo(t_pat *pat, char *line)
 				tmp++;
 			if (!*tmp || *tmp == '|' || *tmp == '&')
 				break ;
-			size = echo_size(tmp, *tmp);
-			line = apply_token(pat, line, tmp, size);
-			tmp += size + 1;
+			line = apply_token(pat, line, tmp, echo_size(tmp, *tmp));
+			tmp += echo_size(tmp, *tmp) + 1;
 		}
 		tmp = ft_strnstr(tmp, "echo", ft_strlen(tmp));
 	}
