@@ -197,15 +197,29 @@ echo 'echo oi || echo io\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'ech oi || echo io\nexit' | $MINISHELL
 echo "=============================================================="
-echo 'echo ()\nexit' | $MINISHELL
+echo 'echo oi || ech io\nexit' | $MINISHELL
 echo "=============================================================="
-echo 'echo "()"\nexit' | $MINISHELL
+echo 'echo "oi" && echo "io"\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo "oi" || echo "io"\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'ech "oi" || "echo io"\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo "oi" || "ech io"\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo "oi\nexit' | $MINISHELL
+echo "=============================================================="
+echo "echo 'oi\nexit" | $MINISHELL
 echo "=============================================================="
 echo 'echo 1 && ech2 2 || (ech3 3 || echo 4) && echo 5\necho 1 4 5\nexit' | $MINISHELL
 echo "=============================================================="
 echo '(echo 1 && echo 2)\necho 1 2\nexit' | $MINISHELL
 echo "=============================================================="
 echo '(echo 1 || echo 2)\necho 1\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo ()\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo "()"\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo "||><|;()|"\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
@@ -240,6 +254,10 @@ echo "=============================================================="
 echo 'env | grep PATH\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'top -bn 1\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'env ls\necho $?\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'env TESTE=1 env | grep TESTE\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'env\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
