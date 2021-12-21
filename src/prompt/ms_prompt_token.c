@@ -6,7 +6,7 @@
 /*   By: jofelipe <jofelipe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 08:21:00 by jofelipe          #+#    #+#             */
-/*   Updated: 2021/12/20 16:50:14 by jofelipe         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:30:11 by jofelipe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,29 @@ char	*apply_token(t_pat *pat, char *line, char *tmp, int size)
 	return (line);
 }
 
+t_bool	stop_breaking_things(char *str)
+{
+	char	*tmp;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	tmp = str;
+	while (*tmp)
+	{
+		if (*tmp == SQUOTES)
+			i++;
+		if (*tmp == DQUOTES)
+			j++;
+		tmp++;
+	}
+	if (i % 2 || j % 2)
+		return (false);
+	return (true);
+
+}
+
 char	*token_echo(t_pat *pat, char *line)
 {
 	char	*tmp;
@@ -61,6 +84,9 @@ char	*token_echo(t_pat *pat, char *line)
 	tmp = ft_strdup(line);
 	bkup = tmp;
 	tmp = ft_strnstr(tmp, "echo", ft_strlen(line));
+	if (tmp && !stop_breaking_things(tmp))
+		while (*tmp != DQUOTES && *tmp != SQUOTES)
+			tmp--;
 	while (tmp)
 	{
 		while (tmp && *tmp != '|' && *tmp != '&')
