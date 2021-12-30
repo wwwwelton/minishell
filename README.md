@@ -23,7 +23,7 @@ Click [here](https://whimsical.com/minishell-R7ozXMj4gLMiR1nmeYoxDY@VsSo8s35VGGz
 - Rigor
 - Unix
 
-#### My grade
+#### Our grade
 <img src="./images/score2.png" width="150" height="150"/>
 
 ## Getting started
