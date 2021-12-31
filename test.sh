@@ -217,6 +217,10 @@ echo '(echo 1 && echo 2)\necho 1 2\nexit' | $MINISHELL
 echo "=============================================================="
 echo '(echo 1 || echo 2)\necho 1\nexit' | $MINISHELL
 echo "=============================================================="
+echo '(echo oi && echo tchau) | wc -l\necho 2\nexit' | $MINISHELL
+echo "=============================================================="
+echo 'echo oi && echo tchau | wc -l\necho 1\nexit' | $MINISHELL
+echo "=============================================================="
 echo 'echo ()\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo "()"\nexit' | $MINISHELL
