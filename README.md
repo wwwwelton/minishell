@@ -37,7 +37,7 @@ This is the first project in 42's cursus where we need to work in a group, getti
 sudo apt-get install libreadline-dev
 
 # Clone the project and access the folder
-git clone --recurse-submodules https://github.com/VLN37/Minishell.git && cd Minishell/
+git clone --recurse-submodules https://github.com/wwwwelton/minishell && cd minishell/
 
 # Compilet the program with
 make
@@ -68,5 +68,4 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 ---
 
 Made by:
-João Rodriguez 👋 [See my Github](https://github.com/VLN37)
-Welton Leite 👋 [See my linkedin](https://www.linkedin.com/in/welton-leite-b3492985/)
+João Rodriguez 👋 [See my Github](https://github.com/VLN37)<br />Welton Leite 👋 [See my linkedin](https://www.linkedin.com/in/welton-leite-b3492985/)
