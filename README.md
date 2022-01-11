@@ -26,6 +26,14 @@ This is the first project in 42's cursus where we need to work in a group, getti
 ### Badge
 <img src="./images/minishellm.png" width="150" height="150"/>
 
+#### Objectives
+- Unix logic
+
+#### Skills
+- Imperative programming
+- Rigor
+- Unix
+
 #### Our grade
 <img src="./images/score2.png" width="150" height="150"/>
 
