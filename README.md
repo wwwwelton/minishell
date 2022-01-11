@@ -71,7 +71,7 @@ The project is regularly updated with bug fixes and code optimization.
 
 ## 📝 License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](license) file for details.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
 ---
 
