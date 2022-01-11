@@ -39,7 +39,7 @@ sudo apt-get install libreadline-dev
 # Clone the project and access the folder
 git clone --recurse-submodules https://github.com/wwwwelton/minishell && cd minishell/
 
-# Compilet the program with
+# Compile the program with
 make
 
 # Run the program
