@@ -3,4 +3,4 @@ obj
 minishell
 .vscode
 *.o
-
+test.txt
