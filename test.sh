@@ -255,6 +255,12 @@ echo 'echo > <\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo >\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
+# echo '(echo oi | )\necho $?\nexit' | $MINISHELL
+# echo "=============================================================="
+# echo '(echo oi || )\necho $?\nexit' | $MINISHELL
+# echo "=============================================================="
+# echo '(echo oi && )\necho $?\nexit' | $MINISHELL
+# echo "=============================================================="
 echo 'env | grep USER\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'env | grep PATH\necho $?\nexit' | $MINISHELL
