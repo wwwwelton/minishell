@@ -137,6 +137,8 @@ echo 'echo aaaaaaaaaaa > out1\necho bbbbbbbbbbb > out2\necho ccccccccccc > out3\
 echo "=============================================================="
 echo 'echo aaaaaaaaaaa > out1\ncat < out1 > out2\ncat < out2\nrm -rf out1 out2\nexit' | $MINISHELL
 echo "=============================================================="
+echo 'lol=0\necho $lol\nexit' | $MINISHELL
+echo "=============================================================="
 echo '<< OUT\nexit' | $MINISHELL
 echo "=============================================================="
 echo '<<OUT\nexit' | $MINISHELL
