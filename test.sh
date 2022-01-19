@@ -255,6 +255,8 @@ echo 'echo > <\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
 echo 'echo >\necho $?\nexit' | $MINISHELL
 echo "=============================================================="
+echo '(ls | cat ) > outfile (ls -l)\nexit' | $MINISHELL
+echo "=============================================================="
 # echo '(echo oi | )\necho $?\nexit' | $MINISHELL
 # echo "=============================================================="
 # echo '(echo oi || )\necho $?\nexit' | $MINISHELL
